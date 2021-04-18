@@ -10,12 +10,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { NotFoundComponent } from './modules/not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

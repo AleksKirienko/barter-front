@@ -8,6 +8,7 @@
           <input matInput
                  formControlName="login"
                  (blur)="onBlur('login')">
+          <mat-error>{{'Поле обязательно для заполнения'}}</mat-error>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Password</mat-label>
@@ -22,9 +23,17 @@
       <div>
         <button
           mat-raised-button
-          class="form-button"
+          class="auth-button"
           type="submit">Войти
         </button>
+        <a class="registration" [routerLink]="['../registration']">Регистрация</a>
+        <div class="login-form__test">Авторизация через социальные сети</div>
+      </div>
+      <div class="login-form__networks">
+        <img src="assets/icons/vk.png" alt="" height="34"/>
+        <img src="assets/icons/facebook.png" alt="" height="34"/>
+        <img src="assets/icons/google.png" alt="" height="34"/>
+        <img src="assets/icons/telegram.png" alt="" height="34"/>
       </div>
     </form>
 

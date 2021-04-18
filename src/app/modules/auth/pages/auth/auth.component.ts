@@ -34,6 +34,7 @@ export class AuthComponent implements OnInit {
   }
 
   public onBlur(control: string): void {
+    console.log(control);
     this.loginForm.controls[control].updateValueAndValidity();
     if (this.loginForm.get('password').value.length < minLengthPass) {
       this.errorMsg = 'Минимум 8 символов';

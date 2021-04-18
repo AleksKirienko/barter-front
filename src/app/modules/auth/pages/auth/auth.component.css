@@ -8,7 +8,7 @@
   background-size: cover;
   background-position-x: right;
   background-position-y: bottom;
-  background: #E5E5E5 url('src/assets/login-bg.png') no-repeat;
+  background: #E5E5E5 url('../../../../../assets/img/login-bg.png') no-repeat;
 }
 
 .auth__container {
@@ -40,26 +40,55 @@
   letter-spacing: 0.15em;
 }
 
-.form-input {
-  position: absolute;
-  width: 320px;
-  height: 56px;
-
+.login-form {
+  position: relative;
   left: 47px;
-  top: 85px;
 }
 
-.form-button {
+.form-input {
   position: absolute;
+  width: 340px;
+  height: 56px;
+  top: 70px;
+}
+
+.auth-button {
   color: white;
   background-color: #2F80ED;
   width: 131px;
-  height: 41px;
-  left: 47px;
-  top: 229px;
+  height: 40px;
+  top: 214px;
+  margin-bottom: 18px;
 }
 
 mat-form-field {
   display: block;
   margin-bottom: 16px;
+  margin-right: 30px;
+}
+
+.registration {
+  position: absolute;
+  width: 112px;
+  color: #2F80ED;
+  top: 223px;
+  margin-left: 30px;
+}
+
+.login-form__test {
+  position: absolute;
+  text-align: center;
+  width: 315px;
+  top: 273px;
+}
+
+.login-form__networks {
+  position: absolute;
+  text-align: center;
+  display: inline-block;
+  top: 310px;
+  width: 70%;
+  /*margin: 2%;*/
+  /*line-height: 10px;*/
+  /*margin-right: 10px;*/
 }
