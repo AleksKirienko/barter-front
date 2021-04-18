@@ -1,0 +1,65 @@
+.auth {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position-x: right;
+  background-position-y: bottom;
+  background: #E5E5E5 url('src/assets/login-bg.png') no-repeat;
+}
+
+.auth__container {
+  width: 416px;
+  height: 370px;
+  background: #FFFFFF;
+  position: relative;
+  border: 1px solid #828282;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.auth-logo {
+  position: absolute;
+  width: 79px;
+  height: 21px;
+  left: 169px;
+  top: 28px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  /* identical to box height */
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.15em;
+}
+
+.form-input {
+  position: absolute;
+  width: 320px;
+  height: 56px;
+
+  left: 47px;
+  top: 85px;
+}
+
+.form-button {
+  position: absolute;
+  color: white;
+  background-color: #2F80ED;
+  width: 131px;
+  height: 41px;
+  left: 47px;
+  top: 229px;
+}
+
+mat-form-field {
+  display: block;
+  margin-bottom: 16px;
+}

@@ -1,0 +1,32 @@
+<div class="auth">
+  <div class="auth__container">
+    <div class="auth-logo">BARTER</div>
+    <form class="login-form" [formGroup]="loginForm" (submit)="onSubmit()">
+      <div class="form-input">
+        <mat-form-field>
+          <mat-label>Login</mat-label>
+          <input matInput
+                 formControlName="login"
+                 (blur)="onBlur('login')">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input matInput
+                 type="password"
+                 formControlName="password"
+                 autocomplete="off"
+                 (blur)="onBlur('password')">
+          <mat-error>{{errorMsg}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <button
+          mat-raised-button
+          class="form-button"
+          type="submit">Войти
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>
