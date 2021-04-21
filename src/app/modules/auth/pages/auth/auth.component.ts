@@ -30,7 +30,9 @@ export class AuthComponent implements OnInit {
   }
 
   public onSubmit(): void {
-
+    if (this.loginForm.valid) {
+      this.router.navigateByUrl('/home');
+    }
   }
 
   public onBlur(control: string): void {

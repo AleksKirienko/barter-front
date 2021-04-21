@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthComponent } from './modules/auth/pages/auth/auth.component';
 import { RegistrationComponent } from './modules/auth/pages/registration/registration.component';
 import { NotFoundComponent } from './modules/not-found/not-found.component';
+import { HomeComponent } from './modules/home/home.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'registration',
     component: RegistrationComponent
+  },
+  {
+    path: 'home',
+    component: HomeComponent
   },
   {
     path: '**',
