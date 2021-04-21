@@ -1,0 +1,65 @@
+.registration {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position-x: right;
+  background-position-y: bottom;
+  background: #E5E5E5 url('../../../../../assets/img/login-bg.png') no-repeat;
+}
+
+.registration__container {
+  position: relative;
+  width: 440px;
+  height: 550px;
+  background: #FFFFFF;
+  border: 1px solid #828282;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.registration-logo {
+  position: absolute;
+  left: 19.81%;
+  right: 19.81%;
+  top: 4.14%;
+  bottom: 86.87%;
+  font-size: 32px;
+  line-height: 37px;
+  text-align: center;
+  opacity: 0.5;
+}
+
+.registration-form {
+  position: relative;
+  left: 15%;
+}
+
+.registration-form__input {
+  position: absolute;
+  width: 380px;
+  height: 56px;
+  top: 70px;
+}
+
+mat-form-field {
+  width: 80%;
+}
+
+.registration__button {
+  position: absolute;
+  width: 200px;
+  height: 43px;
+  top: 440px;
+  background: #E5E5E5;
+}
+
+.back {
+  position: absolute;
+  color: #2F80ED;
+  top: 450px;
+  margin-left: 55%;
+}

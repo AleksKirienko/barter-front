@@ -1,1 +1,53 @@
-<p>registration works!</p>
+<div class="registration">
+  <div class="registration__container">
+    <div class="registration-logo">Регистрация</div>
+    <form class="registration-form">
+      <div class="registration-form__input">
+        <mat-form-field>
+          <mat-label>Имя</mat-label>
+          <input matInput>
+          <mat-error>{{'Поле обязательно для заполнения'}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Фамилия</mat-label>
+          <input matInput>
+          <mat-error>{{'Поле обязательно для заполнения'}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Электронная почта</mat-label>
+          <input matInput
+                 type="email">
+          <mat-error>{{'Поле обязательно для заполнения'}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Логин</mat-label>
+          <input matInput>
+          <mat-error>{{'Поле обязательно для заполнения'}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Пароль</mat-label>
+          <input matInput
+                 type="password">
+          <mat-error>{{'Поле обязательно для заполнения'}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Повторите пароль</mat-label>
+          <input matInput
+                 type="password">
+          <mat-error>{{'Поле обязательно для заполнения'}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <button
+          mat-raised-button
+          class="registration__button"
+          type="submit">Зарегистрироваться
+        </button>
+        <a class="back" [routerLink]="['../login']">Назад</a>
+      </div>
+
+    </form>
+
+  </div>
+</div>
