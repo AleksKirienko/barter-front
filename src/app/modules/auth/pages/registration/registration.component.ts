@@ -1,15 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { ErrorMessages } from './error-messages';
 
 const minLengthPass = 8;
-
-export const formErrors: { [key: string]: string } = {
-  required: 'Поле обязательно для заполнения',
-  email: 'Некорректный адрес электронной почты',
-  minLength: 'Минимум 8 символов',
-  pattern: 'Пароль должен содержать латинские буквы, цифры и символы',
-  misMatchPasswords: 'Пароли не совпадают'
-};
 
 @Component({
   selector: 'app-registration',
@@ -19,7 +12,7 @@ export const formErrors: { [key: string]: string } = {
 export class RegistrationComponent implements OnInit {
 
   public registrationForm: FormGroup;
-  formErrors = formErrors;
+  formErrors = ErrorMessages;
 
   constructor(private formBuilder: FormBuilder) {
   }
