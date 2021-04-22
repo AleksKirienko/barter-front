@@ -12,6 +12,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { NotFoundComponent } from './modules/not-found/not-found.component';
 import { HomeComponent } from './modules/home/home.component';
+import { DialogSuccessDataComponent } from './modules/auth/pages/registration/dialog-success-data/dialog-success-data.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { HomeComponent } from './modules/home/home.component';
     AuthComponent,
     RegistrationComponent,
     NotFoundComponent,
-    HomeComponent
+    HomeComponent,
+    DialogSuccessDataComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,8 @@ import { HomeComponent } from './modules/home/home.component';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule
   ],
   exports: [
     MatFormFieldModule,

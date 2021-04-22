@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { ErrorMessages } from './error-messages';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogSuccessDataComponent } from './dialog-success-data/dialog-success-data.component';
+import { Router } from '@angular/router';
 
 const minLengthPass = 8;
 
@@ -14,7 +17,10 @@ export class RegistrationComponent implements OnInit {
   public registrationForm: FormGroup;
   formErrors = ErrorMessages;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private dialog: MatDialog,
+    private router: Router) {
   }
 
   ngOnInit(): void {
@@ -36,8 +42,23 @@ export class RegistrationComponent implements OnInit {
 
   public onSubmit(): void {
     if (this.registrationForm.valid) {
-      alert('Registration complete!');
+      this.openDialog();
+      this.router.navigateByUrl('/login');
     }
+  }
+
+  public openDialog(): void {
+    const timeout = 2000;
+    const dialogRef = this.dialog.open(DialogSuccessDataComponent, {
+      height: '200px',
+      width: '600px',
+      data: {}
+    });
+    dialogRef.afterOpened().subscribe(_ => {
+      setTimeout(() => {
+        dialogRef.close();
+      }, timeout);
+    });
   }
 
   private checkPasswords(): ValidatorFn {
