@@ -10,10 +10,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { NotFoundComponent } from './modules/not-found/not-found.component';
-import { HomeComponent } from './modules/home/home.component';
+import { NotFoundComponent } from './modules/home/pages/not-found/not-found.component';
+import { HomeComponent } from './modules/home/pages/home/home.component';
 import { DialogSuccessDataComponent } from './modules/auth/pages/registration/dialog-success-data/dialog-success-data.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MenuComponent } from './modules/home/components/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     RegistrationComponent,
     NotFoundComponent,
     HomeComponent,
-    DialogSuccessDataComponent
+    DialogSuccessDataComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

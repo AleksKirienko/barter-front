@@ -1,0 +1,17 @@
+.menu {
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 92.89%;
+  background: #2258A5;
+}
+
+.menu-logo {
+  position: absolute;
+  left: 3%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.15em;
+}
