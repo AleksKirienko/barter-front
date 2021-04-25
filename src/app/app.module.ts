@@ -15,6 +15,7 @@ import { HomeComponent } from './modules/home/pages/home/home.component';
 import { DialogSuccessDataComponent } from './modules/auth/pages/registration/dialog-success-data/dialog-success-data.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MenuComponent } from './modules/home/components/menu/menu.component';
+import { PersonalRoomComponent } from './modules/home/pages/personal-room/personal-room.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MenuComponent } from './modules/home/components/menu/menu.component';
     NotFoundComponent,
     HomeComponent,
     DialogSuccessDataComponent,
-    MenuComponent
+    MenuComponent,
+    PersonalRoomComponent
   ],
   imports: [
     BrowserModule,

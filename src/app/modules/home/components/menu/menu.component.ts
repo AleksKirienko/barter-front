@@ -12,4 +12,8 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public test(): void {
+    alert('Добавить Sidenav!');
+  }
+
 }

@@ -1,1 +1,44 @@
+.home {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 100px;
+}
 
+.home__search {
+  width: 600px;
+  height: 40px;
+  display: flex;
+  margin: auto;
+}
+
+.home__input-text {
+  display: block;
+  width: 100%;
+  height: 40px;
+  font-size: 0.875rem;
+  background-color: white;
+  color: #878786;
+  line-height: 1.29;
+  padding: 11px 10px 11px 10px;
+  border: 1px solid #c8c8c8;
+  border-radius: 3px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.personal-block {
+  height: 40px;
+  display: flex;
+}
+
+.personal-block__liked {
+  margin-top: 5px;
+  height: 26px;
+  width: 45px;
+  margin-right: 27px;
+}
+
+.personal-block__cart {
+  height: 27px;
+  width: 55px;
+  margin-right: 100px;
+}
