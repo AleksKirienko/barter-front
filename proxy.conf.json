@@ -1,0 +1,6 @@
+{
+  "/api": {
+    "target": "https://breakingbadapi.com",
+    "secure": false
+  }
+}

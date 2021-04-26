@@ -44,3 +44,22 @@
   width: 55px;
   margin-right: 100px;
 }
+
+.filters {
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 24px;
+}
+
+.card {
+  max-width: 250px;
+  margin: 0 20px 20px;
+}
+
+.card__img {
+  height: 350px;
+  object-fit: cover;
+  overflow: hidden;
+}
+

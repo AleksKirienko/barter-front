@@ -15,5 +15,41 @@
     </svg>
   </div>
 
+</div>
 
+<div class="filters">
+  <mat-button-toggle-group name="Status" aria-label="Status">
+    <mat-button-toggle [value]="'all'" (click)="onSetStatus('all')">{{ "All" }}</mat-button-toggle>
+    <mat-button-toggle [value]="'alive'" (click)="onSetStatus('alive')">{{ "Alive" }}</mat-button-toggle>
+    <mat-button-toggle [value]="'presumed dead'"
+                       (click)="onSetStatus('presumed dead')">{{ "Presumed dead" }}</mat-button-toggle>
+    <mat-button-toggle [value]="'deceased'" (click)="onSetStatus('deceased')">{{ "Deceased" }}</mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 mb-3" *ngFor="let character of characters | async | filterStatus : status">
+      <div class="card h-100" align="center">
+        <div class="card-body">
+          <p class="card-text">
+            <img class="card-img-top" src="{{character.img}}" vspace="5" hspace="5" alt="Card image cap" align="left">
+            <b>name:</b> {{ character.name }}<br>
+            <b>nickname:</b> {{ character.nickname }}<br>
+            <b>birthday:</b> {{ character.birthday }}<br>
+            <b>status:</b> {{ character.status }}<br>
+            <b>portrayed:</b> {{ character.portrayed }}<br>
+          </p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted" align="right">
+            <p align="right">
+              <button>Quotes</button>
+            </p>
+          </small>
+        </div>
+      </div>
+      <br>
+    </div>
+  </div>
 </div>

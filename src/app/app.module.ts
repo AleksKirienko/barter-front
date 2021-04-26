@@ -16,6 +16,9 @@ import { DialogSuccessDataComponent } from './modules/auth/pages/registration/di
 import { MatDialogModule } from '@angular/material/dialog';
 import { MenuComponent } from './modules/home/components/menu/menu.component';
 import { PersonalRoomComponent } from './modules/home/pages/personal-room/personal-room.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { FilterStatusPipe } from './shared/pipes/filter-status.pipe';
 
 @NgModule({
   declarations: [
@@ -26,15 +29,18 @@ import { PersonalRoomComponent } from './modules/home/pages/personal-room/person
     HomeComponent,
     DialogSuccessDataComponent,
     MenuComponent,
-    PersonalRoomComponent
+    PersonalRoomComponent,
+    FilterStatusPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatButtonToggleModule,
     ReactiveFormsModule,
     MatDialogModule
   ],
