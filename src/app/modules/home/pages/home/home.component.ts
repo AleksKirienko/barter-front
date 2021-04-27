@@ -12,7 +12,7 @@ import { Status } from '../../../../core/models/status';
 })
 export class HomeComponent implements OnInit {
 
-  public characters: Observable<Products[]> = this.apiService.loadCharacters();
+  public products: Observable<Products[]> = this.apiService.loadProducts();
   public status: Status = 'all';
   public activeStatus: string;
 

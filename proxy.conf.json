@@ -1,6 +1,7 @@
 {
   "/api": {
-    "target": "https://breakingbadapi.com",
-    "secure": false
+    "target": "https://6086c68ca3b9c200173b6d4d.mockapi.io",
+    "secure": false,
+    "changeOrigin": true
   }
 }

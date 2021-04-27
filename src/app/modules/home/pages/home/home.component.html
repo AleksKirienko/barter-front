@@ -29,16 +29,14 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-3 mb-3" *ngFor="let character of characters | async | filterStatus : status">
+    <div class="col-md-3 mb-3" *ngFor="let product of products | async | filterStatus : status">
       <div class="card h-100" align="center">
         <div class="card-body">
           <p class="card-text">
-            <img class="card-img-top" src="{{character.img}}" vspace="5" hspace="5" alt="Card image cap" align="left">
-            <b>name:</b> {{ character.name }}<br>
-            <b>nickname:</b> {{ character.nickname }}<br>
-            <b>birthday:</b> {{ character.birthday }}<br>
-            <b>status:</b> {{ character.status }}<br>
-            <b>portrayed:</b> {{ character.portrayed }}<br>
+            <img class="card-img-top" src="{{product.image}}" vspace="5" hspace="5" alt="Card image cap" align="left">
+            <b>name:</b> {{ product.name }}<br>
+            <b>status:</b> {{ product.status }}<br>
+            <b>exchange:</b> {{ product.exchange }}<br>
           </p>
         </div>
         <div class="card-footer">

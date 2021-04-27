@@ -13,8 +13,8 @@ export class ApiService {
   constructor(private http: HttpClient) {
   }
 
-  public loadCharacters(): Observable<Products[]> {
-    return this.http.get<any>(`${environment.apiUrl}/characters`).pipe(
+  public loadProducts(): Observable<Products[]> {
+    return this.http.get<any>(`${environment.apiUrl}/products`).pipe(
       map(data => data)
     );
   }
