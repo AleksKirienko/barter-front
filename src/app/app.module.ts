@@ -18,6 +18,7 @@ import { MenuComponent } from './modules/home/components/menu/menu.component';
 import { PersonalRoomComponent } from './modules/home/pages/personal-room/personal-room.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import { FilterStatusPipe } from './shared/pipes/filter-status.pipe';
 
 @NgModule({
@@ -42,7 +43,8 @@ import { FilterStatusPipe } from './shared/pipes/filter-status.pipe';
     MatButtonModule,
     MatButtonToggleModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTooltipModule
   ],
   exports: [
     MatFormFieldModule,

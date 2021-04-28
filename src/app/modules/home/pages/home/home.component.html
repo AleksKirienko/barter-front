@@ -7,10 +7,12 @@
   </div>
 
   <div class="personal-block">
-    <svg class="personal-block__liked">
+    <svg class="personal-block__liked"
+         [matTooltip]="'Избранные'">
       <use xlink:href="assets/icons/icons.svg#liked"></use>
     </svg>
-    <svg class="personal-block__cart">
+    <svg class="personal-block__cart"
+         [matTooltip]="'Корзина'">
       <use xlink:href="assets/icons/icons.svg#cart"></use>
     </svg>
   </div>
