@@ -1,83 +1,59 @@
-<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
-  <!--  Шапка меню -->
-  <nav class="navbar fixed-top navbar-dark menu">
-    <a class="navbar-brand" [routerLink]="['../home']">
-      <span class="menu-logo">BARTER</span>
-    </a>
-    <button mat-icon-button class="burger" (click)="snav.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
-  </nav>
+<!--  Главная информация страницы -->
+<div class="home">
 
-  <mat-sidenav-container class="example-sidenav-container">
-    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
-                 [style.width.px]="500"
-                 [fixedInViewport]="mobileQuery.matches" position="end">
-      <p style="margin-top: 50px" align="center">Work sidenav!!!</p>
-    </mat-sidenav>
+  <div class="home__search">
+    <input type="text" class="home__input-text" placeholder="Search for Products">
+    <button mat-raised-button color="primary">Search</button>
+  </div>
 
-    <mat-sidenav-content>
+  <div class="personal-block">
+    <svg class="personal-block__liked"
+         [matTooltip]="'Избранные'"
+         [routerLink]="['../home/favorites']">
+      <use xlink:href="assets/icons/icons.svg#liked"></use>
+    </svg>
+    <svg class="personal-block__cart"
+         [matTooltip]="'Корзина'"
+         [routerLink]="['../home//basket']">
+      <use xlink:href="assets/icons/icons.svg#cart"></use>
+    </svg>
+  </div>
 
-      <!--  Главная информация страницы -->
-      <div class="home">
-
-        <div class="home__search">
-          <input type="text" class="home__input-text" placeholder="Search for Products">
-          <button mat-raised-button color="primary">Search</button>
-        </div>
-
-        <div class="personal-block">
-          <svg class="personal-block__liked"
-               [matTooltip]="'Избранные'"
-               [routerLink]="['../home/favorites']">
-            <use xlink:href="assets/icons/icons.svg#liked"></use>
-          </svg>
-          <svg class="personal-block__cart"
-               [matTooltip]="'Корзина'"
-               [routerLink]="['../home/basket']">
-            <use xlink:href="assets/icons/icons.svg#cart"></use>
-          </svg>
-        </div>
-
-      </div>
-
-      <div class="filters">
-        <mat-button-toggle-group name="Status" aria-label="Status">
-          <mat-button-toggle [value]="'all'" (click)="onSetStatus('all')">{{ "All" }}</mat-button-toggle>
-          <mat-button-toggle [value]="'alive'" (click)="onSetStatus('alive')">{{ "Alive" }}</mat-button-toggle>
-          <mat-button-toggle [value]="'presumed dead'"
-                             (click)="onSetStatus('presumed dead')">{{ "Presumed dead" }}</mat-button-toggle>
-          <mat-button-toggle [value]="'deceased'" (click)="onSetStatus('deceased')">{{ "Deceased" }}</mat-button-toggle>
-        </mat-button-toggle-group>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3 mb-3" *ngFor="let product of products | async | filterStatus : status">
-            <div class="card h-100" align="center">
-              <div class="card-body">
-                <p class="card-text">
-                  <img class="card-img-top" src="{{product.image}}" vspace="5" hspace="5" alt="Card image cap"
-                       align="left">
-                  <b>name:</b> {{ product.name }}<br>
-                  <b>status:</b> {{ product.status }}<br>
-                  <b>exchange:</b> {{ product.exchange }}<br>
-                </p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted" align="right">
-                  <p align="right">
-                    <button>Quotes</button>
-                  </p>
-                </small>
-              </div>
-            </div>
-            <br>
-          </div>
-        </div>
-      </div>
-
-    </mat-sidenav-content>
-  </mat-sidenav-container>
 </div>
 
+<div class="filters">
+  <mat-button-toggle-group name="Status" aria-label="Status">
+    <mat-button-toggle [value]="'all'" (click)="onSetStatus('all')">{{ "All" }}</mat-button-toggle>
+    <mat-button-toggle [value]="'alive'" (click)="onSetStatus('alive')">{{ "Alive" }}</mat-button-toggle>
+    <mat-button-toggle [value]="'presumed dead'"
+                       (click)="onSetStatus('presumed dead')">{{ "Presumed dead" }}</mat-button-toggle>
+    <mat-button-toggle [value]="'deceased'" (click)="onSetStatus('deceased')">{{ "Deceased" }}</mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 mb-3" *ngFor="let product of products | async | filterStatus : status">
+      <div class="card h-100" align="center">
+        <div class="card-body">
+          <p class="card-text">
+            <img class="card-img-top" src="{{product.image}}" vspace="5" hspace="5" alt="Card image cap"
+                 align="left">
+            <b>name:</b> {{ product.name }}<br>
+            <b>status:</b> {{ product.status }}<br>
+            <b>exchange:</b> {{ product.exchange }}<br>
+          </p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            <div>
+              <button class="more-details-style" mat-button>Подробнее</button>
+              <svg style="position: absolute"><use xlink:href="assets/icons/icons.svg#liked"></use></svg>
+            </div>
+          </small>
+        </div>
+      </div>
+      <br>
+    </div>
+  </div>
+</div>

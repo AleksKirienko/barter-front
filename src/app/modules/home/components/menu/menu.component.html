@@ -1,10 +1,25 @@
-<div>
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <!--  Шапка меню -->
   <nav class="navbar fixed-top navbar-dark menu">
-    <a class="navbar-brand"  [routerLink]="['../home']">
+    <a class="navbar-brand" [routerLink]="['../home']">
       <span class="menu-logo">BARTER</span>
     </a>
-    <button (click)="onOpenDrawer()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
-      <span class="navbar-toggler-icon"></span>
+    <button mat-icon-button class="burger" (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
     </button>
   </nav>
+
+  <mat-sidenav-container class="example-sidenav-container">
+    <mat-sidenav #snav [mode]="'over'"
+                 [style.width.px]="500"
+                 [fixedInViewport]="mobileQuery.matches" position="end">
+      <p style="margin-top: 50px" align="center">Work sidenav!!!</p>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>
+

@@ -1,10 +1,13 @@
 .menu {
   position: absolute;
+  position: fixed;
+  z-index: 5;
   left: 0%;
   right: 0%;
   top: 0%;
   bottom: 92.89%;
   background: #2258A5;
+  display: flex;
 }
 
 .menu-logo {
@@ -16,4 +19,27 @@
   align-items: center;
   text-align: center;
   letter-spacing: 0.15em;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  margin-top: 60px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.burger {
+  color: white;
+}
+
+.example-sidenav-container {
+  flex: 1;
+}
+
+.example-is-mobile .example-sidenav-container {
+  flex: 1 0 auto;
 }
