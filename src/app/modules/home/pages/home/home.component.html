@@ -28,11 +28,13 @@
 
         <div class="personal-block">
           <svg class="personal-block__liked"
-               [matTooltip]="'Избранные'">
+               [matTooltip]="'Избранные'"
+               [routerLink]="['../home/favorites']">
             <use xlink:href="assets/icons/icons.svg#liked"></use>
           </svg>
           <svg class="personal-block__cart"
-               [matTooltip]="'Корзина'">
+               [matTooltip]="'Корзина'"
+               [routerLink]="['../home/basket']">
             <use xlink:href="assets/icons/icons.svg#cart"></use>
           </svg>
         </div>

@@ -5,6 +5,8 @@ import { RegistrationComponent } from './modules/auth/pages/registration/registr
 import { NotFoundComponent } from './modules/home/pages/not-found/not-found.component';
 import { HomeComponent } from './modules/home/pages/home/home.component';
 import { MainComponent } from './modules/home/components/main/main.component';
+import { FavoritesComponent } from './modules/home/components/favorites/favorites.component';
+import { BasketComponent } from './modules/home/components/basket/basket.component';
 
 const routes: Routes = [
   {
@@ -23,6 +25,14 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'home/favorites',
+    component: FavoritesComponent
+  },
+  {
+    path: 'home/basket',
+    component: BasketComponent
   },
   {
     path: 'main',
