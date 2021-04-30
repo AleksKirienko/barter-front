@@ -20,6 +20,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { FilterStatusPipe } from './shared/pipes/filter-status.pipe';
+import { SidenavComponent } from './modules/home/components/sidenav/sidenav.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { MainComponent } from './modules/home/components/main/main.component';
+import { MatListModule } from '@angular/material/list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -31,7 +37,9 @@ import { FilterStatusPipe } from './shared/pipes/filter-status.pipe';
     DialogSuccessDataComponent,
     MenuComponent,
     PersonalRoomComponent,
-    FilterStatusPipe
+    FilterStatusPipe,
+    SidenavComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +52,11 @@ import { FilterStatusPipe } from './shared/pipes/filter-status.pipe';
     MatButtonToggleModule,
     ReactiveFormsModule,
     MatDialogModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSidenavModule,
+    MatListModule,
+    MatToolbarModule,
+    MatIconModule
   ],
   exports: [
     MatFormFieldModule,

@@ -4,6 +4,7 @@ import { AuthComponent } from './modules/auth/pages/auth/auth.component';
 import { RegistrationComponent } from './modules/auth/pages/registration/registration.component';
 import { NotFoundComponent } from './modules/home/pages/not-found/not-found.component';
 import { HomeComponent } from './modules/home/pages/home/home.component';
+import { MainComponent } from './modules/home/components/main/main.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'main',
+    component: MainComponent
   },
   {
     path: '**',
