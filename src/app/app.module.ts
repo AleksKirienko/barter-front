@@ -25,8 +25,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { FavoritesComponent } from './modules/home/components/favorites/favorites.component';
-import { BasketComponent } from './modules/home/components/basket/basket.component';
+import { FavoritesComponent } from './modules/home/pages/favorites/favorites.component';
+import { BasketComponent } from './modules/home/pages/basket/basket.component';
 
 @NgModule({
   declarations: [

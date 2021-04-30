@@ -1,0 +1,21 @@
+.sidenav {
+  max-width: 500px;
+}
+
+.sidenav__avatar {
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.sidenav__info {
+  margin-left: 20%;
+  margin-top: 5%;
+}
+
+.sidenav__info p {
+  font-size: 24px;
+  line-height: 65px;
+  cursor: pointer;
+}
