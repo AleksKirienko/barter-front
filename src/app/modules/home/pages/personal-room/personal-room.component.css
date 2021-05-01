@@ -1,0 +1,28 @@
+.personal-room {
+  display: flex;
+  margin-top: 25px;
+  margin-left: 24px;
+}
+
+.personal-room__header {
+  margin: auto;
+}
+
+.personal-room__avatar {
+  position: absolute;
+  width: 150px;
+}
+
+.container {
+  width: 100%;
+}
+
+.main-wrap {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: row;
+}
+
+.main-wrap > div {
+  flex: 1;
+}
