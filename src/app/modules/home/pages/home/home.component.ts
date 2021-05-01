@@ -13,7 +13,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
 })
 export class HomeComponent implements OnInit {
 
-  public products: Observable<Products[]> = this.apiService.loadProducts();
+  public products: Observable<Products[]> = this.apiService.getProducts();
   public status: Status = 'all';
 
   constructor(private apiService: ApiService,

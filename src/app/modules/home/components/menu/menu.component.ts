@@ -13,7 +13,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
 })
 export class MenuComponent implements OnInit, OnDestroy {
 
-  public products: Observable<Products[]> = this.apiService.loadProducts();
+  public products: Observable<Products[]> = this.apiService.getProducts();
   public status: Status = 'all';
   public mobileQuery: MediaQueryList;
   // tslint:disable-next-line:variable-name

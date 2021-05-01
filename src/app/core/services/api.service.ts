@@ -4,17 +4,31 @@ import { Observable } from 'rxjs';
 import { Products } from '../models/products';
 import { environment } from '../../../environments/environment';
 import { map } from 'rxjs/operators';
+import { UserInformation } from '../models/user-information';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) { }
+
+  /*
+  * HomeComponent
+  * Получение списка продуктов
+  */
+  public getProducts(): Observable<Products[]> {
+    return this.http.get<any>(`${environment.apiUrl}/products`).pipe(
+      map(data => data)
+    );
   }
 
-  public loadProducts(): Observable<Products[]> {
-    return this.http.get<any>(`${environment.apiUrl}/products`).pipe(
+  /*
+  * PersonalRoomComponent
+  * Получение информации о пользователе в личном кабинете
+  */
+  public getUserInformation(): Observable<UserInformation[]> {
+    return this.http.get<any>(`${environment.apiUrl}/person-information`).pipe(
       map(data => data)
     );
   }

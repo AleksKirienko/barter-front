@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ApiService } from '../../../../core/services/api.service';
+import { UserInformation } from '../../../../core/models/user-information';
 
 @Component({
   selector: 'app-personal-room',
@@ -7,7 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonalRoomComponent implements OnInit {
 
-  constructor() { }
+  public userInfo: Observable<UserInformation[]> = this.apiService.getUserInformation();
+
+  constructor(private apiService: ApiService) {
+  }
 
   ngOnInit(): void {
   }
