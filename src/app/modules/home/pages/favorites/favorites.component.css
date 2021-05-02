@@ -1,0 +1,30 @@
+.favorites {
+  display: flex;
+  margin-top: 25px;
+  margin-left: 24px;
+}
+
+.favorites__header {
+  margin: auto;
+}
+
+.container {
+  width: 100%;
+  margin-left: 24px;
+  margin-top: 25px;
+}
+
+.card {
+  max-width: 250px;
+  margin: 0 20px 20px;
+}
+
+.more-details-style {
+  margin-left: -50px;
+  margin-right: 50px;
+}
+
+.liked-icons {
+  position: absolute;
+  cursor: pointer;
+}
