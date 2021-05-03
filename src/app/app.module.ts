@@ -27,6 +27,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { FavoritesComponent } from './modules/home/pages/favorites/favorites.component';
 import { BasketComponent } from './modules/home/pages/basket/basket.component';
+import { AddProductComponent } from './modules/home/pages/add-product/add-product.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { BasketComponent } from './modules/home/pages/basket/basket.component';
     FilterStatusPipe,
     SidenavComponent,
     FavoritesComponent,
-    BasketComponent
+    BasketComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
