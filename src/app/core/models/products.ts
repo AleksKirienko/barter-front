@@ -1,13 +1,10 @@
 export interface Products {
   id: number;
-  name: string;
-  birthday: string;
-  occupation: string[];
-  image: string;
-  status: string;
-  nickname: string;
-  appearance: number[];
-  portrayed: string;
-  category: string[];
-  exchange: string;
+  name: string; // название товара
+  description: string; // описание товара
+  image: string; // изображение товара, url
+  status: string; // категория к которой относится товар
+  exchange: string; // что пользователь хочет получить за свой товар
+  fullName: string; // имя инициатора обмена
+  email: string; // его почта
 }
