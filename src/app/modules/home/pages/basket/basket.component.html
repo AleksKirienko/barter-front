@@ -1,1 +1,23 @@
-<p>basket works!</p>
+<div class="header" align="center">
+  <h1 class="test">Корзина</h1>
+
+</div>
+
+<div class="basket">
+  <div class="row">
+    <div class="col-md-3 mb-3" *ngFor="let product of products | async">
+      <div class="card h-100" align="center">
+        <div class="card-body">
+          <p class="card-text">
+            <img class="card-img-top" src="{{product.image}}" vspace="5" hspace="5" alt="Card image cap"
+                 align="left">
+            <b>name:</b> {{ product.name }}<br>
+            <b>status:</b> {{ product.status }}<br>
+            <b>exchange:</b> {{ product.exchange }}<br>
+          </p>
+        </div>
+      </div>
+      <br>
+    </div>
+  </div>
+</div>

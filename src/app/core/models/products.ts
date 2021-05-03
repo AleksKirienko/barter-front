@@ -7,4 +7,5 @@ export interface Products {
   exchange: string; // что пользователь хочет получить за свой товар
   fullName: string; // имя инициатора обмена
   email: string; // его почта
+  liked: boolean; // добавлен ли товар в избранные
 }

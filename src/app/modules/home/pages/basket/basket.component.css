@@ -1,0 +1,12 @@
+.header {
+  margin-top: 20px;
+}
+
+.basket {
+  margin-left: 32px;
+  margin-right: 32px;
+}
+
+.card {
+  cursor: pointer;
+}

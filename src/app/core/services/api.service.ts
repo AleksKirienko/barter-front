@@ -11,11 +11,12 @@ import { UserInformation } from '../models/user-information';
 })
 export class ApiService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   /*
   * HomeComponent
-  * Получение списка продуктов
+  * Получение списка товаров
   */
   public getProducts(): Observable<Products[]> {
     return this.http.get<any>(`${environment.apiUrl}/products`).pipe(
@@ -29,6 +30,16 @@ export class ApiService {
   */
   public getUserInformation(): Observable<UserInformation[]> {
     return this.http.get<any>(`${environment.apiUrl}/person-information`).pipe(
+      map(data => data)
+    );
+  }
+
+  /*
+  * BasketComponent
+  * Получение списка товаров в корзине
+  */
+  public getProductsInBasket(): Observable<Products[]> {
+    return this.http.get<any>(`${environment.apiUrl}/basket`).pipe(
       map(data => data)
     );
   }
