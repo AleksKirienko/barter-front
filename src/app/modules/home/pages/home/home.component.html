@@ -24,10 +24,11 @@
 <div class="filters">
   <mat-button-toggle-group name="Status" aria-label="Status">
     <mat-button-toggle [value]="'all'" (click)="onSetStatus('all')">{{ "All" }}</mat-button-toggle>
-    <mat-button-toggle [value]="'alive'" (click)="onSetStatus('alive')">{{ "Alive" }}</mat-button-toggle>
+    <mat-button-toggle [value]="'alive'" (click)="onSetStatus('application')">{{ "Application" }}</mat-button-toggle>
     <mat-button-toggle [value]="'presumed dead'"
-                       (click)="onSetStatus('presumed dead')">{{ "Presumed dead" }}</mat-button-toggle>
-    <mat-button-toggle [value]="'deceased'" (click)="onSetStatus('deceased')">{{ "Deceased" }}</mat-button-toggle>
+                       (click)="onSetStatus('x-shader')">{{ "x-shader" }}</mat-button-toggle>
+    <mat-button-toggle [value]="'deceased'" (click)="onSetStatus('video')">{{ "Video" }}</mat-button-toggle>
+    <mat-button-toggle [value]="'deceased'" (click)="onSetStatus('image')">{{ "Image" }}</mat-button-toggle>
   </mat-button-toggle-group>
 </div>
 

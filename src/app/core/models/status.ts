@@ -1,1 +1,1 @@
-export type Status = 'alive' | 'presumed dead' | 'deceased' | 'all';
+export type Status = 'application' | 'x-shader' | 'video' | 'image' |'all';
