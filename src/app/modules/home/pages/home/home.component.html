@@ -48,8 +48,15 @@
         <div class="card-footer">
           <small class="text-muted">
             <div>
-              <button class="more-details-style" mat-button>Подробнее</button>
-              <mat-icon class="liked-icons" (click)="selectedProduct($event)">favorite
+              <button
+                mat-button
+                [matTooltip]="'Больше информации о товаре'"
+                class="more-details-style">Подробнее
+              </button>
+              <mat-icon
+                class="liked-icons"
+                [matTooltip]="'Добавить в избранные'"
+                (click)="selectedProduct($event)">favorite
               </mat-icon>
             </div>
           </small>

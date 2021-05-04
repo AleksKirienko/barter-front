@@ -1,16 +1,10 @@
-.favorites {
-  display: flex;
-  margin-top: 25px;
-  margin-left: 24px;
-}
-
 .favorites__header {
-  margin: auto;
+  margin-top: 25px;
 }
 
 .container {
   width: 100%;
-  margin-left: 24px;
+  left: auto;
   margin-top: 25px;
 }
 
