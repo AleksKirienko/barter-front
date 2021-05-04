@@ -2,64 +2,80 @@
   <h1 class="test">Добавить товар</h1>
   <mat-card class="example-card">
 
-    <div class="new-product-form">
+    <form class="new-product-form" [formGroup]="newProductForm" (submit)="onSubmit()">
       <mat-form-field appearance="fill">
         <mat-label>Название товара</mat-label>
         <input matInput
                required
                type="text"
+               formControlName="nameProduct"
                placeholder="Кружка">
+        <mat-error>{{formErrors.required}}</mat-error>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Категория товара</mat-label>
-        <select matNativeControl required>
+        <select matNativeControl required formControlName="status">
           <option *ngFor="let status of statuses"
                   [value]="status">{{ status }}</option>
         </select>
+        <mat-error>{{formErrors.required}}</mat-error>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Описание товара</mat-label>
         <textarea matInput required
+                  formControlName="descriptionProduct"
                   cdkTextareaAutosize
                   cdkAutosizeMinRows="1"
                   cdkAutosizeMaxRows="3"></textarea>
+        <mat-error>{{formErrors.required}}</mat-error>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>На что хочу обменяться</mat-label>
         <textarea matInput required
+                  formControlName="exchangeOffer"
                   cdkTextareaAutosize
                   cdkAutosizeMinRows="1"
                   cdkAutosizeMaxRows="3"></textarea>
+        <mat-error>{{formErrors.required}}</mat-error>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Имя инициатора обмена</mat-label>
         <input matInput
+               formControlName="exchanger"
                required
                type="text"
                placeholder="Иванов Иван">
+        <mat-error>{{formErrors.required}}</mat-error>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Электронная почта</mat-label>
         <input matInput
                type="email"
+               formControlName="email"
                required
                placeholder="example@mail.ru">
+        <mat-error *ngIf="!(newProductForm.get('email').errors?.email)">{{ formErrors.required }}</mat-error>
+        <mat-error *ngIf="newProductForm.get('email').errors?.email">{{ formErrors.email }}</mat-error>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Ссылка на изображение</mat-label>
         <input matInput
+               formControlName="imgUrl"
                type="url"
                required>
+        <mat-error>{{formErrors.required}}</mat-error>
       </mat-form-field>
-    </div>
 
-    <div>
-      <button
-        mat-raised-button
-        class="new-product__button"
-        type="submit">Добавить
-      </button>
-    </div>
+      <div>
+        <button
+          mat-raised-button
+          class="new-product__button"
+          type="submit">Добавить
+        </button>
+      </div>
+
+    </form>
+
 
   </mat-card>
 </div>

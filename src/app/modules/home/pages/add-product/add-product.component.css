@@ -23,8 +23,7 @@
 .new-product__button {
   position: absolute;
   width: 200px;
-  left: 30%;
-  right: 20%;
-  bottom: 32px;
+  left: 15%;
+  bottom: -50px;
   background: #E5E5E5;
 }
