@@ -28,6 +28,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { FavoritesComponent } from './modules/home/pages/favorites/favorites.component';
 import { BasketComponent } from './modules/home/pages/basket/basket.component';
 import { AddProductComponent } from './modules/home/pages/add-product/add-product.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { AddProductComponent } from './modules/home/pages/add-product/add-produc
     MatSidenavModule,
     MatListModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule
   ],
   exports: [
     MatFormFieldModule,

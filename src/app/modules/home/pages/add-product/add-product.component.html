@@ -1,1 +1,65 @@
-<p>add-product works!</p>
+<div class="new-product__header" align="center">
+  <h1 class="test">Добавить товар</h1>
+  <mat-card class="example-card">
+
+    <div class="new-product-form">
+      <mat-form-field appearance="fill">
+        <mat-label>Название товара</mat-label>
+        <input matInput
+               required
+               type="text"
+               placeholder="Кружка">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Категория товара</mat-label>
+        <select matNativeControl required>
+          <option *ngFor="let status of statuses"
+                  [value]="status">{{ status }}</option>
+        </select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Описание товара</mat-label>
+        <textarea matInput required
+                  cdkTextareaAutosize
+                  cdkAutosizeMinRows="1"
+                  cdkAutosizeMaxRows="3"></textarea>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>На что хочу обменяться</mat-label>
+        <textarea matInput required
+                  cdkTextareaAutosize
+                  cdkAutosizeMinRows="1"
+                  cdkAutosizeMaxRows="3"></textarea>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Имя инициатора обмена</mat-label>
+        <input matInput
+               required
+               type="text"
+               placeholder="Иванов Иван">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Электронная почта</mat-label>
+        <input matInput
+               type="email"
+               required
+               placeholder="example@mail.ru">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Ссылка на изображение</mat-label>
+        <input matInput
+               type="url"
+               required>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <button
+        mat-raised-button
+        class="new-product__button"
+        type="submit">Добавить
+      </button>
+    </div>
+
+  </mat-card>
+</div>

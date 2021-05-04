@@ -1,0 +1,30 @@
+.new-product__header {
+  margin-top: 20px;
+}
+
+.example-card {
+  position: relative;
+  max-width: 25%;
+  height: 600px;
+}
+
+.new-product-form {
+  position: absolute;
+  top: 5%;
+  left: 20%;
+  right: 20%;
+}
+
+.new-product-form mat-form-field {
+  display: block;
+  width: 300px;
+}
+
+.new-product__button {
+  position: absolute;
+  width: 200px;
+  left: 30%;
+  right: 20%;
+  bottom: 32px;
+  background: #E5E5E5;
+}
