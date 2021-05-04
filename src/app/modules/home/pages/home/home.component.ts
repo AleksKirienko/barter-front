@@ -28,4 +28,7 @@ export class HomeComponent implements OnInit {
     this.status = status;
   }
 
+  public selectedProduct(e): void {
+    e.target.style.color = e.target.style.color === 'red' ? 'gray' : 'red';
+  }
 }
