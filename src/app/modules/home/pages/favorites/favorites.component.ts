@@ -10,7 +10,7 @@ import { ApiService } from '../../../../core/services/api.service';
 })
 export class FavoritesComponent implements OnInit {
 
-  public products: Observable<Products[]> = this.apiService.getProducts();
+  public products: Observable<Products[]> = this.apiService.getFavoritesProducts();
 
   constructor(private apiService: ApiService) {
   }
@@ -18,4 +18,7 @@ export class FavoritesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public selectedProduct(e): void {
+    e.target.style.color = 'gray';
+  }
 }

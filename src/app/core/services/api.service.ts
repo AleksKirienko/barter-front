@@ -35,6 +35,16 @@ export class ApiService {
   }
 
   /*
+  * FavoritesComponent
+  * Получение списка избранных товаров
+  */
+  public getFavoritesProducts(): Observable<Products[]> {
+    return this.http.get<any>(`${environment.apiUrl}/products?licked=true`).pipe(
+      map(data => data)
+    );
+  }
+
+  /*
   * BasketComponent
   * Получение списка товаров в корзине
   */

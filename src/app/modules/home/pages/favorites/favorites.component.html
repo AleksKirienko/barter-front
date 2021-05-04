@@ -20,7 +20,7 @@
           <small class="text-muted">
             <div>
               <button class="more-details-style" mat-button>Подробнее</button>
-              <svg class="liked-icons"><use xlink:href="assets/icons/icons.svg#liked"></use></svg>
+              <mat-icon class="liked-icons" (click)="selectedProduct($event)">favorite</mat-icon>
             </div>
           </small>
         </div>
