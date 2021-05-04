@@ -3,7 +3,7 @@
     <div class="registration-logo">Регистрация</div>
     <form class="registration-form" [formGroup]="registrationForm" (submit)="onSubmit()">
       <div class="registration-form__input">
-        <mat-form-field>
+        <mat-form-field appearance="fill">
           <mat-label>Имя</mat-label>
           <input matInput
                  required
@@ -12,7 +12,7 @@
                  placeholder="Иван">
           <mat-error>{{formErrors.required}}</mat-error>
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field appearance="fill">
           <mat-label>Фамилия</mat-label>
           <input matInput
                  required
@@ -21,7 +21,7 @@
                  placeholder="Иванов">
           <mat-error>{{formErrors.required}}</mat-error>
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field appearance="fill">
           <mat-label>Электронная почта</mat-label>
           <input matInput
                  type="email"
@@ -31,7 +31,7 @@
           <mat-error *ngIf="!(registrationForm.get('email').errors?.email)">{{ formErrors.required }}</mat-error>
           <mat-error *ngIf="registrationForm.get('email').errors?.email">{{ formErrors.email }}</mat-error>
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field appearance="fill">
           <mat-label>Логин</mat-label>
           <input matInput
                  required
@@ -40,7 +40,7 @@
                  placeholder="login">
           <mat-error>{{formErrors.required}}</mat-error>
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field appearance="fill">
           <mat-label>Пароль</mat-label>
           <input matInput
                  required
@@ -55,7 +55,7 @@
             {{ formErrors.pattern }}
           </mat-error>
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field appearance="fill">
           <mat-label>Повторите пароль</mat-label>
           <input matInput
                  required

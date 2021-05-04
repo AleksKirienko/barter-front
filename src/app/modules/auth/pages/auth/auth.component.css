@@ -57,7 +57,7 @@
   background-color: #2F80ED;
   width: 131px;
   height: 40px;
-  top: 214px;
+  top: 232px;
   margin-bottom: 18px;
 }
 
@@ -71,7 +71,7 @@ mat-form-field {
   position: absolute;
   width: 112px;
   color: #2F80ED;
-  top: 223px;
+  top: 242px;
   margin-left: 30px;
 }
 
@@ -79,7 +79,7 @@ mat-form-field {
   position: absolute;
   text-align: center;
   width: 315px;
-  top: 273px;
+  top: 280px;
 }
 
 .login-form__networks {
@@ -88,7 +88,4 @@ mat-form-field {
   display: inline-block;
   top: 310px;
   width: 70%;
-  /*margin: 2%;*/
-  /*line-height: 10px;*/
-  /*margin-right: 10px;*/
 }
