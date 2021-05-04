@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Status } from '../../../../core/models/status';
 import { Router } from '@angular/router';
 import { ErrorMessages } from '../../../auth/pages/registration/error-messages';
+import { ApiService } from '../../../../core/services/api.service';
+import { Products } from '../../../../core/models/products';
 
 @Component({
   selector: 'app-add-product',
@@ -18,6 +20,7 @@ export class AddProductComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private apiService: ApiService,
     private router: Router) {
   }
 
@@ -36,6 +39,19 @@ export class AddProductComponent implements OnInit {
 
   public onSubmit(): void {
     if (this.newProductForm.valid) {
+      const product: Products = {
+        id: 0,
+        name: this.newProductForm.controls.nameProduct.value,
+        image: this.newProductForm.controls.imgUrl.value,
+        status: this.newProductForm.controls.status.value,
+        description: this.newProductForm.controls.descriptionProduct.value,
+        exchange: this.newProductForm.controls.exchangeOffer.value,
+        fullName: this.newProductForm.controls.exchanger.value,
+        email: this.newProductForm.controls.email.value,
+        liked: false
+      };
+      console.log(product);
+      this.apiService.postAddProduct(product).subscribe();
       alert('Add new product success!');
     }
   }

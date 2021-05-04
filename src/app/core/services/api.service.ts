@@ -44,4 +44,22 @@ export class ApiService {
     );
   }
 
+  /*
+  * AddProductComponent
+  * Добавление нового товара
+  */
+  public postAddProduct(product: Products): Observable<Products> {
+    const body = {
+      name: product.name,
+      image: product.image,
+      status: product.status,
+      description: product.description,
+      exchange: product.exchange,
+      fullName: product.fullName,
+      email: product.email,
+      licked: product.liked
+    };
+    return this.http.post<Products>(`${environment.apiUrl}/products`, body);
+  }
+
 }
