@@ -1,10 +1,11 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Products } from '../../../../core/models/products';
 import { ApiService } from '../../../../core/services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Status } from '../../../../core/models/status';
-import { MediaMatcher } from '@angular/cdk/layout';
+import { HomeDialogComponent } from './home-dialog/home-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,7 @@ export class HomeComponent implements OnInit {
   public status: Status = 'all';
 
   constructor(private apiService: ApiService,
+              private dialog: MatDialog,
               private router: Router,
               private route: ActivatedRoute) {
   }
@@ -40,9 +42,25 @@ export class HomeComponent implements OnInit {
       e.target.style.color = 'red';
       this.apiService.updateLikedProduct(product, product.id).subscribe();
       this.apiService.getProducts();
+      this.openDialog();
       // console.log(this.products);
-      // alert('Товар добавлен в избранные');
     }
 
   }
+
+  public openDialog(): void {
+    const timeout = 2000;
+    const dialogRef = this.dialog.open(HomeDialogComponent, {
+      height: '200px',
+      width: '600px',
+      data: {}
+    });
+    dialogRef.updatePosition({top: '80px', left: '35%'});
+    dialogRef.afterOpened().subscribe(_ => {
+      setTimeout(() => {
+        dialogRef.close();
+      }, timeout);
+    });
+  }
+
 }
