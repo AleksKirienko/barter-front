@@ -29,6 +29,7 @@ import { FavoritesComponent } from './modules/home/pages/favorites/favorites.com
 import { BasketComponent } from './modules/home/pages/basket/basket.component';
 import { AddProductComponent } from './modules/home/pages/add-product/add-product.component';
 import { MatCardModule } from '@angular/material/card';
+import { FavoritesDialogComponent } from './modules/home/pages/favorites/favorites-dialog/favorites-dialog.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { MatCardModule } from '@angular/material/card';
     SidenavComponent,
     FavoritesComponent,
     BasketComponent,
-    AddProductComponent
+    AddProductComponent,
+    FavoritesDialogComponent
   ],
   imports: [
     BrowserModule,
