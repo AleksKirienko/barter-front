@@ -75,3 +75,11 @@
   color: darkgrey;
   cursor: pointer;
 }
+
+.basket-icons {
+  position: absolute;
+  user-select: none;
+  cursor: pointer;
+  margin-top: 5px;
+  right: 5%;
+}
