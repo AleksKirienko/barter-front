@@ -28,7 +28,21 @@ export class HomeComponent implements OnInit {
     this.status = status;
   }
 
-  public selectedProduct(e): void {
-    e.target.style.color = e.target.style.color === 'red' ? 'gray' : 'red';
+  public selectedProduct(e, idProduct: number): void {
+    const product: Products = {
+      id: idProduct,
+      description: '', email: '', exchange: '', fullName: '', image: '', name: '', status: '',
+      liked: true
+    };
+    if (e.target.style.color === 'red') {
+      e.target.style.color = 'gray';
+    } else {
+      e.target.style.color = 'red';
+      this.apiService.updateLikedProduct(product, product.id).subscribe();
+      this.apiService.getProducts();
+      // console.log(this.products);
+      // alert('Товар добавлен в избранные');
+    }
+
   }
 }

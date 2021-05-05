@@ -18,7 +18,15 @@ export class FavoritesComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public selectedProduct(e): void {
+  public selectedProduct(e, idProduct: number): void {
     e.target.style.color = 'gray';
+    const product: Products = {
+      id: idProduct,
+      description: '', email: '', exchange: '', fullName: '', image: '', name: '', status: '',
+      liked: false
+    };
+    this.apiService.updateLikedProduct(product, product.id).subscribe();
+    this.products = this.apiService.getFavoritesProducts();
+    // alert('Товар удален из избранных!');
   }
 }

@@ -56,7 +56,8 @@
               <mat-icon
                 class="liked-icons"
                 [matTooltip]="'Добавить в избранные'"
-                (click)="selectedProduct($event)">favorite
+                [ngStyle]="{'color': product.liked === true ? 'red' : 'gray'}"
+                (click)="selectedProduct($event, product.id)">favorite
               </mat-icon>
             </div>
           </small>

@@ -25,6 +25,17 @@ export class ApiService {
   }
 
   /*
+  * HomeComponent
+  * Обновить продукт, если его захотели добавить в избранные товары
+  */
+  public updateLikedProduct(product: Products, id: number): Observable<Products> {
+    const body = {
+      licked: product.liked
+    };
+    return this.http.put<Products>(`${environment.apiUrl}/products/${id}`, body);
+  }
+
+  /*
   * PersonalRoomComponent
   * Получение информации о пользователе в личном кабинете
   */
