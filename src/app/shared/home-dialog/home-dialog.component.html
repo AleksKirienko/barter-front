@@ -1,0 +1,8 @@
+<div class="home-dialog" align="center">
+  <h1 mat-dialog-title
+      *ngIf="this.boolLiked === true"
+      [ngStyle]="{'color':  'green'}">{{ dialogMessages.likedProduct}}</h1>
+  <h1 mat-dialog-title
+      *ngIf="this.boolLiked === false"
+      [ngStyle]="{'color':  'red'}">{{ dialogMessages.delLikedProduct}}</h1>
+</div>

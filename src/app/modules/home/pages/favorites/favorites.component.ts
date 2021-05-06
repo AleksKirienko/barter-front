@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 import { Products } from '../../../../core/models/products';
 import { ApiService } from '../../../../core/services/api.service';
 import { MatDialog } from '@angular/material/dialog';
-import { FavoritesDialogComponent } from './favorites-dialog/favorites-dialog.component';
+import { HomeDialogComponent } from '../../../../shared/home-dialog/home-dialog.component';
 
 @Component({
   selector: 'app-favorites',
@@ -15,6 +15,7 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   public products: Products[] = [];
   private subs: Subscription = new Subscription();
   public message = 'Нет избранных товаров!';
+  public boolLiked: boolean;
 
   constructor(private apiService: ApiService, private dialog: MatDialog) {
   }
@@ -36,25 +37,31 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   }
 
   public selectedProduct(e, idProduct: number): void {
-    e.target.style.color = 'gray';
+    if (e.target.style.color === 'red') {
+      this.boolLiked = false;
+      e.target.style.color = 'gray';
+    }
     const product: Products = {
       id: idProduct,
       description: '', email: '', exchange: '', fullName: '', image: '', name: '', status: '',
-      liked: false,
+      liked: this.boolLiked,
       inBasket: false
     };
     this.apiService.updateLikedProduct(product, product.id).subscribe();
     this.displayProducts();
+    this.apiService.getFavoritesProducts();
     // this.products = this.apiService.getFavoritesProducts();
     this.openDialog();
   }
 
   public openDialog(): void {
     const timeout = 2000;
-    const dialogRef = this.dialog.open(FavoritesDialogComponent, {
+    const dialogRef = this.dialog.open(HomeDialogComponent, {
       height: '200px',
       width: '600px',
-      data: {}
+      data: {
+        dataKey: this.boolLiked
+      }
     });
     dialogRef.updatePosition({top: '80px', left: '35%'});
     dialogRef.afterOpened().subscribe(_ => {

@@ -1,10 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Products } from '../../../../core/models/products';
 import { ApiService } from '../../../../core/services/api.service';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Status } from '../../../../core/models/status';
-import { HomeDialogComponent } from './home-dialog/home-dialog.component';
+import { HomeDialogComponent } from '../../../../shared/home-dialog/home-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -17,12 +16,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   public products: Products[] = [];
   private subs: Subscription = new Subscription();
   public status: Status = 'all';
-  public test = 'red';
+  public boolLiked = false;
 
-  constructor(private apiService: ApiService,
-              private dialog: MatDialog,
-              private router: Router,
-              private route: ActivatedRoute) {
+  constructor(private apiService: ApiService, private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -46,21 +42,23 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   public selectedProductForFavorite(e, idProduct: number): void {
+    if (e.target.style.color === 'red') {
+      this.boolLiked = false;
+      e.target.style.color = 'gray';
+    } else {
+      this.boolLiked = true;
+      e.target.style.color = 'red';
+    }
     const product: Products = {
       id: idProduct,
       description: '', email: '', exchange: '', fullName: '', image: '', name: '', status: '',
-      liked: true,
+      liked: this.boolLiked,
       inBasket: false
     };
-    if (e.target.style.color === 'red') {
-      e.target.style.color = 'gray';
-    } else {
-      e.target.style.color = 'red';
-      this.apiService.updateLikedProduct(product, product.id).subscribe();
-      this.apiService.getProducts();
-      this.openDialog();
-    }
-
+    console.log('product: ', product);
+    this.apiService.updateLikedProduct(product, product.id).subscribe();
+    this.apiService.getProducts();
+    this.openDialog();
   }
 
   public openDialog(): void {
@@ -68,7 +66,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(HomeDialogComponent, {
       height: '200px',
       width: '600px',
-      data: {}
+      data: {
+        dataKey: this.boolLiked
+      }
     });
     dialogRef.updatePosition({top: '80px', left: '35%'});
     dialogRef.afterOpened().subscribe(_ => {
@@ -77,5 +77,4 @@ export class HomeComponent implements OnInit, OnDestroy {
       }, timeout);
     });
   }
-
 }
