@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public products: Products[] = [];
   private subs: Subscription = new Subscription();
   public status: Status = 'all';
+  public test = 'red';
 
   constructor(private apiService: ApiService,
               private dialog: MatDialog,
@@ -36,7 +37,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.subs.add(this.apiService.getProducts().subscribe(
       (products1: Products[]): void => {
         this.products = products1;
-        console.log('length: ', this.products.length);
+        console.log(this.products);
       }));
   }
 
@@ -58,7 +59,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.apiService.updateLikedProduct(product, product.id).subscribe();
       this.apiService.getProducts();
       this.openDialog();
-      // console.log(this.products);
     }
 
   }

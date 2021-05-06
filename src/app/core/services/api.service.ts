@@ -27,7 +27,7 @@ export class ApiService {
   */
   public updateLikedProduct(product: Products, id: number): Observable<Products> {
     const body = {
-      licked: product.liked
+      liked: product.liked
     };
     return this.http.put<Products>(`${environment.apiUrl}/products/${id}`, body);
   }
@@ -45,7 +45,7 @@ export class ApiService {
   * Получение списка избранных товаров
   */
   public getFavoritesProducts(): Observable<Products[]> {
-    return this.http.get<Products[]>(`${environment.apiUrl}/products?licked=true`);
+    return this.http.get<Products[]>(`${environment.apiUrl}/products?liked=true`);
   }
 
   /*
@@ -69,7 +69,7 @@ export class ApiService {
       exchange: product.exchange,
       fullName: product.fullName,
       email: product.email,
-      licked: product.liked,
+      liked: product.liked,
       inBasket: product.inBasket
     };
     return this.http.post<Products>(`${environment.apiUrl}/products`, body);

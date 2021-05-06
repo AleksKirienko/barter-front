@@ -20,7 +20,6 @@
 
 .liked-icons {
   position: absolute;
-  color: red;
   user-select: none;
   cursor: pointer;
 }
