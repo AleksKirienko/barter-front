@@ -1,7 +1,4 @@
 import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Products } from '../../../../core/models/products';
-import { Status } from '../../../../core/models/status';
 import { ApiService } from '../../../../core/services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MediaMatcher } from '@angular/cdk/layout';
@@ -13,8 +10,6 @@ import { MediaMatcher } from '@angular/cdk/layout';
 })
 export class MenuComponent implements OnInit, OnDestroy {
 
-  public products: Observable<Products[]> = this.apiService.getProducts();
-  public status: Status = 'all';
   public mobileQuery: MediaQueryList;
   // tslint:disable-next-line:variable-name
   private _mobileQueryListener: () => void;
@@ -34,10 +29,6 @@ export class MenuComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
-  }
-
-  public onSetStatus(status: Status): void {
-    this.status = status;
   }
 
 }
