@@ -34,7 +34,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-3 mb-3" *ngFor="let product of products | async | filterStatus : status">
+    <div class="col-md-3 mb-3" *ngFor="let product of products | filterStatus : status">
       <div class="card h-100" align="center">
         <div class="card-body">
           <p class="card-text">

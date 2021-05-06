@@ -19,9 +19,7 @@ export class ApiService {
   * Получение списка товаров
   */
   public getProducts(): Observable<Products[]> {
-    return this.http.get<any>(`${environment.apiUrl}/products`).pipe(
-      map(data => data)
-    );
+    return this.http.get<Products[]>(`${environment.apiUrl}/products`);
   }
 
   /*

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Products } from '../../../../core/models/products';
 import { ApiService } from '../../../../core/services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,9 +12,10 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
-  public products: Observable<Products[]> = this.apiService.getProducts();
+  public products: Products[] = [];
+  private subs: Subscription = new Subscription();
   public status: Status = 'all';
 
   constructor(private apiService: ApiService,
@@ -24,6 +25,19 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.displayProducts();
+  }
+
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
+  }
+
+  private displayProducts(): void {
+    this.subs.add(this.apiService.getProducts().subscribe(
+      (products1: Products[]): void => {
+        this.products = products1;
+        console.log('length: ', this.products.length);
+      }));
   }
 
   public onSetStatus(status: Status): void {
