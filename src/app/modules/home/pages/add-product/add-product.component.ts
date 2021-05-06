@@ -48,7 +48,8 @@ export class AddProductComponent implements OnInit {
         exchange: this.newProductForm.controls.exchangeOffer.value,
         fullName: this.newProductForm.controls.exchanger.value,
         email: this.newProductForm.controls.email.value,
-        liked: false
+        liked: false,
+        inBasket: false
       };
       console.log(product);
       this.apiService.postAddProduct(product).subscribe();

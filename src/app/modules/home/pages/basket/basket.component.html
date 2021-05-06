@@ -5,7 +5,8 @@
 
 <div class="basket">
   <div class="row">
-    <div class="col-md-3 mb-3" *ngFor="let product of products | async">
+    <h1 *ngIf="!products.length">{{ message }}</h1>
+    <div class="col-md-3 mb-3" *ngFor="let product of products">
       <div class="card h-100" align="center">
         <div class="card-body">
           <p class="card-text">

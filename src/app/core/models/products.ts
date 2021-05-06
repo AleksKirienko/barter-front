@@ -8,4 +8,5 @@ export interface Products {
   fullName: string; // имя инициатора обмена
   email: string; // его почта
   liked: boolean; // добавлен ли товар в избранные
+  inBasket: boolean; // добавлен ли товар в корзину
 }

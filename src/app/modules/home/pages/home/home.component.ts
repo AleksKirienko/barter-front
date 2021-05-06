@@ -30,11 +30,12 @@ export class HomeComponent implements OnInit {
     this.status = status;
   }
 
-  public selectedProduct(e, idProduct: number): void {
+  public selectedProductForFavorite(e, idProduct: number): void {
     const product: Products = {
       id: idProduct,
       description: '', email: '', exchange: '', fullName: '', image: '', name: '', status: '',
-      liked: true
+      liked: true,
+      inBasket: false
     };
     if (e.target.style.color === 'red') {
       e.target.style.color = 'gray';

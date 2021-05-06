@@ -25,7 +25,8 @@ export class FavoritesComponent implements OnInit {
     const product: Products = {
       id: idProduct,
       description: '', email: '', exchange: '', fullName: '', image: '', name: '', status: '',
-      liked: false
+      liked: false,
+      inBasket: false
     };
     this.apiService.updateLikedProduct(product, product.id).subscribe();
     this.products = this.apiService.getFavoritesProducts();

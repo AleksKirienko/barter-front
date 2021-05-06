@@ -60,9 +60,7 @@ export class ApiService {
   * Получение списка товаров в корзине
   */
   public getProductsInBasket(): Observable<Products[]> {
-    return this.http.get<any>(`${environment.apiUrl}/basket`).pipe(
-      map(data => data)
-    );
+    return this.http.get<Products[]>(`${environment.apiUrl}/products?inBasket=true`);
   }
 
   /*
@@ -78,7 +76,8 @@ export class ApiService {
       exchange: product.exchange,
       fullName: product.fullName,
       email: product.email,
-      licked: product.liked
+      licked: product.liked,
+      inBasket: product.inBasket
     };
     return this.http.post<Products>(`${environment.apiUrl}/products`, body);
   }
