@@ -3,9 +3,9 @@
 
 </div>
 
-<div class="basket">
+<div class="basket" align="center">
   <div class="row">
-    <h1 *ngIf="!products.length">{{ message }}</h1>
+    <h2 *ngIf="!products.length">{{ message }}</h2>
     <div class="col-md-3 mb-3" *ngFor="let product of products">
       <div class="card h-100" align="center">
         <div class="card-body">

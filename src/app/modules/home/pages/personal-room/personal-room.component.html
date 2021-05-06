@@ -6,7 +6,7 @@
 <div class="main-wrap">
   <div class="container">
     <!--    Информация при регистрации-->
-    <div *ngFor="let user of userInfo | async" class="container__user-info">
+    <div *ngFor="let user of userInfo" class="container__user-info">
       <b>firstName:</b> {{ user.firstName }}<br>
       <b>lastName:</b> {{ user.lastName }}<br>
       <b>email:</b> {{ user.email }}<br>
