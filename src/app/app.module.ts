@@ -31,6 +31,7 @@ import { AddProductComponent } from './modules/home/pages/add-product/add-produc
 import { MatCardModule } from '@angular/material/card';
 import { HomeDialogComponent } from './shared/home-dialog/home-dialog.component';
 import { SuggestionsComponent } from './modules/home/pages/suggestions/suggestions.component';
+import { ProductInformationComponent } from './modules/home/pages/product-information/product-information.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { SuggestionsComponent } from './modules/home/pages/suggestions/suggestio
     BasketComponent,
     AddProductComponent,
     HomeDialogComponent,
-    SuggestionsComponent
+    SuggestionsComponent,
+    ProductInformationComponent
   ],
   imports: [
     BrowserModule,
