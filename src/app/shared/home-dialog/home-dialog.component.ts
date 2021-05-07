@@ -13,7 +13,6 @@ export class HomeDialogComponent implements OnInit {
   dialogMessages = DialogMessages;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
-    this.boolLiked = !this.data.dataKey;
   }
 
   ngOnInit(): void {

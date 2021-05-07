@@ -15,7 +15,6 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   public products: Products[] = [];
   private subs: Subscription = new Subscription();
   public message = 'Нет избранных товаров!';
-  public boolLiked: boolean;
 
   constructor(private apiService: ApiService, private dialog: MatDialog) {
   }
@@ -24,7 +23,7 @@ export class FavoritesComponent implements OnInit, OnDestroy {
     this.displayProducts();
   }
 
-  public ngOnDestroy(): void {
+  ngOnDestroy(): void {
     this.subs.unsubscribe();
   }
 
@@ -32,25 +31,24 @@ export class FavoritesComponent implements OnInit, OnDestroy {
     this.subs.add(this.apiService.getFavoritesProducts().subscribe(
       (products1: Products[]): void => {
         this.products = products1;
+        console.log(products1);
         console.log('length: ', this.products.length);
       }));
   }
 
   public selectedProduct(e, idProduct: number): void {
     if (e.target.style.color === 'red') {
-      this.boolLiked = false;
       e.target.style.color = 'gray';
     }
     const product: Products = {
       id: idProduct,
       description: '', email: '', exchange: '', fullName: '', image: '', name: '', status: '',
-      liked: this.boolLiked,
+      liked: false,
       inBasket: false
     };
-    this.apiService.updateLikedProduct(product, product.id).subscribe();
-    this.displayProducts();
-    this.apiService.getFavoritesProducts();
-    // this.products = this.apiService.getFavoritesProducts();
+    this.apiService.updateLikedProduct(product, product.id).subscribe(() => {
+      this.displayProducts();
+    });
     this.openDialog();
   }
 
@@ -60,7 +58,7 @@ export class FavoritesComponent implements OnInit, OnDestroy {
       height: '200px',
       width: '600px',
       data: {
-        dataKey: this.boolLiked
+        dataKey: false
       }
     });
     dialogRef.updatePosition({top: '80px', left: '35%'});

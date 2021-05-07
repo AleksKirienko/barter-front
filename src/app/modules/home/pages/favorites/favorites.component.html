@@ -21,8 +21,8 @@
                 <button class="more-details-style" mat-button>Подробнее</button>
                 <mat-icon
                   [matTooltip]="'Удалить из избранных'"
-                  [ngStyle]="{'color': product.liked === true ? 'red' : 'gray'}"
                   class="liked-icons"
+                  [ngStyle]="{'color': product.liked === true ? 'red' : 'gray'}"
                   (click)="selectedProduct($event, product.id)">favorite
                 </mat-icon>
                 <mat-icon
