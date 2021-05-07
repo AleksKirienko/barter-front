@@ -9,6 +9,7 @@ import { MenuComponent } from './modules/home/components/menu/menu.component';
 import { HomeComponent } from './modules/home/pages/home/home.component';
 import { PersonalRoomComponent } from './modules/home/pages/personal-room/personal-room.component';
 import { AddProductComponent } from './modules/home/pages/add-product/add-product.component';
+import { SuggestionsComponent } from './modules/home/pages/suggestions/suggestions.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,10 @@ const routes: Routes = [
       {
         path: 'home/add-product',
         component: AddProductComponent
+      },
+      {
+        path: 'home/suggestions',
+        component: SuggestionsComponent
       }
     ]
   },
