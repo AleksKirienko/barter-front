@@ -60,8 +60,9 @@
                 (click)="selectedProductForFavorite($event, product.id)">favorite
               </mat-icon>
               <mat-icon
+                class="basket-icons"
                 [matTooltip]="'Добавить товар в корзину'"
-                class="basket-icons">shopping_cart
+                (click)="selectedProductForBasket($event, product.id)">shopping_cart
               </mat-icon>
             </div>
           </small>

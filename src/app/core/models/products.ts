@@ -5,6 +5,7 @@ export interface Products {
   image: string; // изображение товара, url
   status: string; // категория к которой относится товар
   exchange: string; // что пользователь хочет получить за свой товар
+  exchange2: string; // предложение пользователя обмена на какой нибудь товар
   fullName: string; // имя инициатора обмена
   email: string; // его почта
   liked: boolean; // добавлен ли товар в избранные

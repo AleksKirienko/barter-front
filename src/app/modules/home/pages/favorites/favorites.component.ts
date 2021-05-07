@@ -42,7 +42,7 @@ export class FavoritesComponent implements OnInit, OnDestroy {
     }
     const product: Products = {
       id: idProduct,
-      description: '', email: '', exchange: '', fullName: '', image: '', name: '', status: '',
+      description: '', email: '', exchange: '', exchange2: '', fullName: '', image: '', name: '', status: '',
       liked: false,
       inBasket: false
     };

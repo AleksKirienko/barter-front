@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
     const product: Products = {
       id: idProduct,
-      description: '', email: '', exchange: '', fullName: '', image: '', name: '', status: '',
+      description: '', email: '', exchange: '', exchange2: '', fullName: '', image: '', name: '', status: '',
       liked: this.boolLiked,
       inBasket: false
     };
@@ -59,6 +59,17 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.apiService.updateLikedProduct(product, product.id).subscribe();
     this.apiService.getProducts();
     this.openDialog();
+  }
+
+  public selectedProductForBasket(e, idProduct: number): void {
+    const product: Products = {
+      id: idProduct,
+      description: '', email: '', exchange: '', exchange2: '', fullName: '', image: '', name: '', status: '',
+      liked: false,
+      inBasket: true
+    };
+    this.apiService.updateBasketProduct(product, product.id).subscribe();
+    alert('Product in basket!!');
   }
 
   public openDialog(): void {

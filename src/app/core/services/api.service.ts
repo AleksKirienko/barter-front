@@ -33,6 +33,17 @@ export class ApiService {
   }
 
   /*
+  * HomeComponent
+  * Обновить продукт при добавлении в корзину
+  */
+  public updateBasketProduct(product: Products, id: number): Observable<Products> {
+    const body = {
+      inBasket: product.inBasket,
+    };
+    return this.http.put<Products>(`${environment.apiUrl}/products/${id}`, body);
+  }
+
+  /*
   * PersonalRoomComponent
   * Получение информации о пользователе в личном кабинете
   */
