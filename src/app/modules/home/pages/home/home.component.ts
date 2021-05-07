@@ -5,6 +5,7 @@ import { ApiService } from '../../../../core/services/api.service';
 import { Status } from '../../../../core/models/status';
 import { HomeDialogComponent } from '../../../../shared/home-dialog/home-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   public status: Status = 'all';
   public boolLiked = false;
 
-  constructor(private apiService: ApiService, private dialog: MatDialog) {
+  constructor(
+    private apiService: ApiService,
+    private dialog: MatDialog,
+    private router: Router) {
   }
 
   ngOnInit(): void {
@@ -70,6 +74,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     };
     this.apiService.updateBasketProduct(product, product.id).subscribe();
     alert('Product in basket!!');
+  }
+
+  public getProductInformation(product): void {
+    this.router.navigate(['home/product-information', product.replace(' ', '+')]);
   }
 
   public openDialog(): void {

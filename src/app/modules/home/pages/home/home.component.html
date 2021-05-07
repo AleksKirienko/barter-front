@@ -50,8 +50,9 @@
             <div>
               <button
                 mat-button
+                class="more-details-style"
                 [matTooltip]="'Больше информации о товаре'"
-                class="more-details-style">Подробнее
+                (click)="getProductInformation(product.id)">Подробнее
               </button>
               <mat-icon
                 class="liked-icons"

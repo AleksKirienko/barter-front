@@ -55,7 +55,7 @@ const routes: Routes = [
         component: SuggestionsComponent
       },
       {
-        path: 'home/product-information',
+        path: 'home/product-information/:product',
         component: ProductInformationComponent
       }
     ]
