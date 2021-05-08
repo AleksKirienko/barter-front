@@ -1,0 +1,29 @@
+.test {
+  width: 50%;
+  min-height: 200px;
+  float: left;
+}
+
+.test2 {
+  position: absolute;
+  width: 30%;
+  min-height: 150px;
+  margin-top: 5%;
+  margin-left: 60%;
+  margin-right: 30%;
+}
+
+.card {
+  margin-top: 24px;
+  padding: 5%;
+}
+
+.card-title {
+  font-size: 24px;
+}
+
+.card-text {
+  text-align: left;
+  line-height: 2;
+  font-size: 16px;
+}
