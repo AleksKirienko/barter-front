@@ -4,6 +4,7 @@ import { Products } from '../../../../core/models/products';
 import { ApiService } from '../../../../core/services/api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { HomeDialogComponent } from '../../../../shared/home-dialog/home-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-favorites',
@@ -16,7 +17,10 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   private subs: Subscription = new Subscription();
   public message = 'Нет избранных товаров!';
 
-  constructor(private apiService: ApiService, private dialog: MatDialog) {
+  constructor(
+    private apiService: ApiService,
+    private dialog: MatDialog,
+    private router: Router) {
   }
 
   ngOnInit(): void {
@@ -34,6 +38,10 @@ export class FavoritesComponent implements OnInit, OnDestroy {
         console.log(products1);
         console.log('length: ', this.products.length);
       }));
+  }
+
+  public getProductInformation(product): void {
+    this.router.navigate(['home/product-information', product.replace(' ', '+')]);
   }
 
   public selectedProduct(e, idProduct: number): void {

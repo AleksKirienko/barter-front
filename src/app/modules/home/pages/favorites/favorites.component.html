@@ -18,7 +18,10 @@
           <div class="card-footer">
             <small class="text-muted">
               <div>
-                <button class="more-details-style" mat-button>Подробнее</button>
+                <button
+                  mat-button
+                  class="more-details-style"
+                  (click)="getProductInformation(product.id)">Подробнее</button>
                 <mat-icon
                   [matTooltip]="'Удалить из избранных'"
                   class="liked-icons"
