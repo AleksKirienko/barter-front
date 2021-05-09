@@ -7,7 +7,7 @@
   <div class="row">
     <h2 *ngIf="!products.length">{{ message }}</h2>
     <div class="col-md-3 mb-3" *ngFor="let product of products">
-      <div class="card h-100" align="center">
+      <div class="card h-100" align="center" (click)="getProductInformation(product.id)">
         <div class="card-body">
           <p class="card-text">
             <img class="card-img-top" src="{{product.image}}" vspace="5" hspace="5" alt="Card image cap"

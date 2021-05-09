@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Products } from '../../../../core/models/products';
 import { ApiService } from '../../../../core/services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-basket',
@@ -14,7 +15,9 @@ export class BasketComponent implements OnInit, OnDestroy {
   private subs: Subscription = new Subscription();
   public message = 'Корзина пуста!';
 
-  constructor(private apiService: ApiService) {
+  constructor(
+    private apiService: ApiService,
+    private router: Router) {
   }
 
   ngOnInit(): void {
@@ -31,6 +34,10 @@ export class BasketComponent implements OnInit, OnDestroy {
         this.products = products1;
         console.log('length: ', this.products.length);
       }));
+  }
+
+  public getProductInformation(product): void {
+    this.router.navigate(['home/product-information', product.replace(' ', '+')]);
   }
 
 }
