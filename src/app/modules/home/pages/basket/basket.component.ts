@@ -37,7 +37,11 @@ export class BasketComponent implements OnInit, OnDestroy {
   }
 
   public getProductInformation(product): void {
-    this.router.navigate(['home/product-information', product.replace(' ', '+')]);
+    let link = 'home/product-information/';
+    link = link.concat(product.replace(' ', '+'));
+    this.router.navigate([]).then(result => {
+      window.open(link, '_blank');
+    });
   }
 
 }
