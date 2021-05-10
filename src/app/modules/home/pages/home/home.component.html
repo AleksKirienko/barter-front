@@ -40,6 +40,7 @@
 
 <div class="container">
   <div class="row">
+    <h2 align="center" *ngIf="!products.length">{{ message }}</h2>
     <div class="col-md-3 mb-3" *ngFor="let product of products | filterStatus : status">
       <div class="card h-100" align="center">
         <div class="card-body">

@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public products: Products[] = [];
   private subs: Subscription = new Subscription();
+  public message = 'Товары не найдены!';
   public status: Status = 'all';
   public boolLiked = false;
 
