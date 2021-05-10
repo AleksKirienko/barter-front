@@ -45,6 +45,16 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.status = status;
   }
 
+  public searchProducts(product: string): void {
+    console.log(product);
+    this.subs.add(this.apiService.getSearchProducts(product).subscribe(
+      (products1: Products[]): void => {
+        this.products = products1;
+        console.log('joj', this.products);
+      }
+    ));
+  }
+
   public selectedProductForFavorite(e, idProduct: number): void {
     if (e.target.style.color === 'red') {
       this.boolLiked = false;

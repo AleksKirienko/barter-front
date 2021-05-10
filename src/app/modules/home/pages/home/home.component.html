@@ -2,8 +2,14 @@
 <div class="home">
 
   <div class="home__search">
-    <input type="text" class="home__input-text" placeholder="Search for Products">
-    <button mat-raised-button color="primary">Search</button>
+    <input #searchBox type="text"
+           class="home__input-text"
+           (keyup)="searchProducts(searchBox.value)"
+           placeholder="Search for Products">
+    <button mat-raised-button
+            color="primary"
+            (click)="searchProducts(searchBox.value)">Search
+    </button>
   </div>
 
   <div class="personal-block">

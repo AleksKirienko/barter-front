@@ -22,6 +22,14 @@ export class ApiService {
   }
 
   /**
+   * HomeComponent
+   * Поиск товара по названию
+   */
+  public getSearchProducts(nameProduct: string): Observable<Products[]> {
+    return this.http.get<Products[]>(`${environment.apiUrl}/products?name=${nameProduct}`);
+  }
+
+  /**
    * Получение всей информации о товаре
    */
   public getProductById(id: number): Observable<Products> {
