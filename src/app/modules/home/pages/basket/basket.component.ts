@@ -44,4 +44,17 @@ export class BasketComponent implements OnInit, OnDestroy {
     });
   }
 
+  public deleteProductFromBasket(e, idProduct: number): void {
+    const product: Products = {
+      id: idProduct,
+      description: '', email: '', exchange: '', exchange2: '', fullName: '', image: '', name: '', status: '',
+      liked: false,
+      inBasket: false
+    };
+    this.apiService.updateBasketProduct(product, product.id).subscribe(() => {
+        this.displayProducts();
+      });
+    alert('Product delete from basket!!');
+  }
+
 }
