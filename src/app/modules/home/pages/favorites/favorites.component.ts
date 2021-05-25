@@ -43,7 +43,7 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   public getProductInformation(product): void {
     let link = 'home/product-information/';
     link = link.concat(product.replace(' ', '+'));
-    this.router.navigate([]).then(result => {
+    this.router.navigate([]).then(() => {
       window.open(link, '_blank');
     });
   }
@@ -62,6 +62,21 @@ export class FavoritesComponent implements OnInit, OnDestroy {
       this.displayProducts();
     });
     this.openDialog();
+  }
+
+  public selectedProductForBasket(e, idProduct: number): void {
+    console.log(e.target.style.color);
+    const product: Products = {
+      id: idProduct,
+      description: '', email: '', exchange: '', exchange2: '', fullName: '', image: '', name: '', status: '',
+      liked: false,
+      inBasket: true
+    };
+    this.apiService.updateBasketProduct(product, product.id).subscribe(() => {
+      this.selectedProduct(e, product.id);
+      // this.displayProducts();
+    });
+    alert('Product in basket, and delete from favorites!!');
   }
 
   public openDialog(): void {

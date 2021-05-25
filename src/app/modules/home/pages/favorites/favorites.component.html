@@ -30,7 +30,7 @@
                 <mat-icon
                   [matTooltip]="'Добавить товар в корзину'"
                   class="basket-icons"
-                >shopping_cart
+                (click)="selectedProductForBasket($event, product.id)">shopping_cart
                 </mat-icon>
               </div>
             </small>
