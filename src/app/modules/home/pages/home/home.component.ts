@@ -91,7 +91,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     let link = 'home/product-information/';
     link = link.concat(product.replace(' ', '+'));
     // this.router.navigate(['home/product-information', product.replace(' ', '+')]);
-    this.router.navigate([]).then(result => {
+    this.router.navigate([]).then(() => {
       window.open(link, '_blank');
     });
   }

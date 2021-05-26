@@ -3,7 +3,7 @@
       *ngIf="this.boolLiked === true"
       [ngStyle]="{'color':  'green'}">{{ dialogMessages.likedProduct}}</h1>
   <h1 mat-dialog-title
-      *ngIf="this.boolLiked === false && this.boolBasket === false"
+      *ngIf="this.boolBasket"
       [ngStyle]="{'color':  'green'}">{{ dialogMessages.addBasket}}</h1>
   <h1 mat-dialog-title
       *ngIf="this.boolLiked === false"

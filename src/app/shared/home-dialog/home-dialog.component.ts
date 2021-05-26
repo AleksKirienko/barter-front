@@ -19,7 +19,7 @@ export class HomeDialogComponent implements OnInit {
   ngOnInit(): void {
     this.boolLiked = this.data.dataLiked;
     this.boolBasket = this.data.dataBasket;
-    console.log('data: ', this.boolBasket);
+    // console.log('dataBasket: ', this.data.dataBasket);
   }
 
 }

@@ -16,6 +16,7 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   public products: Products[] = [];
   private subs: Subscription = new Subscription();
   public message = 'Нет избранных товаров!';
+  public boolBasket = false;
 
   constructor(
     private apiService: ApiService,
@@ -66,25 +67,28 @@ export class FavoritesComponent implements OnInit, OnDestroy {
 
   public selectedProductForBasket(e, idProduct: number): void {
     console.log(e.target.style.color);
+    this.boolBasket = true;
     const product: Products = {
       id: idProduct,
       description: '', email: '', exchange: '', exchange2: '', fullName: '', image: '', name: '', status: '',
       liked: false,
-      inBasket: true
+      inBasket: this.boolBasket
     };
     this.apiService.updateBasketProduct(product, product.id).subscribe(() => {
       this.selectedProduct(e, product.id);
+      this.boolBasket = false;
     });
   }
 
   public openDialog(): void {
     const timeout = 2000;
+
     const dialogRef = this.dialog.open(HomeDialogComponent, {
       height: '200px',
       width: '600px',
       data: {
         dataLiked: false,
-        dataBasket: false
+        dataBasket: this.boolBasket
       }
     });
     dialogRef.updatePosition({top: '80px', left: '35%'});
