@@ -1,13 +1,13 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { DialogMessages } from '../dialog-messages';
+import { DialogMessages } from '../../dialog-messages';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-home-dialog',
-  templateUrl: './home-dialog.component.html',
-  styleUrls: ['./home-dialog.component.css']
+  templateUrl: './dialog-messages.component.html',
+  styleUrls: ['./dialog-messages.component.css']
 })
-export class HomeDialogComponent implements OnInit {
+export class DialogMessagesComponent implements OnInit {
 
   public boolLiked: boolean;
   public boolBasket: boolean;

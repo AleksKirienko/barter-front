@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 import { Products } from '../../../../core/models/products';
 import { ApiService } from '../../../../core/services/api.service';
 import { Status } from '../../../../core/models/status';
-import { HomeDialogComponent } from '../../../../shared/home-dialog/home-dialog.component';
+import { DialogMessagesComponent } from '../../../../shared/dialogs/dialog-messages/dialog-messages.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
@@ -98,7 +98,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public openDialog(): void {
     const timeout = 2000;
-    const dialogRef = this.dialog.open(HomeDialogComponent, {
+    const dialogRef = this.dialog.open(DialogMessagesComponent, {
       height: '200px',
       width: '600px',
       data: {

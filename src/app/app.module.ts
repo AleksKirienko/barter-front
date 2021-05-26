@@ -29,7 +29,7 @@ import { FavoritesComponent } from './modules/home/pages/favorites/favorites.com
 import { BasketComponent } from './modules/home/pages/basket/basket.component';
 import { AddProductComponent } from './modules/home/pages/add-product/add-product.component';
 import { MatCardModule } from '@angular/material/card';
-import { HomeDialogComponent } from './shared/home-dialog/home-dialog.component';
+import { DialogMessagesComponent } from './shared/dialogs/dialog-messages/dialog-messages.component';
 import { SuggestionsComponent } from './modules/home/pages/suggestions/suggestions.component';
 import { ProductInformationComponent } from './modules/home/pages/product-information/product-information.component';
 
@@ -48,7 +48,7 @@ import { ProductInformationComponent } from './modules/home/pages/product-inform
     FavoritesComponent,
     BasketComponent,
     AddProductComponent,
-    HomeDialogComponent,
+    DialogMessagesComponent,
     SuggestionsComponent,
     ProductInformationComponent
   ],

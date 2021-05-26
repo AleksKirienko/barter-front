@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { ErrorMessages } from '../../../auth/pages/registration/error-messages';
 import { ApiService } from '../../../../core/services/api.service';
 import { Products } from '../../../../core/models/products';
-import { HomeDialogComponent } from '../../../../shared/home-dialog/home-dialog.component';
+import { DialogMessagesComponent } from '../../../../shared/dialogs/dialog-messages/dialog-messages.component';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
