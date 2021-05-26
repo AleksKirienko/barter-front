@@ -52,8 +52,8 @@ export class BasketComponent implements OnInit, OnDestroy {
       inBasket: false
     };
     this.apiService.updateBasketProduct(product, product.id).subscribe(() => {
-        this.displayProducts();
-      });
+      this.displayProducts();
+    });
     alert('Product delete from basket!!');
   }
 

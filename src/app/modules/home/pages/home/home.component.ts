@@ -102,7 +102,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       height: '200px',
       width: '600px',
       data: {
-        dataKey: this.boolLiked
+        dataLiked: this.boolLiked
       }
     });
     dialogRef.updatePosition({top: '80px', left: '35%'});

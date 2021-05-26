@@ -10,14 +10,16 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class HomeDialogComponent implements OnInit {
 
   public boolLiked: boolean;
+  public boolBasket: boolean;
   dialogMessages = DialogMessages;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
   }
 
   ngOnInit(): void {
-    this.boolLiked = this.data.dataKey;
-    console.log('data: ', this.boolLiked);
+    this.boolLiked = this.data.dataLiked;
+    this.boolBasket = this.data.dataBasket;
+    console.log('data: ', this.boolBasket);
   }
 
 }

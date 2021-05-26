@@ -74,9 +74,7 @@ export class FavoritesComponent implements OnInit, OnDestroy {
     };
     this.apiService.updateBasketProduct(product, product.id).subscribe(() => {
       this.selectedProduct(e, product.id);
-      // this.displayProducts();
     });
-    alert('Product in basket, and delete from favorites!!');
   }
 
   public openDialog(): void {
@@ -85,7 +83,8 @@ export class FavoritesComponent implements OnInit, OnDestroy {
       height: '200px',
       width: '600px',
       data: {
-        dataKey: false
+        dataLiked: false,
+        dataBasket: false
       }
     });
     dialogRef.updatePosition({top: '80px', left: '35%'});
