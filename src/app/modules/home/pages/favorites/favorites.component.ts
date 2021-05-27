@@ -17,6 +17,7 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   private subs: Subscription = new Subscription();
   public message = 'Нет избранных товаров!';
   public boolBasket = false;
+  public clickHeat = false;
 
   constructor(
     private apiService: ApiService,
@@ -50,6 +51,7 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   }
 
   public selectedProduct(e, idProduct: number): void {
+    this.clickHeat = true;
     if (e.target.style.color === 'red') {
       e.target.style.color = 'gray';
     }
@@ -63,10 +65,10 @@ export class FavoritesComponent implements OnInit, OnDestroy {
       this.displayProducts();
     });
     this.openDialog();
+    this.clickHeat = false;
   }
 
   public selectedProductForBasket(e, idProduct: number): void {
-    console.log(e.target.style.color);
     this.boolBasket = true;
     const product: Products = {
       id: idProduct,
@@ -82,13 +84,13 @@ export class FavoritesComponent implements OnInit, OnDestroy {
 
   public openDialog(): void {
     const timeout = 2000;
-
     const dialogRef = this.dialog.open(DialogMessagesComponent, {
       height: '200px',
       width: '600px',
       data: {
         dataLiked: false,
-        dataBasket: this.boolBasket
+        dataBasket: this.boolBasket,
+        heart: this.clickHeat
       }
     });
     dialogRef.updatePosition({top: '80px', left: '35%'});

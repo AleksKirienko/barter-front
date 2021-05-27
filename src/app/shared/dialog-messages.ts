@@ -1,7 +1,8 @@
 export const DialogMessages: { [key: string]: string } = {
-  likedProduct: 'Товар добавлен в избранные!',
-  delLikedProduct: 'Товар удален из избранных!',
+  likedProduct: 'Товар добавлен в избранные',
+  delLikedProduct: 'Товар удален из избранных',
   addBasket: 'Товар добавлен в корзину',
   delBasket: 'Товар удален из корзины',
-  addNeqProduct: 'Новый товар успешно добавлен!'
+  repeatAddBasket: 'Товар уже находится в корзине',
+  addNewProduct: 'Новый товар успешно добавлен!'
 };

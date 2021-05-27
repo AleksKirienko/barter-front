@@ -57,9 +57,27 @@ export class AddProductComponent implements OnInit {
       };
       console.log(product);
       this.apiService.postAddProduct(product).subscribe();
-      alert('Add new product success!');
+      this.openDialog();
+      // alert('Add new product success!');
       this.router.navigateByUrl('/home');
     }
+  }
+
+  public openDialog(): void {
+    const timeout = 2000;
+    const dialogRef = this.dialog.open(DialogMessagesComponent, {
+      height: '200px',
+      width: '600px',
+      data: {
+        newProduct: true
+      }
+    });
+    dialogRef.updatePosition({top: '80px', left: '35%'});
+    dialogRef.afterOpened().subscribe(_ => {
+      setTimeout(() => {
+        dialogRef.close();
+      }, timeout);
+    });
   }
 
 }

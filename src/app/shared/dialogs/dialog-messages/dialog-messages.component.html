@@ -1,11 +1,22 @@
 <div class="home-dialog" align="center">
   <h1 mat-dialog-title
-      *ngIf="this.boolLiked === true"
+      *ngIf="this.boolLiked === true && this.boolBasket === false && this.heart"
       [ngStyle]="{'color':  'green'}">{{ dialogMessages.likedProduct}}</h1>
   <h1 mat-dialog-title
-      *ngIf="this.boolBasket"
+      *ngIf="(this.boolLiked === false || this.boolLiked === true) && this.boolBasket"
       [ngStyle]="{'color':  'green'}">{{ dialogMessages.addBasket}}</h1>
+
   <h1 mat-dialog-title
-      *ngIf="this.boolLiked === false"
+      *ngIf="this.boolLiked === false && this.boolBasket === false && this.heart"
       [ngStyle]="{'color':  'red'}">{{ dialogMessages.delLikedProduct}}</h1>
+  <h1 mat-dialog-title
+      *ngIf="this.boolLiked === true && this.boolBasket === true && this.heart"
+      [ngStyle]="{'color':  'red'}">{{ dialogMessages.repeatAddBasket}}</h1>
+  <h1 mat-dialog-title
+      *ngIf="!this.boolLiked && this.boolBasket === false && this.heart === false"
+      [ngStyle]="{'color':  'red'}">{{ dialogMessages.delBasket}}</h1>
+
+  <h1 mat-dialog-title
+      *ngIf="this.newProduct === true"
+      [ngStyle]="{'color':  'green'}">{{ dialogMessages.addNewProduct}}</h1>
 </div>

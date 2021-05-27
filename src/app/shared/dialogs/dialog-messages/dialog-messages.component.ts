@@ -9,8 +9,10 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class DialogMessagesComponent implements OnInit {
 
-  public boolLiked: boolean;
-  public boolBasket: boolean;
+  public boolLiked = false;
+  public boolBasket = false;
+  public newProduct = false;
+  public heart = false;
   dialogMessages = DialogMessages;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
@@ -19,7 +21,8 @@ export class DialogMessagesComponent implements OnInit {
   ngOnInit(): void {
     this.boolLiked = this.data.dataLiked;
     this.boolBasket = this.data.dataBasket;
-    // console.log('dataBasket: ', this.data.dataBasket);
+    this.newProduct = this.data.newProduct;
+    this.heart = this.data.heart;
   }
 
 }

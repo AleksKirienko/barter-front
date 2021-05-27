@@ -19,6 +19,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   public message = 'Товары не найдены!';
   public status: Status = 'all';
   public boolLiked = false;
+  public boolBasket = false;
+  public clickHeat = false;
 
   constructor(
     private apiService: ApiService,
@@ -57,6 +59,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   public selectedProductForFavorite(e, idProduct: number): void {
+    this.clickHeat = true;
     if (e.target.style.color === 'red') {
       this.boolLiked = false;
       e.target.style.color = 'gray';
@@ -74,17 +77,20 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.apiService.updateLikedProduct(product, product.id).subscribe();
     this.apiService.getProducts();
     this.openDialog();
+    this.clickHeat = false;
   }
 
   public selectedProductForBasket(e, idProduct: number): void {
+    this.clickHeat = false;
     const product: Products = {
       id: idProduct,
       description: '', email: '', exchange: '', exchange2: '', fullName: '', image: '', name: '', status: '',
       liked: false,
       inBasket: true
     };
+    this.boolBasket = true;
     this.apiService.updateBasketProduct(product, product.id).subscribe();
-    alert('Product in basket!!');
+    this.openDialog();
   }
 
   public getProductInformation(product): void {
@@ -102,7 +108,9 @@ export class HomeComponent implements OnInit, OnDestroy {
       height: '200px',
       width: '600px',
       data: {
-        dataLiked: this.boolLiked
+        dataLiked: this.boolLiked,
+        dataBasket: this.boolBasket,
+        heart: this.clickHeat
       }
     });
     dialogRef.updatePosition({top: '80px', left: '35%'});

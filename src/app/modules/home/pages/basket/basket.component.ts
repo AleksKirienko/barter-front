@@ -3,6 +3,8 @@ import { Subscription } from 'rxjs';
 import { Products } from '../../../../core/models/products';
 import { ApiService } from '../../../../core/services/api.service';
 import { Router } from '@angular/router';
+import { DialogMessagesComponent } from '../../../../shared/dialogs/dialog-messages/dialog-messages.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-basket',
@@ -13,10 +15,13 @@ export class BasketComponent implements OnInit, OnDestroy {
 
   public products: Products[] = [];
   private subs: Subscription = new Subscription();
+  public boolBasket: boolean;
+  public clickHeat = false;
   public message = 'Корзина пуста!';
 
   constructor(
     private apiService: ApiService,
+    private dialog: MatDialog,
     private router: Router) {
   }
 
@@ -54,7 +59,27 @@ export class BasketComponent implements OnInit, OnDestroy {
     this.apiService.updateBasketProduct(product, product.id).subscribe(() => {
       this.displayProducts();
     });
-    alert('Product delete from basket!!');
+    this.boolBasket = false;
+    this.openDialog();
+  }
+
+  public openDialog(): void {
+    const timeout = 2000;
+    const dialogRef = this.dialog.open(DialogMessagesComponent, {
+      height: '200px',
+      width: '600px',
+      data: {
+        dataLiked: false,
+        dataBasket: false,
+        heart: this.clickHeat
+      }
+    });
+    dialogRef.updatePosition({top: '80px', left: '35%'});
+    dialogRef.afterOpened().subscribe(_ => {
+      setTimeout(() => {
+        dialogRef.close();
+      }, timeout);
+    });
   }
 
 }
