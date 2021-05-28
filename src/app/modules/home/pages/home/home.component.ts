@@ -6,6 +6,7 @@ import { Status } from '../../../../core/models/status';
 import { DialogMessagesComponent } from '../../../../shared/dialogs/dialog-messages/dialog-messages.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { DialogAddToBasketComponent } from '../../../../shared/dialogs/dialog-add-to-basket/dialog-add-to-basket.component';
 
 @Component({
   selector: 'app-home',
@@ -82,15 +83,20 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public selectedProductForBasket(e, idProduct: number): void {
     this.clickHeat = false;
-    const product: Products = {
-      id: idProduct,
-      description: '', email: '', exchange: '', exchange2: '', fullName: '', image: '', name: '', status: '',
-      liked: false,
-      inBasket: true
-    };
-    this.boolBasket = true;
-    this.apiService.updateBasketProduct(product, product.id).subscribe();
-    this.openDialog();
+    const dialogRef = this.dialog.open(DialogAddToBasketComponent, {
+      height: '400px',
+      width: '700px',
+      data: {
+        id: idProduct
+      }
+    });
+    dialogRef.updatePosition({top: '10%'});
+    dialogRef.afterClosed().subscribe(res => {
+      this.boolBasket = true;
+      if (res) {
+        this.openDialog();
+      }
+    });
   }
 
   public getProductInformation(product): void {
