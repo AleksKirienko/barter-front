@@ -70,7 +70,7 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   }
 
   public selectedProductForBasket(e, idProduct: number): void {
-    this.boolBasket = true;
+    // this.boolBasket = true;
     const product: Products = {
       id: idProduct,
       description: '', email: '', exchange: '', exchange2: '', fullName: '', image: '', name: '', status: '',
@@ -87,10 +87,12 @@ export class FavoritesComponent implements OnInit, OnDestroy {
 
   public dialogAddProductToBasket(): void {
     const dialogRef = this.dialog.open(DialogAddToBasketComponent, {
-      height: '500px',
-      width: '800px',
+      height: '400px',
+      width: '700px',
     });
     dialogRef.updatePosition({top: '10%'});
+    dialogRef.afterOpened().subscribe(() => {
+    });
 
   }
 

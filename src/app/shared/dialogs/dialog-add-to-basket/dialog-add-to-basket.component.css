@@ -1,0 +1,13 @@
+.add-basket-form mat-form-field {
+  display: block;
+  width: 450px;
+  margin-top: 32px;
+  margin-bottom: 24px;
+  font-size: 20px;
+}
+
+.add-basket__button {
+  margin-left: 24px;
+  margin-right: 24px;
+  width: 150px;
+}

@@ -1,1 +1,35 @@
-<p>dialog-add-to-basket works!</p>
+<div align="center">
+  <h1>Добавление товара в корзину</h1>
+
+  <form class="add-basket-form" [formGroup]="addToBasketForm" (submit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Что хочешь предложить взамен?</mat-label>
+      <textarea matInput required
+                formControlName="exchangeOffer"
+                cdkTextareaAutosize
+                cdkAutosizeMinRows="2"
+                cdkAutosizeMaxRows="5"></textarea>
+      <mat-error>{{formErrors.required}}</mat-error>
+    </mat-form-field>
+
+    <div>
+      <button
+        mat-raised-button
+        color="gray"
+        (click)="closeDialogWindow()"
+        type="button"
+        class="add-basket__button">Отмена
+      </button>
+
+      <button
+        mat-raised-button
+        color="primary"
+        class="add-basket__button"
+        type="submit">Добавить
+      </button>
+
+    </div>
+
+  </form>
+
+</div>
