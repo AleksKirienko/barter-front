@@ -54,6 +54,7 @@ export class ApiService {
   public updateBasketProduct(product: Products, id: number): Observable<Products> {
     const body = {
       inBasket: product.inBasket,
+      exchange2: product.exchange2
     };
     return this.http.put<Products>(`${environment.apiUrl}/products/${id}`, body);
   }

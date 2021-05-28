@@ -17,6 +17,7 @@
         mat-raised-button
         color="gray"
         (click)="closeDialogWindow()"
+        [mat-dialog-close]="false"
         type="button"
         class="add-basket__button">Отмена
       </button>
@@ -24,6 +25,7 @@
       <button
         mat-raised-button
         color="primary"
+        [mat-dialog-close]="true"
         class="add-basket__button"
         type="submit">Добавить
       </button>

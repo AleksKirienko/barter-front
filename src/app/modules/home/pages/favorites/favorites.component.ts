@@ -70,30 +70,21 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   }
 
   public selectedProductForBasket(e, idProduct: number): void {
-    // this.boolBasket = true;
-    const product: Products = {
-      id: idProduct,
-      description: '', email: '', exchange: '', exchange2: '', fullName: '', image: '', name: '', status: '',
-      liked: false,
-      inBasket: this.boolBasket
-    };
-    this.dialogAddProductToBasket();
-
-    // this.apiService.updateBasketProduct(product, product.id).subscribe(() => {
-    //   this.selectedProduct(e, product.id);
-    //   this.boolBasket = false;
-    // });
-  }
-
-  public dialogAddProductToBasket(): void {
     const dialogRef = this.dialog.open(DialogAddToBasketComponent, {
       height: '400px',
       width: '700px',
+      data: {
+        id: idProduct
+      }
     });
     dialogRef.updatePosition({top: '10%'});
-    dialogRef.afterOpened().subscribe(() => {
+    dialogRef.afterClosed().subscribe(res => {
+      this.boolBasket = res;
+      if (res) {
+        this.selectedProduct(e, idProduct);
+      }
+      this.boolBasket = false;
     });
-
   }
 
   public openDialog(): void {
