@@ -5,6 +5,7 @@ import { ApiService } from '../../../../core/services/api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogMessagesComponent } from '../../../../shared/dialogs/dialog-messages/dialog-messages.component';
 import { Router } from '@angular/router';
+import { DialogAddToBasketComponent } from '../../../../shared/dialogs/dialog-add-to-basket/dialog-add-to-basket.component';
 
 @Component({
   selector: 'app-favorites',
@@ -76,10 +77,21 @@ export class FavoritesComponent implements OnInit, OnDestroy {
       liked: false,
       inBasket: this.boolBasket
     };
-    this.apiService.updateBasketProduct(product, product.id).subscribe(() => {
-      this.selectedProduct(e, product.id);
-      this.boolBasket = false;
+    this.dialogAddProductToBasket();
+
+    // this.apiService.updateBasketProduct(product, product.id).subscribe(() => {
+    //   this.selectedProduct(e, product.id);
+    //   this.boolBasket = false;
+    // });
+  }
+
+  public dialogAddProductToBasket(): void {
+    const dialogRef = this.dialog.open(DialogAddToBasketComponent, {
+      height: '500px',
+      width: '800px',
     });
+    dialogRef.updatePosition({top: '10%'});
+
   }
 
   public openDialog(): void {

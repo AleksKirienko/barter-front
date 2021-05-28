@@ -20,7 +20,8 @@
                 <button
                   mat-button
                   class="more-details-style"
-                  (click)="getProductInformation(product.id)">Подробнее</button>
+                  (click)="getProductInformation(product.id)">Подробнее
+                </button>
                 <mat-icon
                   [matTooltip]="'Удалить из избранных'"
                   class="liked-icons"
@@ -30,7 +31,7 @@
                 <mat-icon
                   [matTooltip]="'Добавить товар в корзину'"
                   class="basket-icons"
-                (click)="selectedProductForBasket($event, product.id)">shopping_cart
+                  (click)="selectedProductForBasket($event, product.id)">shopping_cart
                 </mat-icon>
               </div>
             </small>

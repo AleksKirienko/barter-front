@@ -32,6 +32,7 @@ import { MatCardModule } from '@angular/material/card';
 import { DialogMessagesComponent } from './shared/dialogs/dialog-messages/dialog-messages.component';
 import { SuggestionsComponent } from './modules/home/pages/suggestions/suggestions.component';
 import { ProductInformationComponent } from './modules/home/pages/product-information/product-information.component';
+import { DialogAddToBasketComponent } from './shared/dialogs/dialog-add-to-basket/dialog-add-to-basket.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { ProductInformationComponent } from './modules/home/pages/product-inform
     AddProductComponent,
     DialogMessagesComponent,
     SuggestionsComponent,
-    ProductInformationComponent
+    ProductInformationComponent,
+    DialogAddToBasketComponent
   ],
   imports: [
     BrowserModule,
