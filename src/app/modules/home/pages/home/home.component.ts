@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public boolBasket = false;
   public clickHeat = false;
   public favoriteLength = 0;
+  public basketLength = 0;
 
   constructor(
     private apiService: ApiService,
@@ -33,6 +34,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.displayProducts();
     this.getFavoriteProductsLength();
+    this.getBasketProductsLength();
   }
 
   ngOnDestroy(): void {
@@ -51,6 +53,13 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.apiService.getFavoritesProducts().subscribe(
       (products1: Products[]): void => {
         this.favoriteLength = products1.length;
+      });
+  }
+
+  public getBasketProductsLength(): void {
+    this.apiService.getProductsInBasket().subscribe(
+      (products1: Products[]): void => {
+        this.basketLength = products1.length;
       });
   }
 
@@ -106,6 +115,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(res => {
       this.boolBasket = true;
       if (res) {
+        this.getBasketProductsLength();
         this.openDialog();
       }
     });

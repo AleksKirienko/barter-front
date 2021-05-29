@@ -19,8 +19,9 @@
               [routerLink]="['../home/favorites']">favorite
     </mat-icon>
     <mat-icon class="personal-block__cart"
-         [matTooltip]="'Корзина'"
-         [routerLink]="['../home/basket']">shopping_cart
+              [matTooltip]="'Корзина'"
+              matBadge="{{basketLength}}" matBadgePosition="before" matBadgeColor="warn"
+              [routerLink]="['../home/basket']">shopping_cart
     </mat-icon>
   </div>
 
