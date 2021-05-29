@@ -18,10 +18,10 @@ import { MenuComponent } from './modules/home/components/menu/menu.component';
 import { PersonalRoomComponent } from './modules/home/pages/personal-room/personal-room.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { FilterStatusPipe } from './shared/pipes/filter-status.pipe';
 import { SidenavComponent } from './modules/home/components/sidenav/sidenav.component';
-import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -33,6 +33,7 @@ import { DialogMessagesComponent } from './shared/dialogs/dialog-messages/dialog
 import { SuggestionsComponent } from './modules/home/pages/suggestions/suggestions.component';
 import { ProductInformationComponent } from './modules/home/pages/product-information/product-information.component';
 import { DialogAddToBasketComponent } from './shared/dialogs/dialog-add-to-basket/dialog-add-to-basket.component';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { DialogAddToBasketComponent } from './shared/dialogs/dialog-add-to-baske
     MatListModule,
     MatToolbarModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatBadgeModule
   ],
   exports: [
     MatFormFieldModule,

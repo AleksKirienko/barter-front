@@ -39,7 +39,6 @@ export class FavoritesComponent implements OnInit, OnDestroy {
       (products1: Products[]): void => {
         this.products = products1;
         console.log(products1);
-        console.log('length: ', this.products.length);
       }));
   }
 

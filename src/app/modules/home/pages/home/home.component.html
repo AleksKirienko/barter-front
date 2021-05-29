@@ -13,16 +13,15 @@
   </div>
 
   <div class="personal-block">
-    <svg class="personal-block__liked"
-         [matTooltip]="'Избранные'"
-         [routerLink]="['../home/favorites']">
-      <use xlink:href="assets/icons/icons.svg#liked"></use>
-    </svg>
-    <svg class="personal-block__cart"
+    <mat-icon class="personal-block__liked"
+              [matTooltip]="'Избранные'"
+              matBadge="{{favoriteLength}}" matBadgePosition="before" matBadgeColor="warn"
+              [routerLink]="['../home/favorites']">favorite
+    </mat-icon>
+    <mat-icon class="personal-block__cart"
          [matTooltip]="'Корзина'"
-         [routerLink]="['../home/basket']">
-      <use xlink:href="assets/icons/icons.svg#cart"></use>
-    </svg>
+         [routerLink]="['../home/basket']">shopping_cart
+    </mat-icon>
   </div>
 
 </div>

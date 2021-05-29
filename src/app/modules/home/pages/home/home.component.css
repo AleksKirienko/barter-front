@@ -36,13 +36,18 @@
   height: 26px;
   width: 45px;
   margin-right: 27px;
+  font-size: 40px;
+  color: lightgrey;
 }
 
 .personal-block__cart {
   cursor: pointer;
   height: 27px;
   width: 55px;
+  font-size: 40px;
+  margin-top: 5px;
   margin-right: 100px;
+  color: lightgrey;
 }
 
 .filters {

@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public boolLiked = false;
   public boolBasket = false;
   public clickHeat = false;
+  public favoriteLength = 0;
 
   constructor(
     private apiService: ApiService,
@@ -31,6 +32,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.displayProducts();
+    this.getFavoriteProductsLength();
   }
 
   ngOnDestroy(): void {
@@ -43,6 +45,13 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.products = products1;
         console.log(this.products);
       }));
+  }
+
+  public getFavoriteProductsLength(): void {
+    this.apiService.getFavoritesProducts().subscribe(
+      (products1: Products[]): void => {
+        this.favoriteLength = products1.length;
+      });
   }
 
   public onSetStatus(status: Status): void {
@@ -75,10 +84,13 @@ export class HomeComponent implements OnInit, OnDestroy {
       inBasket: false
     };
     console.log('product: ', product);
-    this.apiService.updateLikedProduct(product, product.id).subscribe();
-    this.apiService.getProducts();
-    this.openDialog();
-    this.clickHeat = false;
+    this.apiService.updateLikedProduct(product, product.id).subscribe(
+      () => {
+        this.apiService.getProducts();
+        this.getFavoriteProductsLength();
+        this.openDialog();
+        this.clickHeat = false;
+      });
   }
 
   public selectedProductForBasket(e, idProduct: number): void {
