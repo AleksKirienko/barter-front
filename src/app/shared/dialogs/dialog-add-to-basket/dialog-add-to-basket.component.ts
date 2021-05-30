@@ -43,7 +43,7 @@ export class DialogAddToBasketComponent implements OnInit {
     this.boolBasket = true;
     this.product = {
       id: this.idProduct,
-      description: '', email: '', exchange: '', fullName: '', image: '', name: '', status: '',
+      description: '', email: '', exchange: '', fullName: '', image: '', name: '', status: '', login: '',
       exchange2: this.addToBasketForm.controls.exchangeOffer.value,
       liked: false,
       inBasket: this.boolBasket

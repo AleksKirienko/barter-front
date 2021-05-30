@@ -1,3 +1,9 @@
 .suggestions-header {
   margin-top: 20px;
 }
+
+.container {
+  width: 100%;
+  left: auto;
+  margin-top: 25px;
+}

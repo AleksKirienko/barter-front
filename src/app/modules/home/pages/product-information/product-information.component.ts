@@ -22,6 +22,7 @@ export class ProductInformationComponent implements OnInit, OnDestroy {
     exchange2: '',
     fullName: '',
     email: '',
+    login: '',
     liked: false,
     inBasket: false
   };

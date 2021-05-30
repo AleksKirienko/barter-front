@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SuggestionsComponent implements OnInit {
 
-  constructor() { }
+  public message = 'Пока откликов на ваши товары не поступало';
+  public message2 = 'Вы можете добавить свои товары в раздере "Добавить товар"';
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

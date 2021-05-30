@@ -7,6 +7,7 @@ import { ApiService } from '../../../../core/services/api.service';
 import { Products } from '../../../../core/models/products';
 import { DialogMessagesComponent } from '../../../../shared/dialogs/dialog-messages/dialog-messages.component';
 import { MatDialog } from '@angular/material/dialog';
+import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
   selector: 'app-add-product',
@@ -24,6 +25,7 @@ export class AddProductComponent implements OnInit {
     private formBuilder: FormBuilder,
     private dialog: MatDialog,
     private apiService: ApiService,
+    private authService: AuthService,
     private router: Router) {
   }
 
@@ -50,6 +52,7 @@ export class AddProductComponent implements OnInit {
         description: this.newProductForm.controls.descriptionProduct.value,
         exchange: this.newProductForm.controls.exchangeOffer.value,
         exchange2: '',
+        login: this.authService.receiveFromStorage(),
         fullName: this.newProductForm.controls.exchanger.value,
         email: this.newProductForm.controls.email.value,
         liked: false,

@@ -10,4 +10,5 @@ export interface Products {
   email: string; // его почта
   liked: boolean; // добавлен ли товар в избранные
   inBasket: boolean; // добавлен ли товар в корзину
+  login: string; //  логин пользователя
 }

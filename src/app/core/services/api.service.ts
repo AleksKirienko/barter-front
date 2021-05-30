@@ -21,6 +21,11 @@ export class ApiService {
     return this.http.get<Products[]>(`${environment.apiUrl}/products`);
   }
 
+  // Получение списка товаров добавленных пользователем
+  public getUserProducts(login: string): Observable<Products[]> {
+    return this.http.get<Products[]>(`${environment.apiUrl}/products?login=${login}`);
+  }
+
   /**
    * HomeComponent
    * Поиск товара по названию
@@ -97,7 +102,8 @@ export class ApiService {
       fullName: product.fullName,
       email: product.email,
       liked: product.liked,
-      inBasket: product.inBasket
+      inBasket: product.inBasket,
+      login: product.login
     };
     return this.http.post<Products>(`${environment.apiUrl}/products`, body);
   }
