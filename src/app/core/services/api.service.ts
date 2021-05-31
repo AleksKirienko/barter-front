@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Products } from '../models/products';
 import { environment } from '../../../environments/environment';
-import { UserInformation } from '../models/user-information';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,20 @@ import { UserInformation } from '../models/user-information';
 export class ApiService {
 
   constructor(private http: HttpClient) {
+  }
+
+  /**
+   * Регистрация
+   */
+  public signUp(user: User): Observable<User> {
+    const body = {
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      login: user.login,
+      password: user.password
+    };
+    return this.http.post<User>(`${environment.apiUrl}/users`, body);
   }
 
   /**
@@ -66,10 +80,10 @@ export class ApiService {
 
   /**
    * PersonalRoomComponent
-   * Получение информации о пользователе в личном кабинете
+   * Получение информации о пользователе в личном кабинете по логину
    */
-  public getUserInformation(): Observable<UserInformation> {
-    return this.http.get<UserInformation>(`${environment.apiUrl}/person-information`);
+  public getUser(userLogin: string): Observable<User> {
+    return this.http.get<User>(`${environment.apiUrl}/users?login=${userLogin}`);
   }
 
   /**

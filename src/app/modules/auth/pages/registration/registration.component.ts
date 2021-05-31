@@ -4,6 +4,8 @@ import { ErrorMessages } from './error-messages';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogSuccessDataComponent } from './dialog-success-data/dialog-success-data.component';
 import { Router } from '@angular/router';
+import { User } from '../../../../core/models/user';
+import { ApiService } from '../../../../core/services/api.service';
 
 const minLengthPass = 8;
 
@@ -19,6 +21,7 @@ export class RegistrationComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private apiService: ApiService,
     private dialog: MatDialog,
     private router: Router) {
   }
@@ -42,8 +45,18 @@ export class RegistrationComponent implements OnInit {
 
   public onSubmit(): void {
     if (this.registrationForm.valid) {
-      this.openDialog();
-      this.router.navigateByUrl('/login');
+      const user: User = {
+        id: 0,
+        firstName: this.registrationForm.controls.firstName.value,
+        lastName: this.registrationForm.controls.lastName.value,
+        email: this.registrationForm.controls.email.value,
+        login: this.registrationForm.controls.login.value,
+        password: this.registrationForm.controls.password.value
+      };
+      this.apiService.signUp(user).subscribe(() => {
+        this.openDialog();
+        this.router.navigateByUrl('/login');
+      });
     }
   }
 

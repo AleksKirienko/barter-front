@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Authorization } from '../models/authorization';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor() {
+  constructor(private http: HttpClient) {
   }
 
-  public signIn(userLogin: string): void {
+  public signIn(userLogin: string, userPass: string): void {
     const obj: Authorization = {
       login: userLogin
     };
