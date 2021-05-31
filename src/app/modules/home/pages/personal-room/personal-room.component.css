@@ -1,34 +1,41 @@
 .personal-room {
-  display: flex;
   margin-top: 25px;
-  margin-left: 24px;
-}
-
-.personal-room__header {
-  margin: auto;
+  margin-left: 32px;
 }
 
 .personal-room__avatar {
   position: absolute;
+  margin-left: 24px;
   width: 150px;
 }
 
-.container {
-  width: 100%;
-  margin-left: 24px;
-}
-
-.container__user-info {
+.user-info {
+  margin-top: 110px;
   font-size: 24px;
+  margin-left: 24px;
   line-height: 30px;
 }
 
-.main-wrap {
-  margin-top: 80px;
-  display: flex;
-  flex-direction: row;
+.container {
+  position: relative;
+  padding-right: 10px;
+  width: 90%;
+  left: auto;
 }
 
-.main-wrap > div {
-  flex: 1;
+.card {
+  margin: 0 24px 24px;
+  max-width: 250px;
 }
+
+.card-text {
+  margin-top: 20px;
+}
+
+.deleteProduct {
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  cursor: pointer;
+}
+

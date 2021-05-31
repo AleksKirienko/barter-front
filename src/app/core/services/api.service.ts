@@ -35,7 +35,10 @@ export class ApiService {
     return this.http.get<Products[]>(`${environment.apiUrl}/products`);
   }
 
-  // Получение списка товаров добавленных пользователем
+  /**
+   * Получение списка товаров добавленных пользователем
+   * @param login - логин из sessionStorage
+   */
   public getUserProducts(login: string): Observable<Products[]> {
     return this.http.get<Products[]>(`${environment.apiUrl}/products?login=${login}`);
   }
@@ -81,9 +84,18 @@ export class ApiService {
   /**
    * PersonalRoomComponent
    * Получение информации о пользователе в личном кабинете по логину
+   * @param userLogin - логин пользователя
    */
   public getUser(userLogin: string): Observable<User> {
     return this.http.get<User>(`${environment.apiUrl}/users?login=${userLogin}`);
+  }
+
+  /**
+   * Удаление добавленного товара из личного кабинета
+   * @param productId - id удаляемого продукта
+   */
+  public deleteMyProduct(productId: number): Observable<Products> {
+    return this.http.delete<Products>(`${environment.apiUrl}/products/${productId}`);
   }
 
   /**

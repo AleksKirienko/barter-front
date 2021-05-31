@@ -55,13 +55,13 @@ export class AddProductComponent implements OnInit {
         login: this.authService.receiveFromStorage(),
         fullName: this.newProductForm.controls.exchanger.value,
         email: this.newProductForm.controls.email.value,
+        response: [],
         liked: false,
         inBasket: false
       };
       console.log(product);
       this.apiService.postAddProduct(product).subscribe();
       this.openDialog();
-      // alert('Add new product success!');
       this.router.navigateByUrl('/home');
     }
   }

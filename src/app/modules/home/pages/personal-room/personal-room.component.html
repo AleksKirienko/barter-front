@@ -1,20 +1,51 @@
 <div class="personal-room">
-  <h1 class="personal-room__header">Личный кабинет</h1>
+  <h1 align="center">Личный кабинет</h1>
   <img class="personal-room__avatar" src="./assets/img/avatar.png" alt="">
-</div>
+  <div class="user-info">
+    <b>Name:</b> {{ user.firstName + ' ' + user.lastName }}<br>
+    <b>email:</b> {{ user.email }}
+  </div>
+  <div class="container" align="center">
+    <div align="center">
+      <h1>Мои товары</h1>
+      <h1 *ngIf="!products.length">{{ message }}</h1>
+    </div>
 
-<div class="main-wrap">
-  <div class="container">
-    <!--    Информация при регистрации-->
-    <div *ngFor="let user of userInfo" class="container__user-info">
-      <b>firstName:</b> {{ user.firstName }}<br>
-      <b>lastName:</b> {{ user.lastName }}<br>
-      <b>email:</b> {{ user.email }}<br>
+    <div class="row">
+      <div class="col-md-3 mb-3" *ngFor="let product of products">
+        <div class="card h-100">
+          <div class="card-body">
+            <p class="card-text">
+              <mat-icon
+                class="deleteProduct"
+                [matTooltip]="'Удалить добавленный товар'"
+                [matTooltipPosition]="'above'"
+                (click)="deleteMyProduct($event, product.id)">close
+              </mat-icon>
+              <img class="card-img-top" src="{{product.image}}" vspace="5" hspace="5" alt="Card image cap">
+              <b>name:</b> {{ product.name }}<br>
+              <b>status:</b> {{ product.status }}<br>
+              <b>exchange:</b> {{ product.exchange }}<br>
+            </p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">
+              <div>
+                <button
+                  mat-button
+                  (click)="getProductInformation(product.id)">Подробнее
+                </button>
+              </div>
+            </small>
+          </div>
+
+        </div>
+        <br>
+      </div>
     </div>
 
   </div>
-  <div>
-    Мои товары:
-  </div>
 
 </div>
+
+

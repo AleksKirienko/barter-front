@@ -44,6 +44,7 @@ export class DialogAddToBasketComponent implements OnInit {
     this.product = {
       id: this.idProduct,
       description: '', email: '', exchange: '', fullName: '', image: '', name: '', status: '', login: '',
+      response: [],
       exchange2: this.addToBasketForm.controls.exchangeOffer.value,
       liked: false,
       inBasket: this.boolBasket
