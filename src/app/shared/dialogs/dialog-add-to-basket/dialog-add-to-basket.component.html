@@ -4,11 +4,10 @@
   <form class="add-basket-form" [formGroup]="addToBasketForm" (submit)="onSubmit()">
     <mat-form-field appearance="fill">
       <mat-label>Что хочешь предложить взамен?</mat-label>
-      <textarea matInput required
-                formControlName="exchangeOffer"
-                cdkTextareaAutosize
-                cdkAutosizeMinRows="2"
-                cdkAutosizeMaxRows="5"></textarea>
+      <select matNativeControl required formControlName="exchangeOffer">
+        <option *ngFor="let myProduct of products"
+                [value]="myProduct.name">{{ myProduct.name }}</option>
+      </select>
       <mat-error>{{formErrors.required}}</mat-error>
     </mat-form-field>
 
