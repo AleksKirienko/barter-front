@@ -30,34 +30,6 @@
         <mat-error>{{formErrors.required}}</mat-error>
       </mat-form-field>
       <mat-form-field appearance="fill">
-        <mat-label>На что хочу обменяться</mat-label>
-        <textarea matInput required
-                  formControlName="exchangeOffer"
-                  cdkTextareaAutosize
-                  cdkAutosizeMinRows="1"
-                  cdkAutosizeMaxRows="3"></textarea>
-        <mat-error>{{formErrors.required}}</mat-error>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Имя инициатора обмена</mat-label>
-        <input matInput
-               formControlName="exchanger"
-               required
-               type="text"
-               placeholder="Иванов Иван">
-        <mat-error>{{formErrors.required}}</mat-error>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Электронная почта</mat-label>
-        <input matInput
-               type="email"
-               formControlName="email"
-               required
-               placeholder="example@mail.ru">
-        <mat-error *ngIf="!(newProductForm.get('email').errors?.email)">{{ formErrors.required }}</mat-error>
-        <mat-error *ngIf="newProductForm.get('email').errors?.email">{{ formErrors.email }}</mat-error>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
         <mat-label>Ссылка на изображение</mat-label>
         <input matInput
                formControlName="imgUrl"

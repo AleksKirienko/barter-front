@@ -116,20 +116,14 @@ export class ApiService {
    * AddProductComponent
    * Добавление нового товара
    */
-  public postAddProduct(product: Products): Observable<Products> {
+  public postAddProduct(product: Products, userID: number): Observable<Products> {
     const body = {
       name: product.name,
-      image: product.image,
-      status: product.status,
+      category: product.category,
       description: product.description,
-      exchange: product.exchange,
-      fullName: product.fullName,
-      email: product.email,
-      liked: product.liked,
-      inBasket: product.inBasket,
-      login: product.login
+      image: product.image
     };
-    return this.http.post<Products>(`${environment.apiUrl}/products`, body);
+    return this.http.post<Products>(`${environment.apiUrl}/product/add?userID=${userID}`, body);
   }
 
 }

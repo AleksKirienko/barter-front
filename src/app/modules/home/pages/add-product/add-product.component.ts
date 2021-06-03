@@ -34,9 +34,6 @@ export class AddProductComponent implements OnInit {
       nameProduct: ['', Validators.required],
       status: ['', Validators.required],
       descriptionProduct: ['', Validators.required],
-      exchangeOffer: ['', Validators.required],
-      exchanger: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
       imgUrl: ['', [Validators.required]],
     });
 
@@ -47,20 +44,18 @@ export class AddProductComponent implements OnInit {
       const product: Products = {
         id: 0,
         name: this.newProductForm.controls.nameProduct.value,
-        image: this.newProductForm.controls.imgUrl.value,
-        status: this.newProductForm.controls.status.value,
+        category: this.newProductForm.controls.status.value,
         description: this.newProductForm.controls.descriptionProduct.value,
-        exchange: this.newProductForm.controls.exchangeOffer.value,
-        exchange2: '',
-        login: this.authService.receiveFromStorage(),
-        fullName: this.newProductForm.controls.exchanger.value,
-        email: this.newProductForm.controls.email.value,
+        image: this.newProductForm.controls.imgUrl.value,
+        exchange: '', exchange2: '', login: '', fullName: '', email: '',
         response: [],
         liked: false,
         inBasket: false
       };
       console.log(product);
-      this.apiService.postAddProduct(product).subscribe();
+      const userId: number = this.authService.receiveIdFromStorage();
+      console.log('id: ', userId);
+      this.apiService.postAddProduct(product, userId).subscribe();
       this.openDialog();
       this.router.navigateByUrl('/home');
     }

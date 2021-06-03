@@ -50,7 +50,7 @@ export class DialogAddToBasketComponent implements OnInit, OnDestroy {
   }
 
   public getMyProducts(): void {
-    const userLogin = this.authService.receiveFromStorage();
+    const userLogin = this.authService.receiveLoginFromStorage();
     this.subs.add(this.apiService.getUserProducts(userLogin).subscribe(
       (products1: Products[]): void => {
         this.products = products1;
@@ -62,7 +62,7 @@ export class DialogAddToBasketComponent implements OnInit, OnDestroy {
     this.boolBasket = true;
     this.product = {
       id: this.idProduct,
-      description: '', email: '', exchange: '', fullName: '', image: '', name: '', status: '', login: '',
+      description: '', email: '', exchange: '', fullName: '', image: '', name: '', category: '', login: '',
       response: [],
       exchange2: this.addToBasketForm.controls.exchangeOffer.value,
       liked: false,

@@ -17,7 +17,7 @@ export class ProductInformationComponent implements OnInit, OnDestroy {
     name: '',
     description: '',
     image: '',
-    status: '',
+    category: '',
     exchange: '',
     exchange2: '',
     fullName: '',

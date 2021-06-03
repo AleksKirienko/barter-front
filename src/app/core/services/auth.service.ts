@@ -26,10 +26,15 @@ export class AuthService {
     return this.http.post<User>(`${environment.apiUrl}/user/a`, body);
   }
 
-  public receiveFromStorage(): string {
+  public receiveLoginFromStorage(): string {
     const res: string = sessionStorage.getItem('login');
     const authObj: Authorization = JSON.parse(res);
     return authObj ? authObj.login : '';
+  }
+
+  public receiveIdFromStorage(): number {
+    const res: string = sessionStorage.getItem('userId');
+    return JSON.parse(res);
   }
 
 }

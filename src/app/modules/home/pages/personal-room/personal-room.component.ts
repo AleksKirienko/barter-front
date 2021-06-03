@@ -35,7 +35,7 @@ export class PersonalRoomComponent implements OnInit, OnDestroy {
   }
 
   private displayProducts(): void {
-    const userLogin = this.authService.receiveFromStorage();
+    const userLogin = this.authService.receiveLoginFromStorage();
     this.subs.add(this.apiService.getUser(userLogin).subscribe(
       (user1: User): void => {
         this.user = user1[0];

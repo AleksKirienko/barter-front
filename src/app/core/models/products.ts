@@ -3,7 +3,7 @@ export interface Products {
   name: string; // название товара
   description: string; // описание товара
   image: string; // изображение товара, url
-  status: string; // категория к которой относится товар
+  category: string; // категория к которой относится товар
   exchange: string; // что пользователь хочет получить за свой товар
   exchange2: string; // предложение пользователя обмена на какой нибудь товар
   fullName: string; // имя инициатора обмена

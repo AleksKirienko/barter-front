@@ -31,7 +31,7 @@ export class SuggestionsComponent implements OnInit, OnDestroy {
   }
 
   public displayProducts(): void {
-    const userLogin = this.authService.receiveFromStorage();
+    const userLogin = this.authService.receiveLoginFromStorage();
     this.subs.add(this.apiService.getUserProducts(userLogin).subscribe(
       (products1: Products[]): void => {
         this.products = products1;

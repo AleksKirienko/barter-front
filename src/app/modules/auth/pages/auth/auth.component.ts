@@ -35,7 +35,11 @@ export class AuthComponent implements OnInit {
   public onSubmit(): void {
     if (this.loginForm.valid) {
       const values = this.loginForm.value;
+      let userId: number;
       this.authService.signIn(values.login, values.password).subscribe(res => {
+          userId = res.id;
+          const id: string = JSON.stringify(userId);
+          sessionStorage.setItem('userId', id);
           this.router.navigateByUrl('/home');
           console.log(res);
         }

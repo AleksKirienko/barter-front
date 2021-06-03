@@ -88,7 +88,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
     const product: Products = {
       id: idProduct,
-      description: '', email: '', exchange: '', exchange2: '', fullName: '', image: '', name: '', status: '', login: '',
+      description: '', email: '', exchange: '', exchange2: '', fullName: '', image: '', name: '', category: '', login: '',
       response: [],
       liked: this.boolLiked,
       inBasket: false

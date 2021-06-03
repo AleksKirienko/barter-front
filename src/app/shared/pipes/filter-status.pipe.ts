@@ -14,7 +14,7 @@ export class FilterStatusPipe implements PipeTransform {
     if (!status || status === 'all') {
       return list;
     }
-    return list.filter((item: Products): boolean => item.status.toLocaleLowerCase() === status);
+    return list.filter((item: Products): boolean => item.category.toLocaleLowerCase() === status);
   }
 
 }
