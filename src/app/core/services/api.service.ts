@@ -30,15 +30,15 @@ export class ApiService {
    * Получение списка товаров
    */
   public getProducts(): Observable<Products[]> {
-    return this.http.get<Products[]>(`${environment.apiUrl}/products`);
+    return this.http.get<Products[]>(`${environment.apiUrl}/product/all`);
   }
 
   /**
    * Получение списка товаров добавленных пользователем
-   * @param login - логин из sessionStorage
+   * @param userId - id из sessionStorage
    */
-  public getUserProducts(login: string): Observable<Products[]> {
-    return this.http.get<Products[]>(`${environment.apiUrl}/products?login=${login}`);
+  public getUserProducts(userId: number): Observable<Products[]> {
+    return this.http.post<Products[]>(`${environment.apiUrl}/product/myproducts?userId=${userId}`, null);
   }
 
   /**

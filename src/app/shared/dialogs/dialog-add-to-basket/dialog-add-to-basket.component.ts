@@ -50,8 +50,8 @@ export class DialogAddToBasketComponent implements OnInit, OnDestroy {
   }
 
   public getMyProducts(): void {
-    const userLogin = this.authService.receiveLoginFromStorage();
-    this.subs.add(this.apiService.getUserProducts(userLogin).subscribe(
+    const userId: number = this.authService.receiveIdFromStorage();
+    this.subs.add(this.apiService.getUserProducts(userId).subscribe(
       (products1: Products[]): void => {
         this.products = products1;
         console.log(products1);
