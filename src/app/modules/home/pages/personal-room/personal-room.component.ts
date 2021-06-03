@@ -35,16 +35,16 @@ export class PersonalRoomComponent implements OnInit, OnDestroy {
   }
 
   private displayProducts(): void {
-    const userLogin = this.authService.receiveLoginFromStorage();
-    this.subs.add(this.apiService.getUser(userLogin).subscribe(
+    const userId: number = this.authService.receiveIdFromStorage();
+    this.subs.add(this.apiService.getUser(userId).subscribe(
       (user1: User): void => {
-        this.user = user1[0];
+        this.user = user1;
       }));
-    this.subs.add(this.apiService.getUserProducts(userLogin).subscribe(
-      (products1: Products[]): void => {
-        this.products = products1;
-        console.log(products1);
-      }));
+    // this.subs.add(this.apiService.getUserProducts(userLogin).subscribe(
+    //   (products1: Products[]): void => {
+    //     this.products = products1;
+    //     console.log(products1);
+    //   }));
   }
 
   public deleteMyProduct(e, idProduct: number): void {

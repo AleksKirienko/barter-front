@@ -22,7 +22,7 @@ export class ApiService {
       email: user.email,
       password: user.password
     };
-    return this.http.post<User>(`${environment.apiUrl}/user/r`, body);
+    return this.http.post<User>(`${environment.apiUrl}/user/reg`, body);
   }
 
   /**
@@ -81,11 +81,11 @@ export class ApiService {
 
   /**
    * PersonalRoomComponent
-   * Получение информации о пользователе в личном кабинете по логину
-   * @param userLogin - логин пользователя
+   * Получение информации о пользователе в личном кабинете по id
+   * @param userId - id пользователя
    */
-  public getUser(userLogin: string): Observable<User> {
-    return this.http.get<User>(`${environment.apiUrl}/users?login=${userLogin}`);
+  public getUser(userId: number): Observable<User> {
+    return this.http.post<User>(`${environment.apiUrl}/user/info?userId=${userId}`, null);
   }
 
   /**

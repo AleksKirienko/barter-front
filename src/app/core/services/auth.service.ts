@@ -23,7 +23,7 @@ export class AuthService {
       email: userLogin,
       password: userPass
     };
-    return this.http.post<User>(`${environment.apiUrl}/user/a`, body);
+    return this.http.post<User>(`${environment.apiUrl}/user/auth`, body);
   }
 
   public receiveLoginFromStorage(): string {
