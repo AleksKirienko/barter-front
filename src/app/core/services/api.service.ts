@@ -60,11 +60,13 @@ export class ApiService {
    * HomeComponent
    * Обновить продукт, если его захотели добавить в избранные товары
    */
-  public updateLikedProduct(product: Products, id: number): Observable<Products> {
-    const body = {
-      liked: product.liked
-    };
-    return this.http.put<Products>(`${environment.apiUrl}/products/${id}`, body);
+  public updateLikedProduct(userId: number, productId: number): Observable<User> {
+    console.log(userId, ' ', productId);
+    return this.http.post<User>(`${environment.apiUrl}/user/add_faves?productId=${productId}&userId=${userId}`, null);
+  }
+
+  public deleteLikedProduct(userId: number, productId: number): Observable<User> {
+    return this.http.post<User>(`${environment.apiUrl}/user/delete_faves?productId=${productId}&userId=${userId}`, null);
   }
 
   /**
@@ -100,8 +102,8 @@ export class ApiService {
    * FavoritesComponent
    * Получение списка избранных товаров
    */
-  public getFavoritesProducts(): Observable<Products[]> {
-    return this.http.get<Products[]>(`${environment.apiUrl}/products?liked=true`);
+  public getFavoritesProducts(userId: number): Observable<Products[]> {
+    return this.http.post<Products[]>(`${environment.apiUrl}/product/faves?userId=${userId}`, null);
   }
 
   /**

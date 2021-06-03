@@ -7,6 +7,7 @@ import { DialogMessagesComponent } from '../../../../shared/dialogs/dialog-messa
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DialogAddToBasketComponent } from '../../../../shared/dialogs/dialog-add-to-basket/dialog-add-to-basket.component';
+import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -24,14 +25,17 @@ export class HomeComponent implements OnInit, OnDestroy {
   public clickHeat = false;
   public favoriteLength = 0;
   public basketLength = 0;
+  public userId: number;
 
   constructor(
     private apiService: ApiService,
+    private authService: AuthService,
     private dialog: MatDialog,
     private router: Router) {
   }
 
   ngOnInit(): void {
+    this.userId = this.authService.receiveIdFromStorage();
     this.displayProducts();
     this.getFavoriteProductsLength();
     this.getBasketProductsLength();
@@ -50,7 +54,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   public getFavoriteProductsLength(): void {
-    this.apiService.getFavoritesProducts().subscribe(
+    this.apiService.getFavoritesProducts(this.userId).subscribe(
       (products1: Products[]): void => {
         this.favoriteLength = products1.length;
       });
@@ -93,9 +97,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       liked: this.boolLiked,
       inBasket: false
     };
-    console.log('product: ', product);
-    this.apiService.updateLikedProduct(product, product.id).subscribe(
-      () => {
+
+    this.apiService.updateLikedProduct(this.userId, product.id).subscribe(() => {
         this.apiService.getProducts();
         this.getFavoriteProductsLength();
         this.openDialog();

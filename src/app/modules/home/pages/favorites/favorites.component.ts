@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogMessagesComponent } from '../../../../shared/dialogs/dialog-messages/dialog-messages.component';
 import { Router } from '@angular/router';
 import { DialogAddToBasketComponent } from '../../../../shared/dialogs/dialog-add-to-basket/dialog-add-to-basket.component';
+import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
   selector: 'app-favorites',
@@ -17,16 +18,19 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   public products: Products[] = [];
   private subs: Subscription = new Subscription();
   public message = 'Нет избранных товаров!';
+  public userId: number;
   public boolBasket = false;
   public clickHeat = false;
 
   constructor(
     private apiService: ApiService,
+    private authService: AuthService,
     private dialog: MatDialog,
     private router: Router) {
   }
 
   ngOnInit(): void {
+    this.userId = this.authService.receiveIdFromStorage();
     this.displayProducts();
   }
 
@@ -35,7 +39,8 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   }
 
   private displayProducts(): void {
-    this.subs.add(this.apiService.getFavoritesProducts().subscribe(
+    const userId: number = this.authService.receiveIdFromStorage();
+    this.subs.add(this.apiService.getFavoritesProducts(userId).subscribe(
       (products1: Products[]): void => {
         this.products = products1;
         console.log(products1);
@@ -55,18 +60,11 @@ export class FavoritesComponent implements OnInit, OnDestroy {
     if (e.target.style.color === 'red') {
       e.target.style.color = 'gray';
     }
-    const product: Products = {
-      id: idProduct,
-      description: '', email: '', exchange: '', exchange2: '', fullName: '', image: '', name: '', category: '', login: '',
-      response: [],
-      liked: false,
-      inBasket: false
-    };
-    this.apiService.updateLikedProduct(product, product.id).subscribe(() => {
+    this.apiService.deleteLikedProduct(this.userId, idProduct).subscribe(() => {
       this.displayProducts();
+      this.openDialog();
+      this.clickHeat = false;
     });
-    this.openDialog();
-    this.clickHeat = false;
   }
 
   public selectedProductForBasket(e, idProduct: number): void {

@@ -33,8 +33,13 @@
               <div>
                 <button
                   mat-button
+                  class="more-info"
                   (click)="getProductInformation(product.id)">Подробнее
                 </button>
+                <mat-icon
+                  class="swap-icon"
+                  [matTooltip]="'Выбор товара для обмена'">swap_horiz
+                </mat-icon>
               </div>
             </small>
           </div>
