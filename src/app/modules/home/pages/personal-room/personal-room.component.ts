@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 export class PersonalRoomComponent implements OnInit, OnDestroy {
 
   public user: User = {
-    id: 0, firstName: '', lastName: '', email: '', login: '', password: '', token: ''
+    id: 0, name: '', email: '', login: '', password: '', favorites: [], token: ''
   };
   public products: Products[] = [];
   public message = 'Вы не добавляли свой товар';

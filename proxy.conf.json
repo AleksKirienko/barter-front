@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "https://6086c68ca3b9c200173b6d4d.mockapi.io",
+    "target": "http://localhost:1234/",
     "secure": false,
     "changeOrigin": true
   }

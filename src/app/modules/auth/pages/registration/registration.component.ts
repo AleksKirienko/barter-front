@@ -28,10 +28,8 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit(): void {
     this.registrationForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      login: ['', Validators.required],
       password: ['', [
         Validators.required,
         Validators.minLength(minLengthPass),
@@ -47,11 +45,11 @@ export class RegistrationComponent implements OnInit {
     if (this.registrationForm.valid) {
       const user: User = {
         id: 0,
-        firstName: this.registrationForm.controls.firstName.value,
-        lastName: this.registrationForm.controls.lastName.value,
+        name: this.registrationForm.controls.name.value,
         email: this.registrationForm.controls.email.value,
-        login: this.registrationForm.controls.login.value,
+        login: '',
         password: this.registrationForm.controls.password.value,
+        favorites: [],
         token: ''
       };
       this.apiService.signUp(user).subscribe(() => {

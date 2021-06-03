@@ -18,13 +18,11 @@ export class ApiService {
    */
   public signUp(user: User): Observable<User> {
     const body = {
-      firstName: user.firstName,
-      lastName: user.lastName,
+      name: user.name,
       email: user.email,
-      login: user.login,
       password: user.password
     };
-    return this.http.post<User>(`${environment.apiUrl}/users`, body);
+    return this.http.post<User>(`${environment.apiUrl}/user/r`, body);
   }
 
   /**

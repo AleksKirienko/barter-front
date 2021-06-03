@@ -8,17 +8,8 @@
           <input matInput
                  required
                  type="text"
-                 formControlName="firstName"
+                 formControlName="name"
                  placeholder="Иван">
-          <mat-error>{{formErrors.required}}</mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>Фамилия</mat-label>
-          <input matInput
-                 required
-                 type="text"
-                 formControlName="lastName"
-                 placeholder="Иванов">
           <mat-error>{{formErrors.required}}</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
@@ -30,15 +21,6 @@
                  placeholder="example@mail.ru">
           <mat-error *ngIf="!(registrationForm.get('email').errors?.email)">{{ formErrors.required }}</mat-error>
           <mat-error *ngIf="registrationForm.get('email').errors?.email">{{ formErrors.email }}</mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>Логин</mat-label>
-          <input matInput
-                 required
-                 type="text"
-                 formControlName="login"
-                 placeholder="login">
-          <mat-error>{{formErrors.required}}</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Пароль</mat-label>
