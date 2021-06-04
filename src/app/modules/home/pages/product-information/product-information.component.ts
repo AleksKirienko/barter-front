@@ -45,12 +45,10 @@ export class ProductInformationComponent implements OnInit, OnDestroy {
     this.subs.add(this.route.params.pipe(
       mergeMap((params: Params): Observable<Products> => {
         const productId: number = params.product;
-        console.log('author = ', productId);
         return this.apiService.getProductById(productId);
       })
-    ).subscribe((product: Products): void => {
-      console.log(product);
-      this.product = product;
+    ).subscribe((product1: Products): void => {
+      this.product = product1;
     }));
   }
 }

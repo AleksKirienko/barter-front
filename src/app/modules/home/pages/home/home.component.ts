@@ -92,6 +92,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     ));
   }
 
+  public isFavorite(idProduct: number): boolean {
+    return !!this.favesProducts.find(product => product.id === idProduct);
+  }
+
   public selectedProductForFavorite(e, idProduct: number): void {
     this.clickHeat = true;
     if (e.target.style.color === 'red') {
@@ -145,12 +149,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
   }
 
-  public getProductInformation(productId): void {
+  public getProductInformation(productId: number): void {
     let link = 'home/product-information/';
-    console.log('product == ', productId);
     link = link.concat(productId.toString());
     console.log(link);
-    // this.router.navigate(['home/product-information', product.replace(' ', '+')]);
     this.router.navigate([]).then(() => {
       window.open(link, '_blank');
     });
