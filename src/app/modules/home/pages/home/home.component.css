@@ -8,6 +8,7 @@
   width: 600px;
   height: 40px;
   display: flex;
+  position: relative;
   margin: auto;
 }
 
@@ -35,7 +36,7 @@
   margin-top: 5px;
   height: 26px;
   width: 45px;
-  margin-right: 27px;
+  margin-right: 30px;
   font-size: 40px;
   color: lightgrey;
 }

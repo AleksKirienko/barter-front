@@ -53,13 +53,11 @@ export class BasketComponent implements OnInit, OnDestroy {
     const product: Products = {
       id: idProduct,
       description: '', email: '', exchange: '', exchange2: '', fullName: '', image: '', name: '', category: '', login: '',
-      response: [],
-      liked: false,
-      inBasket: false
+      response: []
     };
-    this.apiService.updateBasketProduct(product, product.id).subscribe(() => {
-      this.displayProducts();
-    });
+    // this.apiService.updateBasketProduct(product, product.id).subscribe(() => {
+    //   this.displayProducts();
+    // });
     this.boolBasket = false;
     this.openDialog();
   }

@@ -15,6 +15,7 @@ export class ApiService {
 
   /**
    * Регистрация
+   * @param user - обект с полученными данными из формы
    */
   public signUp(user: User): Observable<User> {
     const body = {
@@ -26,8 +27,7 @@ export class ApiService {
   }
 
   /**
-   * HomeComponent
-   * Получение списка товаров
+   * Получение списка всех товаров
    */
   public getProducts(): Observable<Products[]> {
     return this.http.get<Products[]>(`${environment.apiUrl}/product/all`);
@@ -57,29 +57,44 @@ export class ApiService {
   }
 
   /**
-   * HomeComponent
-   * Обновить продукт, если его захотели добавить в избранные товары
+   * Добавление товара в избранные
+   * @param userId - id вошедшего пользователя
+   * @param productId - id товара
    */
   public updateLikedProduct(userId: number, productId: number): Observable<User> {
     console.log(userId, ' ', productId);
     return this.http.post<User>(`${environment.apiUrl}/user/add_faves?productId=${productId}&userId=${userId}`, null);
   }
 
+  /**
+   * Удаление товара из избранных
+   * @param userId - id вошедшего пользователя
+   * @param productId - id выбранного товара
+   */
   public deleteLikedProduct(userId: number, productId: number): Observable<User> {
     return this.http.post<User>(`${environment.apiUrl}/user/delete_faves?productId=${productId}&userId=${userId}`, null);
   }
 
   /**
-   * HomeComponent
-   * Обновить продукт при добавлении в корзину
+   * Проверка добавлен ли товар в избранные
+   * @param userId - id вошедшего пользователя
+   * @param productId - id выбранного товара
    */
-  public updateBasketProduct(product: Products, id: number): Observable<Products> {
-    const body = {
-      inBasket: product.inBasket,
-      exchange2: product.exchange2
-    };
-    return this.http.put<Products>(`${environment.apiUrl}/products/${id}`, body);
+  public checkProductInFaves(userId: number, productId: number): Observable<boolean> {
+    return this.http.post<boolean>(`${environment.apiUrl}/product/return_faves?productId=${productId}&userId=${userId}`, null);
   }
+
+  // /**
+  //  * HomeComponent
+  //  * Обновить продукт при добавлении в корзину
+  //  */
+  // public updateBasketProduct(product: Products, id: number): Observable<Products> {
+  //   const body = {
+  //     inBasket: product.inBasket,
+  //     exchange2: product.exchange2
+  //   };
+  //   return this.http.post<Products>(`${environment.apiUrl}/products/${id}`, body);
+  // }
 
   /**
    * PersonalRoomComponent
@@ -95,7 +110,7 @@ export class ApiService {
    * @param productId - id удаляемого продукта
    */
   public deleteMyProduct(productId: number): Observable<Products> {
-    return this.http.delete<Products>(`${environment.apiUrl}/products/${productId}`);
+    return this.http.post<Products>(`${environment.apiUrl}/product/delete_product?productId=${productId}`, null);
   }
 
   /**

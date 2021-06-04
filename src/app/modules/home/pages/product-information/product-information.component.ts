@@ -23,9 +23,7 @@ export class ProductInformationComponent implements OnInit, OnDestroy {
     fullName: '',
     email: '',
     login: '',
-    response: [],
-    liked: false,
-    inBasket: false
+    response: []
   };
   private subs: Subscription = new Subscription();
 

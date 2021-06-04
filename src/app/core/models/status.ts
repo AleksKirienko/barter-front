@@ -1,1 +1,1 @@
-export type Status = 'application' | 'x-shader' | 'video' | 'image' |'all';
+export type Status = 'all' | 'одежда' | 'аксессуары' | 'канцелярия' | 'техника' | 'еда' | 'посуда' | 'для отдыха' | 'игрушки' | 'прочее';

@@ -17,6 +17,7 @@ import { AuthService } from '../../../../core/services/auth.service';
 export class HomeComponent implements OnInit, OnDestroy {
 
   public products: Products[] = [];
+  public favesProducts: Products[] = [];
   private subs: Subscription = new Subscription();
   public message = 'Товары не найдены!';
   public status: Status = 'all';
@@ -36,6 +37,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.userId = this.authService.receiveIdFromStorage();
+    this.favoritesProductsList();
     this.displayProducts();
     this.getFavoriteProductsLength();
     this.getBasketProductsLength();
@@ -43,6 +45,15 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subs.unsubscribe();
+  }
+
+  public favoritesProductsList(): void {
+    const userId: number = this.authService.receiveIdFromStorage();
+    this.subs.add(this.apiService.getFavoritesProducts(userId).subscribe(
+      (productsList: Products[]): void => {
+        this.favesProducts = productsList;
+        console.log(productsList);
+      }));
   }
 
   private displayProducts(): void {
@@ -84,26 +95,35 @@ export class HomeComponent implements OnInit, OnDestroy {
   public selectedProductForFavorite(e, idProduct: number): void {
     this.clickHeat = true;
     if (e.target.style.color === 'red') {
-      this.boolLiked = false;
+      // this.boolLiked = false;
       e.target.style.color = 'gray';
     } else {
-      this.boolLiked = true;
+      // this.boolLiked = true;
       e.target.style.color = 'red';
     }
-    const product: Products = {
-      id: idProduct,
-      description: '', email: '', exchange: '', exchange2: '', fullName: '', image: '', name: '', category: '', login: '',
-      response: [],
-      liked: this.boolLiked,
-      inBasket: false
-    };
+    this.apiService.checkProductInFaves(this.userId, idProduct).subscribe(res => {
+      this.boolLiked = res;
+      console.log(this.boolLiked);
 
-    this.apiService.updateLikedProduct(this.userId, product.id).subscribe(() => {
-        this.apiService.getProducts();
-        this.getFavoriteProductsLength();
-        this.openDialog();
-        this.clickHeat = false;
-      });
+      if (!this.boolLiked) {
+        this.apiService.updateLikedProduct(this.userId, idProduct).subscribe(() => {
+          this.apiService.getProducts();
+          this.getFavoriteProductsLength();
+          this.openDialog();
+          this.clickHeat = false;
+        });
+      } else {
+        this.apiService.deleteLikedProduct(this.userId, idProduct).subscribe(() => {
+          this.apiService.getProducts();
+          this.getFavoriteProductsLength();
+          this.openDialog();
+          this.clickHeat = false;
+        });
+      }
+
+    });
+
+
   }
 
   public selectedProductForBasket(e, idProduct: number): void {
@@ -140,7 +160,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       height: '200px',
       width: '600px',
       data: {
-        dataLiked: this.boolLiked,
+        dataLiked: !this.boolLiked,
         dataBasket: this.boolBasket,
         heart: this.clickHeat
       }

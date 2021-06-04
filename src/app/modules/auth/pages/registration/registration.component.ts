@@ -49,8 +49,7 @@ export class RegistrationComponent implements OnInit {
         email: this.registrationForm.controls.email.value,
         login: '',
         password: this.registrationForm.controls.password.value,
-        favorites: [],
-        token: ''
+        favorites: []
       };
       this.apiService.signUp(user).subscribe(() => {
         this.openDialog();

@@ -8,8 +8,8 @@ export interface Products {
   exchange2: string; // предложение пользователя обмена на какой нибудь товар
   fullName: string; // имя инициатора обмена
   email: string; // его почта
-  liked: boolean; // добавлен ли товар в избранные
-  inBasket: boolean; // добавлен ли товар в корзину
+  // liked: boolean; // добавлен ли товар в избранные
+  // inBasket: boolean; // добавлен ли товар в корзину
   login: string; //  логин пользователя
   response: []; // массив, в котором будут храниться отклики пользователей на данный товар
 }

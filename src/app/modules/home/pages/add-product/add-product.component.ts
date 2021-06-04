@@ -18,7 +18,7 @@ export class AddProductComponent implements OnInit {
 
   public newProductForm: FormGroup;
   public status: Status;
-  public statuses: string[] = ['application', 'x-shader', 'video', 'image'];
+  public statuses: string[] = ['одежда', 'аксессуары', 'канцелярия', 'техника', 'еда', 'посуда', 'для отдыха', 'игрушки', 'прочее'];
   formErrors = ErrorMessages;
 
   constructor(
@@ -48,9 +48,7 @@ export class AddProductComponent implements OnInit {
         description: this.newProductForm.controls.descriptionProduct.value,
         image: this.newProductForm.controls.imgUrl.value,
         exchange: '', exchange2: '', login: '', fullName: '', email: '',
-        response: [],
-        liked: false,
-        inBasket: false
+        response: []
       };
       console.log(product);
       const userId: number = this.authService.receiveIdFromStorage();

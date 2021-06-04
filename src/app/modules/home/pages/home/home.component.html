@@ -18,30 +18,34 @@
               matBadge="{{favoriteLength}}" matBadgePosition="before" matBadgeColor="warn"
               [routerLink]="['../home/favorites']">favorite
     </mat-icon>
-    <mat-icon class="personal-block__cart"
-              [matTooltip]="'Корзина'"
-              matBadge="{{basketLength}}" matBadgePosition="before" matBadgeColor="warn"
-              [routerLink]="['../home/basket']">shopping_cart
-    </mat-icon>
+    <!--    <mat-icon class="personal-block__cart"-->
+    <!--              [matTooltip]="'Корзина'"-->
+    <!--              matBadge="{{basketLength}}" matBadgePosition="before" matBadgeColor="warn"-->
+    <!--              [routerLink]="['../home/basket']">shopping_cart-->
+    <!--    </mat-icon>-->
   </div>
 
 </div>
 
 <div class="filters">
   <mat-button-toggle-group name="Status" aria-label="Status">
-    <mat-button-toggle [value]="'all'" (click)="onSetStatus('all')">{{ "All" }}</mat-button-toggle>
-    <mat-button-toggle [value]="'alive'" (click)="onSetStatus('application')">{{ "Application" }}</mat-button-toggle>
-    <mat-button-toggle [value]="'presumed dead'"
-                       (click)="onSetStatus('x-shader')">{{ "x-shader" }}</mat-button-toggle>
-    <mat-button-toggle [value]="'deceased'" (click)="onSetStatus('video')">{{ "Video" }}</mat-button-toggle>
-    <mat-button-toggle [value]="'deceased'" (click)="onSetStatus('image')">{{ "Image" }}</mat-button-toggle>
+    <mat-button-toggle (click)="onSetStatus('all')">{{ "Все" }}</mat-button-toggle>
+    <mat-button-toggle (click)="onSetStatus('одежда')">{{ "Одежда" }}</mat-button-toggle>
+    <mat-button-toggle (click)="onSetStatus('аксессуары')">{{ "Аксессуары" }}</mat-button-toggle>
+    <mat-button-toggle (click)="onSetStatus('канцелярия')">{{ "Канцелярия" }}</mat-button-toggle>
+    <mat-button-toggle (click)="onSetStatus('техника')">{{ "Техника" }}</mat-button-toggle>
+    <mat-button-toggle (click)="onSetStatus('еда')">{{ "Еда" }}</mat-button-toggle>
+    <mat-button-toggle (click)="onSetStatus('посуда')">{{ "Посуда" }}</mat-button-toggle>
+    <mat-button-toggle (click)="onSetStatus('игрушки')">{{ "Игрушки" }}</mat-button-toggle>
+    <mat-button-toggle (click)="onSetStatus('для отдыха')">{{ "Для отдыха" }}</mat-button-toggle>
+    <mat-button-toggle (click)="onSetStatus('прочее')">{{ "Прочее" }}</mat-button-toggle>
   </mat-button-toggle-group>
 </div>
 
 <div class="container">
   <div class="row">
     <h2 align="center" *ngIf="!products.length">{{ message }}</h2>
-    <div class="col-md-3 mb-3" *ngFor="let product of products | filterStatus : status">
+    <div class="col-md-3 mb-3" *ngFor="let product of products, let favoriteP of favesProducts | filterStatus : status">
       <div class="card h-100" align="center">
         <div class="card-body">
           <p class="card-text">
@@ -64,7 +68,7 @@
               <mat-icon
                 class="liked-icons"
                 [matTooltip]="'Добавить в избранные'"
-                [ngStyle]="{'color': product.liked === true ? 'red' : 'gray'}"
+                [ngStyle]="{'color': product.id === favoriteP.id ? 'gray' : 'red'}"
                 (click)="selectedProductForFavorite($event, product.id)">favorite
               </mat-icon>
               <mat-icon

@@ -64,13 +64,11 @@ export class DialogAddToBasketComponent implements OnInit, OnDestroy {
       id: this.idProduct,
       description: '', email: '', exchange: '', fullName: '', image: '', name: '', category: '', login: '',
       response: [],
-      exchange2: this.addToBasketForm.controls.exchangeOffer.value,
-      liked: false,
-      inBasket: this.boolBasket
+      exchange2: this.addToBasketForm.controls.exchangeOffer.value
     };
-    this.apiService.updateBasketProduct(this.product, this.product.id).subscribe(() => {
-      this.dialogRef.close();
-    });
+    // this.apiService.updateBasketProduct(this.product, this.product.id).subscribe(() => {
+    //   this.dialogRef.close();
+    // });
 
   }
 
