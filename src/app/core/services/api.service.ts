@@ -51,9 +51,10 @@ export class ApiService {
 
   /**
    * Получение всей информации о товаре
+   * @param productId - id товара
    */
-  public getProductById(id: number): Observable<Products> {
-    return this.http.get<Products>(`${environment.apiUrl}/products/${id}`);
+  public getProductById(productId: number): Observable<Products> {
+    return this.http.post<Products>(`${environment.apiUrl}/product/product_info?productId=15`, null);
   }
 
   /**
