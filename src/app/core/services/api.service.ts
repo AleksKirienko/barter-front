@@ -42,11 +42,11 @@ export class ApiService {
   }
 
   /**
-   * HomeComponent
    * Поиск товара по названию
+   * @param nameProduct - название продукта
    */
   public getSearchProducts(nameProduct: string): Observable<Products[]> {
-    return this.http.get<Products[]>(`${environment.apiUrl}/products?name=${nameProduct}`);
+    return this.http.post<Products[]>(`${environment.apiUrl}/product/get_by_name?name=${nameProduct}`, null);
   }
 
   /**

@@ -52,7 +52,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.subs.add(this.apiService.getFavoritesProducts(userId).subscribe(
       (productsList: Products[]): void => {
         this.favesProducts = productsList;
-        console.log(productsList);
       }));
   }
 
@@ -60,7 +59,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.subs.add(this.apiService.getProducts().subscribe(
       (products1: Products[]): void => {
         this.products = products1;
-        console.log(this.products);
       }));
   }
 
@@ -84,6 +82,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public searchProducts(product: string): void {
     console.log(product);
+    if (product === '') {
+      this.displayProducts();
+    }
     this.subs.add(this.apiService.getSearchProducts(product).subscribe(
       (products1: Products[]): void => {
         this.products = products1;

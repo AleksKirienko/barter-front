@@ -55,6 +55,10 @@ export class FavoritesComponent implements OnInit, OnDestroy {
     });
   }
 
+  public isFavorite(idProduct: number): boolean {
+    return !!this.products.find(product => product.id === idProduct);
+  }
+
   public selectedProduct(e, idProduct: number): void {
     this.clickHeat = true;
     if (e.target.style.color === 'red') {
