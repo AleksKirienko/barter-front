@@ -100,10 +100,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   public selectedProductForFavorite(e, idProduct: number): void {
     this.clickHeat = true;
     if (e.target.style.color === 'red') {
-      // this.boolLiked = false;
       e.target.style.color = 'gray';
     } else {
-      // this.boolLiked = true;
       e.target.style.color = 'red';
     }
     this.apiService.checkProductInFaves(this.userId, idProduct).subscribe(res => {

@@ -29,9 +29,9 @@
                   (click)="selectedProduct($event, product.id)">favorite
                 </mat-icon>
                 <mat-icon
-                  [matTooltip]="'Добавить товар в корзину'"
                   class="basket-icons"
-                  (click)="selectedProductForBasket($event, product.id)">shopping_cart
+                  [matTooltip]="'Добавить товар для обмена'"
+                  (click)="selectedProductForTrade($event, product.id)">swap_horiz
                 </mat-icon>
               </div>
             </small>

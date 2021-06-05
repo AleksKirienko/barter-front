@@ -71,7 +71,7 @@ export class FavoritesComponent implements OnInit, OnDestroy {
     });
   }
 
-  public selectedProductForBasket(e, idProduct: number): void {
+  public selectedProductForTrade(e, idProduct: number): void {
     const dialogRef = this.dialog.open(DialogAddToBasketComponent, {
       height: '400px',
       width: '700px',
