@@ -15,7 +15,7 @@ import { Subscription } from 'rxjs';
 export class DialogAddToBasketComponent implements OnInit, OnDestroy {
 
   public products: Products[] = [];
-  public selectedProducts: string[] = [];
+  public selectedProducts: Products[] = [];
   public addToBasketForm: FormGroup;
   public boolBasket = false;
   public clickHeat = false;
@@ -55,22 +55,21 @@ export class DialogAddToBasketComponent implements OnInit, OnDestroy {
     this.subs.add(this.apiService.getUserProducts(userId).subscribe(
       (products1: Products[]): void => {
         this.products = products1;
-        console.log(products1);
+        console.log(this.products);
       }));
   }
 
   public onSubmit(): void {
     this.boolBasket = true;
-    console.log('svdvs: ', this.addToBasketForm.controls.exchangeOffer.value);
-    // this.product = {
-    //   id: this.idProduct,
-    //   description: '', email: '', exchange: '', fullName: '', image: '', name: '', category: '', login: '',
-    //   response: [],
-    //   exchange2: this.addToBasketForm.controls.exchangeOffer.value
-    // };
-    // this.apiService.updateBasketProduct(this.product, this.product.id).subscribe(() => {
-    //   this.dialogRef.close();
-    // });
+    let selectProductsId;
+    this.selectedProducts = this.addToBasketForm.controls.exchangeOffer.value;
+    selectProductsId = this.selectedProducts.map(res => {
+      return res.id;
+    });
+    console.log(selectProductsId);
+    this.apiService.addProductsForTrade(this.idProduct, selectProductsId).subscribe(() => {
+      this.dialogRef.close();
+    });
 
   }
 
