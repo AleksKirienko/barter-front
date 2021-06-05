@@ -15,6 +15,7 @@ import { Subscription } from 'rxjs';
 export class DialogAddToBasketComponent implements OnInit, OnDestroy {
 
   public products: Products[] = [];
+  public selectedProducts: string[] = [];
   public addToBasketForm: FormGroup;
   public boolBasket = false;
   public clickHeat = false;
@@ -60,12 +61,13 @@ export class DialogAddToBasketComponent implements OnInit, OnDestroy {
 
   public onSubmit(): void {
     this.boolBasket = true;
-    this.product = {
-      id: this.idProduct,
-      description: '', email: '', exchange: '', fullName: '', image: '', name: '', category: '', login: '',
-      response: [],
-      exchange2: this.addToBasketForm.controls.exchangeOffer.value
-    };
+    console.log('svdvs: ', this.addToBasketForm.controls.exchangeOffer.value);
+    // this.product = {
+    //   id: this.idProduct,
+    //   description: '', email: '', exchange: '', fullName: '', image: '', name: '', category: '', login: '',
+    //   response: [],
+    //   exchange2: this.addToBasketForm.controls.exchangeOffer.value
+    // };
     // this.apiService.updateBasketProduct(this.product, this.product.id).subscribe(() => {
     //   this.dialogRef.close();
     // });

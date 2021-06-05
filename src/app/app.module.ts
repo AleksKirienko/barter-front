@@ -7,7 +7,7 @@ import { AuthComponent } from './modules/auth/pages/auth/auth.component';
 import { RegistrationComponent } from './modules/auth/pages/registration/registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { NotFoundComponent } from './modules/home/pages/not-found/not-found.component';
@@ -34,6 +34,7 @@ import { SuggestionsComponent } from './modules/home/pages/suggestions/suggestio
 import { ProductInformationComponent } from './modules/home/pages/product-information/product-information.component';
 import { DialogAddToBasketComponent } from './shared/dialogs/dialog-add-to-basket/dialog-add-to-basket.component';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MultiSelectModule } from 'primeng/multiselect';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,9 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MultiSelectModule,
+    FormsModule
   ],
   exports: [
     MatFormFieldModule,

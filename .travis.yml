@@ -8,6 +8,8 @@ branches:
     - main
 before_script:
   - npm install -g @angular/cli
+  - npm install primeng --save
+  - npm install primeicons --save
 script:
   - ng lint
   - ng build

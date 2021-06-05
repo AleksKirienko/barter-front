@@ -1,15 +1,16 @@
 <div align="center">
   <h1>Добавление товара для обмена</h1>
 
-  <form class="add-basket-form" [formGroup]="addToBasketForm" (submit)="onSubmit()">
-    <mat-form-field appearance="fill">
-      <mat-label>Что хочешь предложить взамен?</mat-label>
-      <select matNativeControl required formControlName="exchangeOffer">
-        <option *ngFor="let myProduct of products"
-                [value]="myProduct.name">{{ myProduct.name }}</option>
-      </select>
-      <mat-error>{{formErrors.required}}</mat-error>
-    </mat-form-field>
+  <form [formGroup]="addToBasketForm" (submit)="onSubmit()">
+    <p-multiSelect
+      required
+      [options]="products"
+      [(ngModel)]="selectedProducts"
+      defaultLabel="Что хочешь предложить взамен?"
+      formControlName="exchangeOffer"
+      optionLabel="name"
+      class="add-basket-form"
+      display="chip"></p-multiSelect>
 
     <div>
       <button
