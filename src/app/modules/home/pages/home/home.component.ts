@@ -6,7 +6,7 @@ import { Status } from '../../../../core/models/status';
 import { DialogMessagesComponent } from '../../../../shared/dialogs/dialog-messages/dialog-messages.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { DialogAddToBasketComponent } from '../../../../shared/dialogs/dialog-add-to-basket/dialog-add-to-basket.component';
+import { DialogAddToTradeComponent } from '../../../../shared/dialogs/dialog-add-to-trade/dialog-add-to-trade.component';
 import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
@@ -25,7 +25,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   public boolBasket = false;
   public clickHeat = false;
   public favoriteLength = 0;
-  public basketLength = 0;
   public userId: number;
 
   constructor(
@@ -40,7 +39,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.favoritesProductsList();
     this.displayProducts();
     this.getFavoriteProductsLength();
-    this.getBasketProductsLength();
   }
 
   ngOnDestroy(): void {
@@ -69,12 +67,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       });
   }
 
-  public getBasketProductsLength(): void {
-    this.apiService.getProductsInBasket().subscribe(
-      (products1: Products[]): void => {
-        this.basketLength = products1.length;
-      });
-  }
 
   public onSetStatus(status: Status): void {
     this.status = status;
@@ -126,12 +118,11 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     });
 
-
   }
 
-  public selectedProductForBasket(e, idProduct: number): void {
+  public selectedProductForTrade(e, idProduct: number): void {
     this.clickHeat = false;
-    const dialogRef = this.dialog.open(DialogAddToBasketComponent, {
+    const dialogRef = this.dialog.open(DialogAddToTradeComponent, {
       height: '400px',
       width: '700px',
       data: {
@@ -142,7 +133,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(res => {
       this.boolBasket = true;
       if (res) {
-        this.getBasketProductsLength();
         this.openDialog();
       }
     });

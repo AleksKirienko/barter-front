@@ -1,0 +1,37 @@
+<div align="center">
+  <h1>Добавление товара для обмена из личного кабинета</h1>
+
+  <form [formGroup]="addToTradeForm" (submit)="onSubmit()">
+    <p-multiSelect
+      required
+      [options]="favesProducts"
+      [(ngModel)]="selectedProducts"
+      defaultLabel="Что хочешь получить?"
+      formControlName="exchangeOffer"
+      optionLabel="name"
+      class="add-basket-form"
+      display="chip"></p-multiSelect>
+
+    <div>
+      <button
+        mat-raised-button
+        color="gray"
+        (click)="closeDialogWindow()"
+        [mat-dialog-close]="false"
+        type="button"
+        class="add-basket__button">Отмена
+      </button>
+
+      <button
+        mat-raised-button
+        color="primary"
+        [mat-dialog-close]="true"
+        class="add-basket__button"
+        type="submit">Добавить
+      </button>
+
+    </div>
+
+  </form>
+
+</div>

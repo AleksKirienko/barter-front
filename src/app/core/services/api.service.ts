@@ -86,12 +86,21 @@ export class ApiService {
   }
 
   /**
-   * Добавить товар для обмена из Home
+   * Добавить товар для обмена из Home, favorites
    * @param id - id товара
    * @param selectedProducts - выбранные продукты для обмена
    */
   public addProductsForTrade(id: number, selectedProducts: number[]): Observable<Products> {
     return this.http.post<Products>(`${environment.apiUrl}/product/fh?productId=${id}`, selectedProducts);
+  }
+
+  /**
+   * Добавление товара для омбена из личного кабинета
+   * @param id - id товара
+   * @param selectedProducts - выбранные продукты для обмена
+   */
+  public addProductsForTradeFromPersonalRoom(id: number, selectedProducts: number[]): Observable<Products> {
+    return this.http.post<Products>(`${environment.apiUrl}/product/fp?productId=${id}`, selectedProducts);
   }
 
   /**
@@ -117,14 +126,6 @@ export class ApiService {
    */
   public getFavoritesProducts(userId: number): Observable<Products[]> {
     return this.http.post<Products[]>(`${environment.apiUrl}/product/faves?userId=${userId}`, null);
-  }
-
-  /**
-   * BasketComponent
-   * Получение списка товаров в корзине
-   */
-  public getProductsInBasket(): Observable<Products[]> {
-    return this.http.get<Products[]>(`${environment.apiUrl}/products?inBasket=true`);
   }
 
   /**

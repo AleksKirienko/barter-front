@@ -1,22 +1,23 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ErrorMessages } from '../../../modules/auth/pages/registration/error-messages';
 import { Products } from '../../../core/models/products';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { ErrorMessages } from '../../../modules/auth/pages/registration/error-messages';
 import { ApiService } from '../../../core/services/api.service';
 import { AuthService } from '../../../core/services/auth.service';
-import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-dialog-add-to-basket',
-  templateUrl: './dialog-add-to-basket.component.html',
-  styleUrls: ['./dialog-add-to-basket.component.css']
+  selector: 'app-dialog-add-trade-personal-room',
+  templateUrl: './dialog-add-trade-personal-room.component.html',
+  styleUrls: ['./dialog-add-trade-personal-room.component.css']
 })
-export class DialogAddToBasketComponent implements OnInit, OnDestroy {
+export class DialogAddTradePersonalRoomComponent implements OnInit, OnDestroy {
 
   public products: Products[] = [];
+  public favesProducts: Products[] = [];
   public selectedProducts: Products[] = [];
-  public addToBasketForm: FormGroup;
+  public addToTradeForm: FormGroup;
   public boolBasket = false;
   public clickHeat = false;
   public idProduct: number;
@@ -26,17 +27,17 @@ export class DialogAddToBasketComponent implements OnInit, OnDestroy {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public dialogRef: MatDialogRef<DialogAddToBasketComponent>,
+    public dialogRef: MatDialogRef<DialogAddTradePersonalRoomComponent>,
     private apiService: ApiService,
     private authService: AuthService,
     private dialog: MatDialog,
     private formBuilder: FormBuilder) {
     dialogRef.disableClose = true;
-    this.getMyProducts();
+    this.getFavoritesProducts();
   }
 
   ngOnInit(): void {
-    this.addToBasketForm = this.formBuilder.group({
+    this.addToTradeForm = this.formBuilder.group({
       exchangeOffer: ['', Validators.required]
     });
     this.idProduct = this.data.id;
@@ -50,24 +51,24 @@ export class DialogAddToBasketComponent implements OnInit, OnDestroy {
     this.dialogRef.close();
   }
 
-  public getMyProducts(): void {
+  public getFavoritesProducts(): void {
     const userId: number = this.authService.receiveIdFromStorage();
-    this.subs.add(this.apiService.getUserProducts(userId).subscribe(
-      (products1: Products[]): void => {
-        this.products = products1;
-        console.log(this.products);
+    this.subs.add(this.apiService.getFavoritesProducts(userId).subscribe(
+      (productsList: Products[]): void => {
+        this.favesProducts = productsList;
+        console.log(this.favesProducts);
       }));
   }
 
   public onSubmit(): void {
     this.boolBasket = true;
     let selectProductsId;
-    this.selectedProducts = this.addToBasketForm.controls.exchangeOffer.value;
+    this.selectedProducts = this.addToTradeForm.controls.exchangeOffer.value;
     selectProductsId = this.selectedProducts.map(res => {
       return res.id;
     });
     console.log(selectProductsId);
-    this.apiService.addProductsForTrade(this.idProduct, selectProductsId).subscribe(() => {
+    this.apiService.addProductsForTradeFromPersonalRoom(this.idProduct, selectProductsId).subscribe(() => {
       this.dialogRef.close();
     });
 

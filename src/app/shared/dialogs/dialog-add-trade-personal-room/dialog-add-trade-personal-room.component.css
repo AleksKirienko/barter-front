@@ -1,0 +1,19 @@
+.add-basket-form {
+  display: block;
+  width: 450px;
+  margin-top: 32px;
+  margin-bottom: 24px;
+  font-size: 20px;
+}
+
+.add-basket__button {
+  margin-left: 24px;
+  margin-right: 24px;
+  width: 150px;
+}
+
+:host ::ng-deep .p-multiselect {
+  min-width: 400px;
+  max-width: 400px;
+  width: 450px;
+}

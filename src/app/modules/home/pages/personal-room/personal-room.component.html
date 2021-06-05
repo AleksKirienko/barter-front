@@ -38,7 +38,8 @@
                 </button>
                 <mat-icon
                   class="swap-icon"
-                  [matTooltip]="'Выбор товара для обмена'">swap_horiz
+                  [matTooltip]="'Выбор товара для обмена'"
+                  (click)="selectedProductForTrade($event, product.id)">swap_horiz
                 </mat-icon>
               </div>
             </small>

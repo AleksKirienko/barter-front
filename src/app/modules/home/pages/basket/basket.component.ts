@@ -26,20 +26,20 @@ export class BasketComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.displayProducts();
+    // this.displayProducts();
   }
 
   public ngOnDestroy(): void {
     this.subs.unsubscribe();
   }
 
-  private displayProducts(): void {
-    this.subs.add(this.apiService.getProductsInBasket().subscribe(
-      (products1: Products[]): void => {
-        this.products = products1;
-        console.log('length: ', this.products.length);
-      }));
-  }
+  // private displayProducts(): void {
+  //   this.subs.add(this.apiService.getProductsInBasket().subscribe(
+  //     (products1: Products[]): void => {
+  //       this.products = products1;
+  //       console.log('length: ', this.products.length);
+  //     }));
+  // }
 
   public getProductInformation(product): void {
     let link = 'home/product-information/';

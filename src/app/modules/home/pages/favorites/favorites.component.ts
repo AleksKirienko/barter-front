@@ -5,7 +5,7 @@ import { ApiService } from '../../../../core/services/api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogMessagesComponent } from '../../../../shared/dialogs/dialog-messages/dialog-messages.component';
 import { Router } from '@angular/router';
-import { DialogAddToBasketComponent } from '../../../../shared/dialogs/dialog-add-to-basket/dialog-add-to-basket.component';
+import { DialogAddToTradeComponent } from '../../../../shared/dialogs/dialog-add-to-trade/dialog-add-to-trade.component';
 import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
@@ -72,7 +72,7 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   }
 
   public selectedProductForTrade(e, idProduct: number): void {
-    const dialogRef = this.dialog.open(DialogAddToBasketComponent, {
+    const dialogRef = this.dialog.open(DialogAddToTradeComponent, {
       height: '400px',
       width: '700px',
       data: {

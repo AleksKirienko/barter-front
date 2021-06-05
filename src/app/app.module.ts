@@ -32,9 +32,10 @@ import { MatCardModule } from '@angular/material/card';
 import { DialogMessagesComponent } from './shared/dialogs/dialog-messages/dialog-messages.component';
 import { SuggestionsComponent } from './modules/home/pages/suggestions/suggestions.component';
 import { ProductInformationComponent } from './modules/home/pages/product-information/product-information.component';
-import { DialogAddToBasketComponent } from './shared/dialogs/dialog-add-to-basket/dialog-add-to-basket.component';
+import { DialogAddToTradeComponent } from './shared/dialogs/dialog-add-to-trade/dialog-add-to-trade.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { DialogAddTradePersonalRoomComponent } from './shared/dialogs/dialog-add-trade-personal-room/dialog-add-trade-personal-room.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { MultiSelectModule } from 'primeng/multiselect';
     DialogMessagesComponent,
     SuggestionsComponent,
     ProductInformationComponent,
-    DialogAddToBasketComponent
+    DialogAddToTradeComponent,
+    DialogAddTradePersonalRoomComponent
   ],
   imports: [
     BrowserModule,
