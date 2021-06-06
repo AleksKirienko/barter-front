@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Products } from '../models/products';
 import { environment } from '../../../environments/environment';
 import { User } from '../models/user';
+import { Trade } from '../models/trade';
 
 @Injectable({
   providedIn: 'root'
@@ -126,6 +127,13 @@ export class ApiService {
    */
   public getFavoritesProducts(userId: number): Observable<Products[]> {
     return this.http.post<Products[]>(`${environment.apiUrl}/product/faves?userId=${userId}`, null);
+  }
+
+  /**
+   * Составленные предложения на данный момент
+   */
+  public getOffers(): Observable<Trade> {
+    return this.http.post<Trade>(`${environment.apiUrl}/trade/`, null);
   }
 
   /**

@@ -1,10 +1,13 @@
 <div class="suggestions-header" align="center">
-  <h1>Мои предложения</h1>
+  <h1>Мои обмены</h1>
 
   <div class="container">
-    <div>
+    <div *ngIf="!products.length">
       <h1>{{ message }}</h1>
       <h2>{{ message2 }}</h2>
+    </div>
+    <div *ngFor="let product of products">
+
     </div>
 
 
