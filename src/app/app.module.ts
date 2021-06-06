@@ -36,6 +36,7 @@ import { DialogAddToTradeComponent } from './shared/dialogs/dialog-add-to-trade/
 import { MatBadgeModule } from '@angular/material/badge';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { DialogAddTradePersonalRoomComponent } from './shared/dialogs/dialog-add-trade-personal-room/dialog-add-trade-personal-room.component';
+import { FileUploadModule } from 'primeng/fileupload';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { DialogAddTradePersonalRoomComponent } from './shared/dialogs/dialog-add
     MatCardModule,
     MatBadgeModule,
     MultiSelectModule,
-    FormsModule
+    FormsModule,
+    FileUploadModule
   ],
   exports: [
     MatFormFieldModule,

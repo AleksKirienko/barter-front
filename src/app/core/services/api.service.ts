@@ -131,9 +131,10 @@ export class ApiService {
 
   /**
    * Составленные предложения на данный момент
+   * @param userId - id пользователя
    */
-  public getOffers(): Observable<Trade> {
-    return this.http.post<Trade>(`${environment.apiUrl}/trade/`, null);
+  public getOffers(userId: number): Observable<Trade[]> {
+    return this.http.post<Trade[]>(`${environment.apiUrl}/trade/get_by_userId?userId=${userId}`, null);
   }
 
   /**

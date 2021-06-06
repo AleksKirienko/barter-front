@@ -29,14 +29,20 @@
                   cdkAutosizeMaxRows="3"></textarea>
         <mat-error>{{formErrors.required}}</mat-error>
       </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Ссылка на изображение</mat-label>
-        <input matInput
-               formControlName="imgUrl"
-               type="url"
-               required>
-        <mat-error>{{formErrors.required}}</mat-error>
-      </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Ссылка на изображение</mat-label>
+              <input matInput
+                     formControlName="imgUrl"
+                     type="url"
+                     required>
+              <mat-error>{{formErrors.required}}</mat-error>
+            </mat-form-field>
+
+<!--      <p-fileUpload-->
+<!--        name="files"-->
+<!--        accept="image/*"-->
+<!--        url="/MyController/Save"-->
+<!--        (onSelect)="dealWithFiles($event)"></p-fileUpload>-->
 
       <div>
         <button

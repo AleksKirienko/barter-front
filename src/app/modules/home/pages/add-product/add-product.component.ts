@@ -42,7 +42,7 @@ export class AddProductComponent implements OnInit {
   public onSubmit(): void {
     if (this.newProductForm.valid) {
       const product: Products = {
-        id: 0,
+        id: 0, ownerId: 0,
         name: this.newProductForm.controls.nameProduct.value,
         category: this.newProductForm.controls.status.value,
         description: this.newProductForm.controls.descriptionProduct.value,

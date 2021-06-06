@@ -51,7 +51,7 @@ export class BasketComponent implements OnInit, OnDestroy {
 
   public deleteProductFromBasket(e, idProduct: number): void {
     const product: Products = {
-      id: idProduct,
+      id: idProduct, ownerId: 0,
       description: '', email: '', exchange: '', exchange2: '', fullName: '', image: '', name: '', category: '', login: '',
       response: []
     };

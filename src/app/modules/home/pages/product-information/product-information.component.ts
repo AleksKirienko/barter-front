@@ -14,6 +14,7 @@ export class ProductInformationComponent implements OnInit, OnDestroy {
 
   public product: Products = {
     id: 0,
+    ownerId: 0,
     name: '',
     description: '',
     image: '',

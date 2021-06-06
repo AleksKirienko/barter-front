@@ -62,15 +62,22 @@ export class DialogAddToTradeComponent implements OnInit, OnDestroy {
   public onSubmit(): void {
     this.boolBasket = true;
     let selectProductsId;
-    this.selectedProducts = this.addToTradeForm.controls.exchangeOffer.value;
-    selectProductsId = this.selectedProducts.map(res => {
-      return res.id;
-    });
-    console.log(selectProductsId);
-    this.apiService.addProductsForTrade(this.idProduct, selectProductsId).subscribe(() => {
-      this.dialogRef.close();
-    });
-
+    const userId = this.authService.receiveIdFromStorage();
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < this.selectedProducts.length; i++) {
+      console.log(userId, ' ', this.selectedProducts[i]);
+      if (userId !== this.selectedProducts[i].ownerId) {
+        this.selectedProducts = this.addToTradeForm.controls.exchangeOffer.value;
+        selectProductsId = this.selectedProducts.map(res => {
+          return res.id;
+        });
+        console.log(selectProductsId);
+        this.apiService.addProductsForTrade(this.idProduct, selectProductsId).subscribe(() => {
+          this.dialogRef.close();
+        });
+      } else {
+        alert('jdbkdfbhlfb');
+      }
+    }
   }
-
 }
