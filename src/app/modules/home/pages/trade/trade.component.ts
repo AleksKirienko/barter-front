@@ -8,10 +8,10 @@ import { Trade } from '../../../../core/models/trade';
 
 @Component({
   selector: 'app-suggestions',
-  templateUrl: './suggestions.component.html',
-  styleUrls: ['./suggestions.component.css']
+  templateUrl: './trade.component.html',
+  styleUrls: ['./trade.component.css']
 })
-export class SuggestionsComponent implements OnInit, OnDestroy {
+export class TradeComponent implements OnInit, OnDestroy {
 
   public products: Products[] = [];
   public trades: Trade[] = [];

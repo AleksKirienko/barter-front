@@ -9,7 +9,7 @@ import { MenuComponent } from './modules/home/components/menu/menu.component';
 import { HomeComponent } from './modules/home/pages/home/home.component';
 import { PersonalRoomComponent } from './modules/home/pages/personal-room/personal-room.component';
 import { AddProductComponent } from './modules/home/pages/add-product/add-product.component';
-import { SuggestionsComponent } from './modules/home/pages/suggestions/suggestions.component';
+import { TradeComponent } from './modules/home/pages/trade/trade.component';
 import { ProductInformationComponent } from './modules/home/pages/product-information/product-information.component';
 
 const routes: Routes = [
@@ -51,8 +51,8 @@ const routes: Routes = [
         component: AddProductComponent
       },
       {
-        path: 'home/suggestions',
-        component: SuggestionsComponent
+        path: 'home/trade',
+        component: TradeComponent
       },
       {
         path: 'home/product-information/:product',
