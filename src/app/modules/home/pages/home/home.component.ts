@@ -128,11 +128,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       }
     });
     dialogRef.updatePosition({top: '10%'});
-    dialogRef.afterClosed().subscribe(res => {
-      if (res) {
-        this.openDialog(this.dialogMessages.successAddForTrade, 'green');
-      }
-    });
   }
 
   public getProductInformation(productId: number): void {

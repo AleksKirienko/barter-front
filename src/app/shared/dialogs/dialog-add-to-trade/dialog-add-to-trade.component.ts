@@ -75,10 +75,13 @@ export class DialogAddToTradeComponent implements OnInit, OnDestroy {
           return res.id;
         });
         console.log(selectProductsId);
-        this.apiService.addProductsForTrade(this.idProduct, selectProductsId).subscribe(() => {
-          this.openDialog(this.dialogMessages.successAddForTrade, 'green');
-          this.dialogRef.close();
-        });
+        this.apiService.addProductsForTrade(this.idProduct, selectProductsId).subscribe(res => {
+            this.openDialog(this.dialogMessages.successAddForTrade, 'green');
+            this.dialogRef.close();
+          },
+          error => {
+            this.openDialog(this.dialogMessages.alreadyInTheTrade, 'red');
+          });
       } else {
         this.openDialog(this.dialogMessages.badAddForTrade, 'red');
         this.dialogRef.close();

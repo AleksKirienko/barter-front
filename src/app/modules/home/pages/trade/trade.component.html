@@ -7,48 +7,37 @@
       <h2>{{ message2 }}</h2>
     </div>
     <div *ngFor="let trade of trades">
-
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3 mb-3">
-            <div class="card h-100">
-              <div class="card-body">
-                <p class="card-text">
-                  <img class="card-img-top" src="{{trade.sendProduct.image}}" vspace="5" hspace="5"
-                       alt="Card image cap">
-                  <b>name:</b> {{ trade.sendProduct.name }}<br>
-                  <b>status:</b> {{ trade.sendProduct.category }}<br>
-                  <b>exchange:</b> {{ trade.sendProduct.exchange }}<br>
-                </p>
-              </div>
-              <br>
+      <div class="row">
+        <div class="col-md-4 col-sm-6 col-12">
+          <div class="card h-100">
+            <div class="card-body">
+              <p class="card-text">
+                <img class="card-img-top" src="{{trade.sendProduct.image}}" vspace="5" hspace="5"
+                     alt="Card image cap">
+                <b>name:</b> {{ trade.sendProduct.name }}<br>
+                <b>status:</b> {{ trade.sendProduct.category }}<br>
+                <b>exchange:</b> {{ trade.sendProduct.exchange }}<br>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-12 swap-icon">
+          <mat-icon>swap_horiz</mat-icon>
+        </div>
+        <div class="col-md-4 col-sm-6 col-12">
+          <div class="card h-100">
+            <div class="card-body">
+              <p class="card-text">
+                <img class="card-img-top" src="{{trade.receiveProduct.image}}" vspace="5" hspace="5"
+                     alt="Card image cap">
+                <b>name:</b> {{ trade.receiveProduct.name }}<br>
+                <b>status:</b> {{ trade.receiveProduct.category }}<br>
+                <b>exchange:</b> {{ trade.receiveProduct.exchange }}<br>
+              </p>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3 mb-3">
-            <div class="card h-100">
-              <div class="card-body">
-                <p class="card-text">
-                  <img class="card-img-top" src="{{trade.receiveProduct.image}}" vspace="5" hspace="5"
-                       alt="Card image cap">
-                  <b>name:</b> {{ trade.receiveProduct.name }}<br>
-                  <b>status:</b> {{ trade.receiveProduct.category }}<br>
-                  <b>exchange:</b> {{ trade.receiveProduct.exchange }}<br>
-                </p>
-              </div>
-              <br>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
     </div>
-
   </div>
-
 </div>

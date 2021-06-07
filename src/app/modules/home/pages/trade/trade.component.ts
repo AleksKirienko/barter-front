@@ -35,6 +35,9 @@ export class TradeComponent implements OnInit, OnDestroy {
     this.subs.add(this.apiService.getOffers(userId).subscribe((res: Trade[]): void => {
       this.trades = res;
       console.log(this.trades);
+      // for (const trade of this.trades) {
+      //   this.products[this.products.length] = {myProducts: trade.sendProduct, receiveProducts: trade.receiveProduct};
+      // }
     }));
 
 

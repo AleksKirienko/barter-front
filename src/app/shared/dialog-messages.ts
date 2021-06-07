@@ -5,5 +5,6 @@ export const DialogMessages: { [key: string]: string } = {
   addNewProduct: 'Новый товар успешно добавлен!',
   delMyProduct: 'Вы удалили свой товар',
   successAddForTrade: 'Ваши товары для обмена приняты',
-  badAddForTrade: 'Нельзя добавить товар для обмена'
+  badAddForTrade: 'Нельзя добавить товар для обмена',
+  alreadyInTheTrade: 'Уже добавлены для обмена'
 };

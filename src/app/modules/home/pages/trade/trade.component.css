@@ -3,7 +3,21 @@
 }
 
 .container {
-  width: 100%;
   left: auto;
   margin-top: 25px;
+}
+
+.trades {
+  display: flex;
+  justify-content: space-between;
+}
+
+.swap-icon {
+  margin: auto;
+}
+
+.swap-icon mat-icon {
+  color: grey;
+  font-size: 60px;
+  width: 100%;
 }
