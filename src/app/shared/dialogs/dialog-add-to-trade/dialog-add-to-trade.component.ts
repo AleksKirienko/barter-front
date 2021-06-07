@@ -6,6 +6,8 @@ import { Products } from '../../../core/models/products';
 import { ApiService } from '../../../core/services/api.service';
 import { AuthService } from '../../../core/services/auth.service';
 import { Subscription } from 'rxjs';
+import { DialogMessagesComponent } from '../dialog-messages/dialog-messages.component';
+import { DialogMessages } from '../../dialog-messages';
 
 @Component({
   selector: 'app-dialog-add-to-basket',
@@ -20,9 +22,10 @@ export class DialogAddToTradeComponent implements OnInit, OnDestroy {
   public boolBasket = false;
   public clickHeat = false;
   public idProduct: number;
-  public product: Products;
+  // public product: Products;
   private subs: Subscription = new Subscription();
   formErrors = ErrorMessages;
+  dialogMessages = DialogMessages;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -55,7 +58,7 @@ export class DialogAddToTradeComponent implements OnInit, OnDestroy {
     this.subs.add(this.apiService.getUserProducts(userId).subscribe(
       (products1: Products[]): void => {
         this.products = products1;
-        console.log(this.products);
+        console.log('v: ', this.products);
       }));
   }
 
@@ -66,18 +69,39 @@ export class DialogAddToTradeComponent implements OnInit, OnDestroy {
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < this.selectedProducts.length; i++) {
       console.log(userId, ' ', this.selectedProducts[i]);
-      if (userId !== this.selectedProducts[i].ownerId) {
+      if (userId === this.selectedProducts[i].ownerId) {
         this.selectedProducts = this.addToTradeForm.controls.exchangeOffer.value;
         selectProductsId = this.selectedProducts.map(res => {
           return res.id;
         });
         console.log(selectProductsId);
         this.apiService.addProductsForTrade(this.idProduct, selectProductsId).subscribe(() => {
+          this.openDialog(this.dialogMessages.successAddForTrade, 'green');
           this.dialogRef.close();
         });
       } else {
-        alert('jdbkdfbhlfb');
+        this.openDialog(this.dialogMessages.badAddForTrade, 'red');
+        this.dialogRef.close();
       }
     }
   }
+
+  public openDialog(message: string, colorMsg: string): void {
+    const timeout = 2000;
+    const dialogRef = this.dialog.open(DialogMessagesComponent, {
+      height: '200px',
+      width: '600px',
+      data: {
+        msg: message,
+        color: colorMsg
+      }
+    });
+    dialogRef.updatePosition({top: '80px', left: '35%'});
+    dialogRef.afterOpened().subscribe(_ => {
+      setTimeout(() => {
+        dialogRef.close();
+      }, timeout);
+    });
+  }
+
 }

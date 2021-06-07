@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DialogAddToTradeComponent } from '../../../../shared/dialogs/dialog-add-to-trade/dialog-add-to-trade.component';
 import { AuthService } from '../../../../core/services/auth.service';
+import { DialogMessages } from '../../../../shared/dialog-messages';
 
 @Component({
   selector: 'app-home',
@@ -22,10 +23,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   public message = 'Товары не найдены!';
   public status: Status = 'all';
   public boolLiked = false;
-  public boolBasket = false;
-  public clickHeat = false;
   public favoriteLength = 0;
   public userId: number;
+  dialogMessages = DialogMessages;
 
   constructor(
     private apiService: ApiService,
@@ -80,7 +80,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.subs.add(this.apiService.getSearchProducts(product).subscribe(
       (products1: Products[]): void => {
         this.products = products1;
-        console.log('joj', this.products);
       }
     ));
   }
@@ -89,39 +88,38 @@ export class HomeComponent implements OnInit, OnDestroy {
     return !!this.favesProducts.find(product => product.id === idProduct);
   }
 
-  public selectedProductForFavorite(e, idProduct: number): void {
-    this.clickHeat = true;
-    if (e.target.style.color === 'red') {
-      e.target.style.color = 'gray';
-    } else {
-      e.target.style.color = 'red';
-    }
-    this.apiService.checkProductInFaves(this.userId, idProduct).subscribe(res => {
-      this.boolLiked = res;
-      console.log(this.boolLiked);
-
-      if (!this.boolLiked) {
-        this.apiService.updateLikedProduct(this.userId, idProduct).subscribe(() => {
-          this.apiService.getProducts();
-          this.getFavoriteProductsLength();
-          this.openDialog();
-          this.clickHeat = false;
-        });
+  public selectedProductForFavorite(e, product): void {
+    if (this.userId !== product.ownerId) {
+      if (e.target.style.color === 'red') {
+        e.target.style.color = 'gray';
       } else {
-        this.apiService.deleteLikedProduct(this.userId, idProduct).subscribe(() => {
-          this.apiService.getProducts();
-          this.getFavoriteProductsLength();
-          this.openDialog();
-          this.clickHeat = false;
-        });
+        e.target.style.color = 'red';
       }
+      this.apiService.checkProductInFaves(this.userId, product.id).subscribe(res => {
+        this.boolLiked = res;
+        console.log(this.boolLiked);
 
-    });
+        if (!this.boolLiked) {
+          this.apiService.updateLikedProduct(this.userId, product.id).subscribe(() => {
+            this.apiService.getProducts();
+            this.getFavoriteProductsLength();
+            this.openDialog(this.dialogMessages.likedProduct, 'green');
+          });
+        } else {
+          this.apiService.deleteLikedProduct(this.userId, product.id).subscribe(() => {
+            this.apiService.getProducts();
+            this.getFavoriteProductsLength();
+            this.openDialog(this.dialogMessages.delLikedProduct, 'red');
+          });
+        }
 
+      });
+    } else {
+      this.openDialog(this.dialogMessages.likedMyProduct, 'red');
+    }
   }
 
   public selectedProductForTrade(e, idProduct: number): void {
-    this.clickHeat = false;
     const dialogRef = this.dialog.open(DialogAddToTradeComponent, {
       height: '400px',
       width: '700px',
@@ -131,9 +129,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
     dialogRef.updatePosition({top: '10%'});
     dialogRef.afterClosed().subscribe(res => {
-      this.boolBasket = true;
       if (res) {
-        this.openDialog();
+        this.openDialog(this.dialogMessages.successAddForTrade, 'green');
       }
     });
   }
@@ -147,15 +144,14 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
   }
 
-  public openDialog(): void {
+  public openDialog(message: string, colorMsg: string): void {
     const timeout = 2000;
     const dialogRef = this.dialog.open(DialogMessagesComponent, {
       height: '200px',
       width: '600px',
       data: {
-        dataLiked: !this.boolLiked,
-        dataBasket: this.boolBasket,
-        heart: this.clickHeat
+        msg: message,
+        color: colorMsg
       }
     });
     dialogRef.updatePosition({top: '80px', left: '35%'});

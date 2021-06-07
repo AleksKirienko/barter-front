@@ -7,6 +7,7 @@ import { DialogMessagesComponent } from '../../../../shared/dialogs/dialog-messa
 import { Router } from '@angular/router';
 import { DialogAddToTradeComponent } from '../../../../shared/dialogs/dialog-add-to-trade/dialog-add-to-trade.component';
 import { AuthService } from '../../../../core/services/auth.service';
+import { DialogMessages } from '../../../../shared/dialog-messages';
 
 @Component({
   selector: 'app-favorites',
@@ -18,9 +19,8 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   public products: Products[] = [];
   private subs: Subscription = new Subscription();
   public message = 'Нет избранных товаров!';
+  dialogMessages = DialogMessages;
   public userId: number;
-  public boolBasket = false;
-  public clickHeat = false;
 
   constructor(
     private apiService: ApiService,
@@ -59,15 +59,20 @@ export class FavoritesComponent implements OnInit, OnDestroy {
     return !!this.products.find(product => product.id === idProduct);
   }
 
-  public selectedProduct(e, idProduct: number): void {
-    this.clickHeat = true;
+  public selectedProduct(e, idProduct: number, mes2: string, color: string): void {
+    let message = this.dialogMessages.delLikedProduct;
+    let colorMsg = 'red';
     if (e.target.style.color === 'red') {
       e.target.style.color = 'gray';
     }
+    console.log('mes2: ', mes2, ' ', color);
+    if (mes2 && color) {
+      message = mes2;
+      colorMsg = color;
+    }
     this.apiService.deleteLikedProduct(this.userId, idProduct).subscribe(() => {
+      this.openDialog(message, colorMsg);
       this.displayProducts();
-      this.openDialog();
-      this.clickHeat = false;
     });
   }
 
@@ -81,23 +86,21 @@ export class FavoritesComponent implements OnInit, OnDestroy {
     });
     dialogRef.updatePosition({top: '10%'});
     dialogRef.afterClosed().subscribe(res => {
-      this.boolBasket = res;
       if (res) {
-        this.selectedProduct(e, idProduct);
+        this.openDialog(this.dialogMessages.successAddForTrade, 'green');
+        this.selectedProduct(e, idProduct, this.dialogMessages.successAddForTrade, 'green');
       }
-      this.boolBasket = false;
     });
   }
 
-  public openDialog(): void {
+  public openDialog(message: string, colorMsg: string): void {
     const timeout = 2000;
     const dialogRef = this.dialog.open(DialogMessagesComponent, {
       height: '200px',
       width: '600px',
       data: {
-        dataLiked: false,
-        dataBasket: this.boolBasket,
-        heart: this.clickHeat
+        msg: message,
+        color: colorMsg
       }
     });
     dialogRef.updatePosition({top: '80px', left: '35%'});

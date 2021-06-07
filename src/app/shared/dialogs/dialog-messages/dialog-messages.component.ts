@@ -1,5 +1,4 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { DialogMessages } from '../../dialog-messages';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -9,20 +8,15 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class DialogMessagesComponent implements OnInit {
 
-  public boolLiked = false;
-  public boolBasket = false;
-  public newProduct = false;
-  public heart = false;
-  dialogMessages = DialogMessages;
+  public message = '';
+  public colorMsg = '';
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
   }
 
   ngOnInit(): void {
-    this.boolLiked = this.data.dataLiked;
-    this.boolBasket = this.data.dataBasket;
-    this.newProduct = this.data.newProduct;
-    this.heart = this.data.heart;
+    this.message = this.data.msg;
+    this.colorMsg = this.data.color;
   }
 
 }

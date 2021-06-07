@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddTradePersonalRoomComponent } from '../../../../shared/dialogs/dialog-add-trade-personal-room/dialog-add-trade-personal-room.component';
 import { DialogMessagesComponent } from '../../../../shared/dialogs/dialog-messages/dialog-messages.component';
+import { DialogMessages } from '../../../../shared/dialog-messages';
 
 @Component({
   selector: 'app-personal-room',
@@ -22,8 +23,7 @@ export class PersonalRoomComponent implements OnInit, OnDestroy {
   public products: Products[] = [];
   public message = 'Вы не добавляли свой товар';
   private subs: Subscription = new Subscription();
-  public clickHeat = false;
-  public boolBasket = false;
+  dialogMessages = DialogMessages;
 
   constructor(
     private apiService: ApiService,
@@ -55,12 +55,12 @@ export class PersonalRoomComponent implements OnInit, OnDestroy {
 
   public deleteMyProduct(e, idProduct: number): void {
     this.apiService.deleteMyProduct(idProduct).subscribe(() => {
+      this.openDialog(this.dialogMessages.delMyProduct, 'red');
       this.displayProducts();
     });
   }
 
   public selectedProductForTrade(e, idProduct: number): void {
-    this.clickHeat = false;
     const dialogRef = this.dialog.open(DialogAddTradePersonalRoomComponent, {
       height: '400px',
       width: '700px',
@@ -70,9 +70,8 @@ export class PersonalRoomComponent implements OnInit, OnDestroy {
     });
     dialogRef.updatePosition({top: '10%'});
     dialogRef.afterClosed().subscribe(res => {
-      this.boolBasket = true;
       if (res) {
-        this.openDialog();
+        this.openDialog(this.dialogMessages.successAddForTrade, 'green');
       }
     });
   }
@@ -85,14 +84,14 @@ export class PersonalRoomComponent implements OnInit, OnDestroy {
     });
   }
 
-  public openDialog(): void {
+  public openDialog(message: string, colorMsg: string): void {
     const timeout = 2000;
     const dialogRef = this.dialog.open(DialogMessagesComponent, {
       height: '200px',
       width: '600px',
       data: {
-        dataBasket: this.boolBasket,
-        heart: this.clickHeat
+        msg: message,
+        color: colorMsg
       }
     });
     dialogRef.updatePosition({top: '80px', left: '35%'});

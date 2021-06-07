@@ -8,6 +8,7 @@ import { Products } from '../../../../core/models/products';
 import { DialogMessagesComponent } from '../../../../shared/dialogs/dialog-messages/dialog-messages.component';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '../../../../core/services/auth.service';
+import { DialogMessages } from '../../../../shared/dialog-messages';
 
 @Component({
   selector: 'app-add-product',
@@ -20,6 +21,7 @@ export class AddProductComponent implements OnInit {
   public status: Status;
   public statuses: string[] = ['одежда', 'аксессуары', 'канцелярия', 'техника', 'еда', 'посуда', 'для отдыха', 'игрушки', 'прочее'];
   formErrors = ErrorMessages;
+  dialogMessages = DialogMessages;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -53,19 +55,21 @@ export class AddProductComponent implements OnInit {
       console.log(product);
       const userId: number = this.authService.receiveIdFromStorage();
       console.log('id: ', userId);
-      this.apiService.postAddProduct(product, userId).subscribe();
-      this.openDialog();
-      this.router.navigateByUrl('/home');
+      this.apiService.postAddProduct(product, userId).subscribe(() => {
+        this.openDialog(this.dialogMessages.addNewProduct, 'green');
+        this.router.navigateByUrl('/home');
+      });
     }
   }
 
-  public openDialog(): void {
+  public openDialog(message: string, colorMsg: string): void {
     const timeout = 2000;
     const dialogRef = this.dialog.open(DialogMessagesComponent, {
       height: '200px',
       width: '600px',
       data: {
-        newProduct: true
+        msg: message,
+        color: colorMsg
       }
     });
     dialogRef.updatePosition({top: '80px', left: '35%'});

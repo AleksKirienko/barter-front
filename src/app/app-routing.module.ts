@@ -4,7 +4,6 @@ import { AuthComponent } from './modules/auth/pages/auth/auth.component';
 import { RegistrationComponent } from './modules/auth/pages/registration/registration.component';
 import { NotFoundComponent } from './modules/home/pages/not-found/not-found.component';
 import { FavoritesComponent } from './modules/home/pages/favorites/favorites.component';
-import { BasketComponent } from './modules/home/pages/basket/basket.component';
 import { MenuComponent } from './modules/home/components/menu/menu.component';
 import { HomeComponent } from './modules/home/pages/home/home.component';
 import { PersonalRoomComponent } from './modules/home/pages/personal-room/personal-room.component';
@@ -37,10 +36,6 @@ const routes: Routes = [
       {
         path: 'home/favorites',
         component: FavoritesComponent
-      },
-      {
-        path: 'home/basket',
-        component: BasketComponent
       },
       {
         path: 'home/personal-room',

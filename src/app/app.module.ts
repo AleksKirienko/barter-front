@@ -26,7 +26,6 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { FavoritesComponent } from './modules/home/pages/favorites/favorites.component';
-import { BasketComponent } from './modules/home/pages/basket/basket.component';
 import { AddProductComponent } from './modules/home/pages/add-product/add-product.component';
 import { MatCardModule } from '@angular/material/card';
 import { DialogMessagesComponent } from './shared/dialogs/dialog-messages/dialog-messages.component';
@@ -51,7 +50,6 @@ import { FileUploadModule } from 'primeng/fileupload';
     FilterStatusPipe,
     SidenavComponent,
     FavoritesComponent,
-    BasketComponent,
     AddProductComponent,
     DialogMessagesComponent,
     TradeComponent,
