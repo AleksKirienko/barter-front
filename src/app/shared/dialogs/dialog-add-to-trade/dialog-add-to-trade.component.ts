@@ -22,7 +22,6 @@ export class DialogAddToTradeComponent implements OnInit, OnDestroy {
   public boolBasket = false;
   public clickHeat = false;
   public idProduct: number;
-  // public product: Products;
   private subs: Subscription = new Subscription();
   formErrors = ErrorMessages;
   dialogMessages = DialogMessages;
@@ -66,26 +65,31 @@ export class DialogAddToTradeComponent implements OnInit, OnDestroy {
     this.boolBasket = true;
     let selectProductsId;
     const userId = this.authService.receiveIdFromStorage();
-    // tslint:disable-next-line:prefer-for-of
-    for (let i = 0; i < this.selectedProducts.length; i++) {
-      console.log(userId, ' ', this.selectedProducts[i]);
-      if (userId === this.selectedProducts[i].ownerId) {
-        this.selectedProducts = this.addToTradeForm.controls.exchangeOffer.value;
-        selectProductsId = this.selectedProducts.map(res => {
-          return res.id;
-        });
-        console.log(selectProductsId);
-        this.apiService.addProductsForTrade(this.idProduct, selectProductsId).subscribe(res => {
-            this.openDialog(this.dialogMessages.successAddForTrade, 'green');
-            this.dialogRef.close();
-          },
-          error => {
-            this.openDialog(this.dialogMessages.alreadyInTheTrade, 'red');
+    if (this.selectedProducts.length > 0) {
+      // tslint:disable-next-line:prefer-for-of
+      for (let i = 0; i < this.selectedProducts.length; i++) {
+        console.log(userId, ' ', this.selectedProducts[i]);
+        if (userId === this.selectedProducts[i].ownerId) {
+          this.selectedProducts = this.addToTradeForm.controls.exchangeOffer.value;
+          selectProductsId = this.selectedProducts.map(res => {
+            return res.id;
           });
-      } else {
-        this.openDialog(this.dialogMessages.badAddForTrade, 'red');
-        this.dialogRef.close();
+          console.log(selectProductsId);
+          this.apiService.addProductsForTrade(this.idProduct, selectProductsId).subscribe(res => {
+              this.openDialog(this.dialogMessages.successAddForTrade, 'green');
+              this.dialogRef.close();
+            },
+            error => {
+              this.openDialog(this.dialogMessages.alreadyInTheTrade, 'red');
+            });
+        } else {
+          this.openDialog(this.dialogMessages.badAddForTrade, 'red');
+          this.dialogRef.close();
+        }
       }
+    } else {
+      this.openDialog(this.dialogMessages.selectTradesProdIsNull, 'red');
+      this.dialogRef.close();
     }
   }
 

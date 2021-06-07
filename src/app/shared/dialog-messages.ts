@@ -6,5 +6,6 @@ export const DialogMessages: { [key: string]: string } = {
   delMyProduct: 'Вы удалили свой товар',
   successAddForTrade: 'Ваши товары для обмена приняты',
   badAddForTrade: 'Нельзя добавить товар для обмена',
-  alreadyInTheTrade: 'Уже добавлены для обмена'
+  alreadyInTheTrade: 'Уже добавлены для обмена',
+  selectTradesProdIsNull: 'Вы не выбрали товары, которые хотите предложить взамен'
 };
