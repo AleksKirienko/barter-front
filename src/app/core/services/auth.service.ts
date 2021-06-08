@@ -29,7 +29,7 @@ export class AuthService {
   public receiveLoginFromStorage(): string {
     const res: string = sessionStorage.getItem('login');
     const authObj: Authorization = JSON.parse(res);
-    return authObj ? authObj.login : '';
+    return authObj ? authObj.login : null;
   }
 
   public receiveIdFromStorage(): number {

@@ -10,6 +10,7 @@ import { PersonalRoomComponent } from './modules/home/pages/personal-room/person
 import { AddProductComponent } from './modules/home/pages/add-product/add-product.component';
 import { TradeComponent } from './modules/home/pages/trade/trade.component';
 import { ProductInformationComponent } from './modules/home/pages/product-information/product-information.component';
+import { AuthGuard } from './core/services/auth.guard';
 
 const routes: Routes = [
   {
@@ -27,30 +28,37 @@ const routes: Routes = [
   },
   {
     path: '',
+    canActivate: [AuthGuard],
     component: MenuComponent,
     children: [
       {
         path: 'home',
+        canActivate: [AuthGuard],
         component: HomeComponent
       },
       {
         path: 'home/favorites',
+        canActivate: [AuthGuard],
         component: FavoritesComponent
       },
       {
         path: 'home/personal-room',
+        canActivate: [AuthGuard],
         component: PersonalRoomComponent
       },
       {
         path: 'home/add-product',
+        canActivate: [AuthGuard],
         component: AddProductComponent
       },
       {
         path: 'home/trade',
+        canActivate: [AuthGuard],
         component: TradeComponent
       },
       {
         path: 'home/product-information/:product',
+        canActivate: [AuthGuard],
         component: ProductInformationComponent
       }
     ]

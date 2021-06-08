@@ -1,4 +1,5 @@
 export const DialogMessages: { [key: string]: string } = {
+  errorAuth: 'Неверный логин или пароль',
   likedProduct: 'Товар добавлен в избранные',
   delLikedProduct: 'Товар удален из избранных',
   likedMyProduct: 'Нельзя добавить в избранные свой товар',

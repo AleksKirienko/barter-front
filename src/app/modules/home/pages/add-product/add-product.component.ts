@@ -41,6 +41,11 @@ export class AddProductComponent implements OnInit {
 
   }
 
+  // public dealWithFiles(event): void {
+  //   const files = event.originalEvent.files;
+  //   console.log('files: ', files);
+  // }
+
   public onSubmit(): void {
     if (this.newProductForm.valid) {
       const product: Products = {
