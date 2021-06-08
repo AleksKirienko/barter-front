@@ -5,7 +5,8 @@
     <p [routerLink]="['../home/favorites']">Избранные</p>
     <p [routerLink]="['../home/trade']">Обмены</p>
     <p [routerLink]="['../home/add-product']">Добавить товар</p>
-    <p [routerLink]="['../login']">Выход</p>
+    <p [routerLink]="['../login']"
+       (click)="exit()">Выход</p>
   </div>
 
 </div>

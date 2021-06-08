@@ -37,4 +37,11 @@ export class AuthService {
     return JSON.parse(res);
   }
 
+  public removeKeys(): void {
+    // tslint:disable-next-line:forin
+    for (const key in sessionStorage) {
+      sessionStorage.removeItem(key);
+    }
+  }
+
 }
