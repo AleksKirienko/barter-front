@@ -133,7 +133,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   public getProductInformation(productId: number): void {
     let link = 'home/product-information/';
     link = link.concat(productId.toString());
-    console.log(link);
     this.router.navigate([]).then(() => {
       window.open(link, '_blank');
     });

@@ -47,9 +47,9 @@ export class FavoritesComponent implements OnInit, OnDestroy {
       }));
   }
 
-  public getProductInformation(product): void {
+  public getProductInformation(productId): void {
     let link = 'home/product-information/';
-    link = link.concat(product.replace(' ', '+'));
+    link = link.concat(productId.toString());
     this.router.navigate([]).then(() => {
       window.open(link, '_blank');
     });
