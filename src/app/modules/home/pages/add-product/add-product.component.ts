@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Status } from '../../../../core/models/status';
+import { Category } from '../../../../core/models/category';
 import { Router } from '@angular/router';
 import { ErrorMessages } from '../../../auth/pages/registration/error-messages';
 import { ApiService } from '../../../../core/services/api.service';
@@ -18,7 +18,7 @@ import { DialogMessages } from '../../../../shared/dialog-messages';
 export class AddProductComponent implements OnInit {
 
   public newProductForm: FormGroup;
-  public status: Status;
+  public status: Category;
   public statuses: string[] = ['одежда', 'аксессуары', 'канцелярия', 'техника', 'еда', 'посуда', 'для отдыха', 'игрушки', 'прочее'];
   formErrors = ErrorMessages;
   dialogMessages = DialogMessages;

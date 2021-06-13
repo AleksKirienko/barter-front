@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Products } from '../../../../core/models/products';
 import { ApiService } from '../../../../core/services/api.service';
-import { Status } from '../../../../core/models/status';
+import { Category } from '../../../../core/models/category';
 import { DialogMessagesComponent } from '../../../../shared/dialogs/dialog-messages/dialog-messages.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public favesProducts: Products[] = [];
   private subs: Subscription = new Subscription();
   public message = 'Товары не найдены!';
-  public status: Status = 'all';
+  public status: Category = 'all';
   public boolLiked = false;
   public favoriteLength = 0;
   public userId: number;
@@ -68,8 +68,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
 
-  public onSetStatus(status: Status): void {
-    this.status = status;
+  public onSetCategory(category: Category): void {
+    this.status = category;
   }
 
   public searchProducts(product: string): void {

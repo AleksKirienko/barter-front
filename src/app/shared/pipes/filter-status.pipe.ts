@@ -1,20 +1,18 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Products } from '../../core/models/products';
-import { Status } from '../../core/models/status';
+import { Category } from '../../core/models/category';
 
 @Pipe({
   name: 'filterStatus'
 })
 export class FilterStatusPipe implements PipeTransform {
-
-  transform(list: Products[], status: Status): Products[] {
+  transform(list: Products[], category: Category): Products[] {
     if (!list) {
       return null;
     }
-    if (!status || status === 'all') {
+    if (!category || category === 'all') {
       return list;
     }
-    return list.filter((item: Products): boolean => item.category.toLocaleLowerCase() === status);
+    return list.filter((item: Products): boolean => item.category.toLocaleLowerCase() === category);
   }
-
 }
